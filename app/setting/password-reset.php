@@ -7,51 +7,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title> <?php echo  $sitename ?> - Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="../source/assets/img/favicon.ico">
-    <link href="../source/assets/css/loader.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type; encoding" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <title>Edit Account - <?php echo  $sitename ?></title>
+    <link rel="icon" type="image/x-icon" href="../source/assets/img/favicon.ico" />
+    <link href="../source/assets/css/loader.css" rel="stylesheet" type="text/css" />
     <script async="" src="livechat" charset="UTF-8" crossorigin="*"></script>
     <script src="../source/assets/js/loader.js"></script>
     <!--     BEGIN GLOBAL MANDATORY STYLES-->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
-    <link href="../source/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/plugins.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../source/assets/css/forms/custom-clipboard.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600"
+        rel="stylesheet" />
+    <link href="../source/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../source/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../source/assets/css/forms/custom-clipboard.css" />
     <!--     END GLOBAL MANDATORY STYLES-->
 
-    <link rel="stylesheet" href="../source/plugins/font-icons/fontawesome/css/regular.css">
-    <link rel="stylesheet" href="../source/plugins/font-icons/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="../source/plugins/font-icons/fontawesome/css/regular.css" />
+    <link rel="stylesheet" href="../source/plugins/font-icons/fontawesome/css/fontawesome.css" />
 
     <!--     BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES-->
-    <link href="../source/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/components/cards/card.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../source/plugins/bootstrap-select/bootstrap-select.min.css">
+    <link href="../source/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css" />
+    <link href="../source/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
+    <link href="../source/assets/css/components/cards/card.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../source/plugins/bootstrap-select/bootstrap-select.min.css" />
     <!--    profile css-->
-    <link rel="stylesheet" type="text/css" href="../source/plugins/dropify/dropify.min.css">
-    <link href="../source/assets/css/users/account-setting.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/components/custom-modal.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/users/user-profile.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../source/plugins/dropify/dropify.min.css" />
+    <link href="../source/assets/css/users/account-setting.css" rel="stylesheet" type="text/css" />
+    <link href="../source/assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../source/assets/css/card/card.css" />
+    <link rel="stylesheet" href="../source/assets/css/card/displayCard.css" />
+    <!--    <link href="../source/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />-->
 
     <!--    end of table css-->
 
-
     <!-- toaster -->
-    <link rel="stylesheet" type="text/css" href="../source/assets/css/elements/alert.css">
-    <link href="../source/plugins/notification/snackbar/snackbar.min.css" rel="stylesheet" type="text/css">
-    <link href="../source/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" type="text/css">
-    <link href="../source/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" type="text/css">
-    <link href="../source/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css">
-    <link href="../source/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../source/assets/css/elements/alert.css" />
+    <link href="../source/plugins/notification/snackbar/snackbar.min.css" rel="stylesheet" type="text/css" />
+    <link href="../source/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" type="text/css" />
+    <link href="../source/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../source/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="../source/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css" />
     <script src="../source/plugins/sweetalerts/promise-polyfill.js"></script>
-    <style type="text/css" id="operaUserStyle"></style>
     <script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>
 
+        <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 
+    <!-- jQuery (required by Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script >
+            toastr.options = {
+
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right", // other options: toast-bottom-left, toast-bottom-right, toast-top-left, toast-top-full-width, toast-bottom-full-width, toast-top-center, toast-bottom-center
+                    "timeOut": "2000" // milliseconds before toast disappears
+            }
+    </script>
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
@@ -68,6 +85,7 @@
         }
     </style>
 
+    <style type="text/css" id="operaUserStyle"></style>
     <style type="text/css">
         .apexcharts-canvas {
             position: relative;
@@ -83,13 +101,13 @@
 
         .apexcharts-canvas ::-webkit-scrollbar-thumb {
             border-radius: 4px;
-            background-color: rgba(0, 0, 0, .5);
-            box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-            -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+            -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
         .apexcharts-canvas.dark {
-            background: #343F57;
+            background: #343f57;
         }
 
         .apexcharts-inner {
@@ -98,7 +116,7 @@
 
         .legend-mouseover-inactive {
             transition: 0.15s ease all;
-            opacity: 0.20;
+            opacity: 0.2;
         }
 
         .apexcharts-series-collapsed {
@@ -158,7 +176,7 @@
         }
 
         .apexcharts-tooltip.light .apexcharts-tooltip-title {
-            background: #ECEFF1;
+            background: #eceff1;
             border-bottom: 1px solid #ddd;
         }
 
@@ -258,8 +276,8 @@
             border-radius: 2px;
             position: absolute;
             z-index: 10;
-            background: #ECEFF1;
-            border: 1px solid #90A4AE;
+            background: #eceff1;
+            border: 1px solid #90a4ae;
             transition: 0.15s ease all;
         }
 
@@ -303,11 +321,11 @@
         }
 
         .apexcharts-xaxistooltip-bottom:after {
-            border-bottom-color: #ECEFF1;
+            border-bottom-color: #eceff1;
         }
 
         .apexcharts-xaxistooltip-bottom:before {
-            border-bottom-color: #90A4AE;
+            border-bottom-color: #90a4ae;
         }
 
         .apexcharts-xaxistooltip-bottom.dark:after {
@@ -319,11 +337,11 @@
         }
 
         .apexcharts-xaxistooltip-top:after {
-            border-top-color: #ECEFF1
+            border-top-color: #eceff1;
         }
 
         .apexcharts-xaxistooltip-top:before {
-            border-top-color: #90A4AE;
+            border-top-color: #90a4ae;
         }
 
         .apexcharts-xaxistooltip-top.dark:after {
@@ -333,7 +351,6 @@
         .apexcharts-xaxistooltip-top.dark:before {
             border-top-color: rgba(0, 0, 0, 0.5);
         }
-
 
         .apexcharts-xaxistooltip.active {
             opacity: 1;
@@ -350,8 +367,8 @@
             border-radius: 2px;
             position: absolute;
             z-index: 10;
-            background: #ECEFF1;
-            border: 1px solid #90A4AE;
+            background: #eceff1;
+            border: 1px solid #90a4ae;
         }
 
         .apexcharts-yaxistooltip.dark {
@@ -394,11 +411,11 @@
         }
 
         .apexcharts-yaxistooltip-left:after {
-            border-left-color: #ECEFF1;
+            border-left-color: #eceff1;
         }
 
         .apexcharts-yaxistooltip-left:before {
-            border-left-color: #90A4AE;
+            border-left-color: #90a4ae;
         }
 
         .apexcharts-yaxistooltip-left.dark:after {
@@ -410,11 +427,11 @@
         }
 
         .apexcharts-yaxistooltip-right:after {
-            border-right-color: #ECEFF1;
+            border-right-color: #eceff1;
         }
 
         .apexcharts-yaxistooltip-right:before {
-            border-right-color: #90A4AE;
+            border-right-color: #90a4ae;
         }
 
         .apexcharts-yaxistooltip-right.dark:after {
@@ -469,11 +486,11 @@
         }
 
         .apexcharts-canvas.zoomable .hovering-zoom {
-            cursor: crosshair
+            cursor: crosshair;
         }
 
         .apexcharts-canvas.zoomable .hovering-pan {
-            cursor: move
+            cursor: move;
         }
 
         .apexcharts-xaxis,
@@ -493,22 +510,21 @@
             width: 20px;
             height: 20px;
             line-height: 24px;
-            color: #6E8192;
+            color: #6e8192;
             text-align: center;
         }
-
 
         .apexcharts-zoom-icon svg,
         .apexcharts-zoom-in-icon svg,
         .apexcharts-zoom-out-icon svg,
         .apexcharts-reset-zoom-icon svg,
         .apexcharts-menu-icon svg {
-            fill: #6E8192;
+            fill: #6e8192;
         }
 
         .apexcharts-selection-icon svg {
             fill: #444;
-            transform: scale(0.76)
+            transform: scale(0.76);
         }
 
         .dark .apexcharts-zoom-icon svg,
@@ -525,7 +541,7 @@
         .apexcharts-canvas .apexcharts-zoom-icon.selected svg,
         .apexcharts-canvas .apexcharts-selection-icon.selected svg,
         .apexcharts-canvas .apexcharts-reset-zoom-icon.selected svg {
-            fill: #008FFB;
+            fill: #008ffb;
         }
 
         .light .apexcharts-selection-icon:not(.selected):hover svg,
@@ -554,7 +570,7 @@
 
         .apexcharts-zoom-in-icon,
         .apexcharts-zoom-out-icon {
-            transform: scale(0.7)
+            transform: scale(0.7);
         }
 
         .apexcharts-zoom-out-icon {
@@ -570,12 +586,12 @@
 
         .apexcharts-pan-icon svg {
             fill: #fff;
-            stroke: #6E8192;
+            stroke: #6e8192;
             stroke-width: 2;
         }
 
         .apexcharts-pan-icon.selected svg {
-            stroke: #008FFB;
+            stroke: #008ffb;
         }
 
         .apexcharts-pan-icon:not(.selected):hover svg {
@@ -699,45 +715,45 @@
     <style>
         @-webkit-keyframes swal2-show {
             0% {
-                -webkit-transform: scale(.7);
-                transform: scale(.7)
+                -webkit-transform: scale(0.7);
+                transform: scale(0.7);
             }
 
             45% {
                 -webkit-transform: scale(1.05);
-                transform: scale(1.05)
+                transform: scale(1.05);
             }
 
             80% {
-                -webkit-transform: scale(.95);
-                transform: scale(.95)
+                -webkit-transform: scale(0.95);
+                transform: scale(0.95);
             }
 
             100% {
                 -webkit-transform: scale(1);
-                transform: scale(1)
+                transform: scale(1);
             }
         }
 
         @keyframes swal2-show {
             0% {
-                -webkit-transform: scale(.7);
-                transform: scale(.7)
+                -webkit-transform: scale(0.7);
+                transform: scale(0.7);
             }
 
             45% {
                 -webkit-transform: scale(1.05);
-                transform: scale(1.05)
+                transform: scale(1.05);
             }
 
             80% {
-                -webkit-transform: scale(.95);
-                transform: scale(.95)
+                -webkit-transform: scale(0.95);
+                transform: scale(0.95);
             }
 
             100% {
                 -webkit-transform: scale(1);
-                transform: scale(1)
+                transform: scale(1);
             }
         }
 
@@ -745,13 +761,13 @@
             0% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                opacity: 1
+                opacity: 1;
             }
 
             100% {
-                -webkit-transform: scale(.5);
-                transform: scale(.5);
-                opacity: 0
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                opacity: 0;
             }
         }
 
@@ -759,77 +775,77 @@
             0% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                opacity: 1
+                opacity: 1;
             }
 
             100% {
-                -webkit-transform: scale(.5);
-                transform: scale(.5);
-                opacity: 0
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                opacity: 0;
             }
         }
 
         @-webkit-keyframes swal2-animate-success-line-tip {
             0% {
                 top: 1.1875em;
-                left: .0625em;
-                width: 0
+                left: 0.0625em;
+                width: 0;
             }
 
             54% {
                 top: 1.0625em;
-                left: .125em;
-                width: 0
+                left: 0.125em;
+                width: 0;
             }
 
             70% {
                 top: 2.1875em;
-                left: -.375em;
-                width: 3.125em
+                left: -0.375em;
+                width: 3.125em;
             }
 
             84% {
                 top: 3em;
                 left: 1.3125em;
-                width: 1.0625em
+                width: 1.0625em;
             }
 
             100% {
                 top: 2.8125em;
-                left: .875em;
-                width: 1.5625em
+                left: 0.875em;
+                width: 1.5625em;
             }
         }
 
         @keyframes swal2-animate-success-line-tip {
             0% {
                 top: 1.1875em;
-                left: .0625em;
-                width: 0
+                left: 0.0625em;
+                width: 0;
             }
 
             54% {
                 top: 1.0625em;
-                left: .125em;
-                width: 0
+                left: 0.125em;
+                width: 0;
             }
 
             70% {
                 top: 2.1875em;
-                left: -.375em;
-                width: 3.125em
+                left: -0.375em;
+                width: 3.125em;
             }
 
             84% {
                 top: 3em;
                 left: 1.3125em;
-                width: 1.0625em
+                width: 1.0625em;
             }
 
             100% {
                 top: 2.8125em;
-                left: .875em;
-                width: 1.5625em
+                left: 0.875em;
+                width: 1.5625em;
             }
         }
 
@@ -837,25 +853,25 @@
             0% {
                 top: 3.375em;
                 right: 2.875em;
-                width: 0
+                width: 0;
             }
 
             65% {
                 top: 3.375em;
                 right: 2.875em;
-                width: 0
+                width: 0;
             }
 
             84% {
                 top: 2.1875em;
                 right: 0;
-                width: 3.4375em
+                width: 3.4375em;
             }
 
             100% {
                 top: 2.375em;
-                right: .5em;
-                width: 2.9375em
+                right: 0.5em;
+                width: 2.9375em;
             }
         }
 
@@ -863,127 +879,127 @@
             0% {
                 top: 3.375em;
                 right: 2.875em;
-                width: 0
+                width: 0;
             }
 
             65% {
                 top: 3.375em;
                 right: 2.875em;
-                width: 0
+                width: 0;
             }
 
             84% {
                 top: 2.1875em;
                 right: 0;
-                width: 3.4375em
+                width: 3.4375em;
             }
 
             100% {
                 top: 2.375em;
-                right: .5em;
-                width: 2.9375em
+                right: 0.5em;
+                width: 2.9375em;
             }
         }
 
         @-webkit-keyframes swal2-rotate-success-circular-line {
             0% {
                 -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg)
+                transform: rotate(-45deg);
             }
 
             5% {
                 -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg)
+                transform: rotate(-45deg);
             }
 
             12% {
                 -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg)
+                transform: rotate(-405deg);
             }
 
             100% {
                 -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg)
+                transform: rotate(-405deg);
             }
         }
 
         @keyframes swal2-rotate-success-circular-line {
             0% {
                 -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg)
+                transform: rotate(-45deg);
             }
 
             5% {
                 -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg)
+                transform: rotate(-45deg);
             }
 
             12% {
                 -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg)
+                transform: rotate(-405deg);
             }
 
             100% {
                 -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg)
+                transform: rotate(-405deg);
             }
         }
 
         @-webkit-keyframes swal2-animate-error-x-mark {
             0% {
                 margin-top: 1.625em;
-                -webkit-transform: scale(.4);
-                transform: scale(.4);
-                opacity: 0
+                -webkit-transform: scale(0.4);
+                transform: scale(0.4);
+                opacity: 0;
             }
 
             50% {
                 margin-top: 1.625em;
-                -webkit-transform: scale(.4);
-                transform: scale(.4);
-                opacity: 0
+                -webkit-transform: scale(0.4);
+                transform: scale(0.4);
+                opacity: 0;
             }
 
             80% {
-                margin-top: -.375em;
+                margin-top: -0.375em;
                 -webkit-transform: scale(1.15);
-                transform: scale(1.15)
+                transform: scale(1.15);
             }
 
             100% {
                 margin-top: 0;
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                opacity: 1
+                opacity: 1;
             }
         }
 
         @keyframes swal2-animate-error-x-mark {
             0% {
                 margin-top: 1.625em;
-                -webkit-transform: scale(.4);
-                transform: scale(.4);
-                opacity: 0
+                -webkit-transform: scale(0.4);
+                transform: scale(0.4);
+                opacity: 0;
             }
 
             50% {
                 margin-top: 1.625em;
-                -webkit-transform: scale(.4);
-                transform: scale(.4);
-                opacity: 0
+                -webkit-transform: scale(0.4);
+                transform: scale(0.4);
+                opacity: 0;
             }
 
             80% {
-                margin-top: -.375em;
+                margin-top: -0.375em;
                 -webkit-transform: scale(1.15);
-                transform: scale(1.15)
+                transform: scale(1.15);
             }
 
             100% {
                 margin-top: 0;
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                opacity: 1
+                opacity: 1;
             }
         }
 
@@ -991,13 +1007,13 @@
             0% {
                 -webkit-transform: rotateX(100deg);
                 transform: rotateX(100deg);
-                opacity: 0
+                opacity: 0;
             }
 
             100% {
                 -webkit-transform: rotateX(0);
                 transform: rotateX(0);
-                opacity: 1
+                opacity: 1;
             }
         }
 
@@ -1005,49 +1021,49 @@
             0% {
                 -webkit-transform: rotateX(100deg);
                 transform: rotateX(100deg);
-                opacity: 0
+                opacity: 0;
             }
 
             100% {
                 -webkit-transform: rotateX(0);
                 transform: rotateX(0);
-                opacity: 1
+                opacity: 1;
             }
         }
 
         body.swal2-toast-shown.swal2-has-input>.swal2-container>.swal2-toast {
             flex-direction: column;
-            align-items: stretch
+            align-items: stretch;
         }
 
         body.swal2-toast-shown.swal2-has-input>.swal2-container>.swal2-toast .swal2-actions {
             flex: 1;
             align-self: stretch;
             justify-content: flex-end;
-            height: 2.2em
+            height: 2.2em;
         }
 
         body.swal2-toast-shown.swal2-has-input>.swal2-container>.swal2-toast .swal2-loading {
-            justify-content: center
+            justify-content: center;
         }
 
         body.swal2-toast-shown.swal2-has-input>.swal2-container>.swal2-toast .swal2-input {
             height: 2em;
-            margin: .3125em auto;
-            font-size: 1em
+            margin: 0.3125em auto;
+            font-size: 1em;
         }
 
         body.swal2-toast-shown.swal2-has-input>.swal2-container>.swal2-toast .swal2-validationerror {
-            font-size: 1em
+            font-size: 1em;
         }
 
         body.swal2-toast-shown>.swal2-container {
             position: fixed;
-            background-color: transparent
+            background-color: transparent;
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-shown {
-            background-color: transparent
+            background-color: transparent;
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-top {
@@ -1056,7 +1072,7 @@
             bottom: auto;
             left: 50%;
             -webkit-transform: translateX(-50%);
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-top-end,
@@ -1064,7 +1080,7 @@
             top: 0;
             right: 0;
             bottom: auto;
-            left: auto
+            left: auto;
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-top-left,
@@ -1072,7 +1088,7 @@
             top: 0;
             right: auto;
             bottom: auto;
-            left: 0
+            left: 0;
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-center-left,
@@ -1082,7 +1098,7 @@
             bottom: auto;
             left: 0;
             -webkit-transform: translateY(-50%);
-            transform: translateY(-50%)
+            transform: translateY(-50%);
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-center {
@@ -1091,7 +1107,7 @@
             bottom: auto;
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%);
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-center-end,
@@ -1101,7 +1117,7 @@
             bottom: auto;
             left: auto;
             -webkit-transform: translateY(-50%);
-            transform: translateY(-50%)
+            transform: translateY(-50%);
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-bottom-left,
@@ -1109,7 +1125,7 @@
             top: auto;
             right: auto;
             bottom: 0;
-            left: 0
+            left: 0;
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-bottom {
@@ -1118,7 +1134,7 @@
             bottom: 0;
             left: 50%;
             -webkit-transform: translateX(-50%);
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
 
         body.swal2-toast-shown>.swal2-container.swal2-bottom-end,
@@ -1126,307 +1142,307 @@
             top: auto;
             right: 0;
             bottom: 0;
-            left: auto
+            left: auto;
         }
 
         .swal2-popup.swal2-toast {
             flex-direction: row;
             align-items: center;
             width: auto;
-            padding: .625em;
-            box-shadow: 0 0 .625em #d9d9d9;
-            overflow-y: hidden
+            padding: 0.625em;
+            box-shadow: 0 0 0.625em #d9d9d9;
+            overflow-y: hidden;
         }
 
         .swal2-popup.swal2-toast .swal2-header {
-            flex-direction: row
+            flex-direction: row;
         }
 
         .swal2-popup.swal2-toast .swal2-title {
             justify-content: flex-start;
-            margin: 0 .6em;
-            font-size: 1em
+            margin: 0 0.6em;
+            font-size: 1em;
         }
 
         .swal2-popup.swal2-toast .swal2-close {
-            position: initial
+            position: initial;
         }
 
         .swal2-popup.swal2-toast .swal2-content {
             justify-content: flex-start;
-            font-size: 1em
+            font-size: 1em;
         }
 
         .swal2-popup.swal2-toast .swal2-icon {
             width: 2em;
             min-width: 2em;
             height: 2em;
-            margin: 0
+            margin: 0;
         }
 
         .swal2-popup.swal2-toast .swal2-icon-text {
             font-size: 2em;
             font-weight: 700;
-            line-height: 1em
+            line-height: 1em;
         }
 
         .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
             width: 2em;
-            height: 2em
+            height: 2em;
         }
 
-        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
-            top: .875em;
-            width: 1.375em
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+            top: 0.875em;
+            width: 1.375em;
         }
 
-        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
-            left: .3125em
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="left"] {
+            left: 0.3125em;
         }
 
-        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
-            right: .3125em
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="right"] {
+            right: 0.3125em;
         }
 
         .swal2-popup.swal2-toast .swal2-actions {
             height: auto;
-            margin: 0 .3125em
+            margin: 0 0.3125em;
         }
 
         .swal2-popup.swal2-toast .swal2-styled {
-            margin: 0 .3125em;
-            padding: .3125em .625em;
-            font-size: 1em
+            margin: 0 0.3125em;
+            padding: 0.3125em 0.625em;
+            font-size: 1em;
         }
 
         .swal2-popup.swal2-toast .swal2-styled:focus {
-            box-shadow: 0 0 0 .0625em #fff, 0 0 0 .125em rgba(50, 100, 150, .4)
+            box-shadow: 0 0 0 0.0625em #fff, 0 0 0 0.125em rgba(50, 100, 150, 0.4);
         }
 
         .swal2-popup.swal2-toast .swal2-success {
-            border-color: #a5dc86
+            border-color: #a5dc86;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-circular-line"] {
             position: absolute;
             width: 2em;
             height: 2.8125em;
             -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
-            border-radius: 50%
+            border-radius: 50%;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {
-            top: -.25em;
-            left: -.9375em;
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-circular-line"][class$="left"] {
+            top: -0.25em;
+            left: -0.9375em;
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             -webkit-transform-origin: 2em 2em;
             transform-origin: 2em 2em;
-            border-radius: 4em 0 0 4em
+            border-radius: 4em 0 0 4em;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {
-            top: -.25em;
-            left: .9375em;
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-circular-line"][class$="right"] {
+            top: -0.25em;
+            left: 0.9375em;
             -webkit-transform-origin: 0 2em;
             transform-origin: 0 2em;
-            border-radius: 0 4em 4em 0
+            border-radius: 0 4em 4em 0;
         }
 
         .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
             width: 2em;
-            height: 2em
+            height: 2em;
         }
 
         .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
             top: 0;
-            left: .4375em;
-            width: .4375em;
-            height: 2.6875em
+            left: 0.4375em;
+            width: 0.4375em;
+            height: 2.6875em;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {
-            height: .3125em
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-line"] {
+            height: 0.3125em;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-line"][class$="tip"] {
             top: 1.125em;
-            left: .1875em;
-            width: .75em
+            left: 0.1875em;
+            width: 0.75em;
         }
 
-        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {
-            top: .9375em;
-            right: .1875em;
-            width: 1.375em
+        .swal2-popup.swal2-toast .swal2-success [class^="swal2-success-line"][class$="long"] {
+            top: 0.9375em;
+            right: 0.1875em;
+            width: 1.375em;
         }
 
         .swal2-popup.swal2-toast.swal2-show {
-            -webkit-animation: showSweetToast .5s;
-            animation: showSweetToast .5s
+            -webkit-animation: showSweetToast 0.5s;
+            animation: showSweetToast 0.5s;
         }
 
         .swal2-popup.swal2-toast.swal2-hide {
-            -webkit-animation: hideSweetToast .2s forwards;
-            animation: hideSweetToast .2s forwards
+            -webkit-animation: hideSweetToast 0.2s forwards;
+            animation: hideSweetToast 0.2s forwards;
         }
 
         .swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip {
-            -webkit-animation: animate-toast-success-tip .75s;
-            animation: animate-toast-success-tip .75s
+            -webkit-animation: animate-toast-success-tip 0.75s;
+            animation: animate-toast-success-tip 0.75s;
         }
 
         .swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long {
-            -webkit-animation: animate-toast-success-long .75s;
-            animation: animate-toast-success-long .75s
+            -webkit-animation: animate-toast-success-long 0.75s;
+            animation: animate-toast-success-long 0.75s;
         }
 
         @-webkit-keyframes showSweetToast {
             0% {
-                -webkit-transform: translateY(-.625em) rotateZ(2deg);
-                transform: translateY(-.625em) rotateZ(2deg);
-                opacity: 0
+                -webkit-transform: translateY(-0.625em) rotateZ(2deg);
+                transform: translateY(-0.625em) rotateZ(2deg);
+                opacity: 0;
             }
 
             33% {
                 -webkit-transform: translateY(0) rotateZ(-2deg);
                 transform: translateY(0) rotateZ(-2deg);
-                opacity: .5
+                opacity: 0.5;
             }
 
             66% {
-                -webkit-transform: translateY(.3125em) rotateZ(2deg);
-                transform: translateY(.3125em) rotateZ(2deg);
-                opacity: .7
+                -webkit-transform: translateY(0.3125em) rotateZ(2deg);
+                transform: translateY(0.3125em) rotateZ(2deg);
+                opacity: 0.7;
             }
 
             100% {
                 -webkit-transform: translateY(0) rotateZ(0);
                 transform: translateY(0) rotateZ(0);
-                opacity: 1
+                opacity: 1;
             }
         }
 
         @keyframes showSweetToast {
             0% {
-                -webkit-transform: translateY(-.625em) rotateZ(2deg);
-                transform: translateY(-.625em) rotateZ(2deg);
-                opacity: 0
+                -webkit-transform: translateY(-0.625em) rotateZ(2deg);
+                transform: translateY(-0.625em) rotateZ(2deg);
+                opacity: 0;
             }
 
             33% {
                 -webkit-transform: translateY(0) rotateZ(-2deg);
                 transform: translateY(0) rotateZ(-2deg);
-                opacity: .5
+                opacity: 0.5;
             }
 
             66% {
-                -webkit-transform: translateY(.3125em) rotateZ(2deg);
-                transform: translateY(.3125em) rotateZ(2deg);
-                opacity: .7
+                -webkit-transform: translateY(0.3125em) rotateZ(2deg);
+                transform: translateY(0.3125em) rotateZ(2deg);
+                opacity: 0.7;
             }
 
             100% {
                 -webkit-transform: translateY(0) rotateZ(0);
                 transform: translateY(0) rotateZ(0);
-                opacity: 1
+                opacity: 1;
             }
         }
 
         @-webkit-keyframes hideSweetToast {
             0% {
-                opacity: 1
+                opacity: 1;
             }
 
             33% {
-                opacity: .5
+                opacity: 0.5;
             }
 
             100% {
                 -webkit-transform: rotateZ(1deg);
                 transform: rotateZ(1deg);
-                opacity: 0
+                opacity: 0;
             }
         }
 
         @keyframes hideSweetToast {
             0% {
-                opacity: 1
+                opacity: 1;
             }
 
             33% {
-                opacity: .5
+                opacity: 0.5;
             }
 
             100% {
                 -webkit-transform: rotateZ(1deg);
                 transform: rotateZ(1deg);
-                opacity: 0
+                opacity: 0;
             }
         }
 
         @-webkit-keyframes animate-toast-success-tip {
             0% {
-                top: .5625em;
-                left: .0625em;
-                width: 0
+                top: 0.5625em;
+                left: 0.0625em;
+                width: 0;
             }
 
             54% {
-                top: .125em;
-                left: .125em;
-                width: 0
+                top: 0.125em;
+                left: 0.125em;
+                width: 0;
             }
 
             70% {
-                top: .625em;
-                left: -.25em;
-                width: 1.625em
+                top: 0.625em;
+                left: -0.25em;
+                width: 1.625em;
             }
 
             84% {
                 top: 1.0625em;
-                left: .75em;
-                width: .5em
+                left: 0.75em;
+                width: 0.5em;
             }
 
             100% {
                 top: 1.125em;
-                left: .1875em;
-                width: .75em
+                left: 0.1875em;
+                width: 0.75em;
             }
         }
 
         @keyframes animate-toast-success-tip {
             0% {
-                top: .5625em;
-                left: .0625em;
-                width: 0
+                top: 0.5625em;
+                left: 0.0625em;
+                width: 0;
             }
 
             54% {
-                top: .125em;
-                left: .125em;
-                width: 0
+                top: 0.125em;
+                left: 0.125em;
+                width: 0;
             }
 
             70% {
-                top: .625em;
-                left: -.25em;
-                width: 1.625em
+                top: 0.625em;
+                left: -0.25em;
+                width: 1.625em;
             }
 
             84% {
                 top: 1.0625em;
-                left: .75em;
-                width: .5em
+                left: 0.75em;
+                width: 0.5em;
             }
 
             100% {
                 top: 1.125em;
-                left: .1875em;
-                width: .75em
+                left: 0.1875em;
+                width: 0.75em;
             }
         }
 
@@ -1434,25 +1450,25 @@
             0% {
                 top: 1.625em;
                 right: 1.375em;
-                width: 0
+                width: 0;
             }
 
             65% {
                 top: 1.25em;
-                right: .9375em;
-                width: 0
+                right: 0.9375em;
+                width: 0;
             }
 
             84% {
-                top: .9375em;
+                top: 0.9375em;
                 right: 0;
-                width: 1.125em
+                width: 1.125em;
             }
 
             100% {
-                top: .9375em;
-                right: .1875em;
-                width: 1.375em
+                top: 0.9375em;
+                right: 0.1875em;
+                width: 1.375em;
             }
         }
 
@@ -1460,34 +1476,34 @@
             0% {
                 top: 1.625em;
                 right: 1.375em;
-                width: 0
+                width: 0;
             }
 
             65% {
                 top: 1.25em;
-                right: .9375em;
-                width: 0
+                right: 0.9375em;
+                width: 0;
             }
 
             84% {
-                top: .9375em;
+                top: 0.9375em;
                 right: 0;
-                width: 1.125em
+                width: 1.125em;
             }
 
             100% {
-                top: .9375em;
-                right: .1875em;
-                width: 1.375em
+                top: 0.9375em;
+                right: 0.1875em;
+                width: 1.375em;
             }
         }
 
         body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-            overflow-y: hidden
+            overflow-y: hidden;
         }
 
         body.swal2-height-auto {
-            height: auto !important
+            height: auto !important;
         }
 
         body.swal2-no-backdrop .swal2-shown {
@@ -1495,37 +1511,37 @@
             right: auto;
             bottom: auto;
             left: auto;
-            background-color: transparent
+            background-color: transparent;
         }
 
         body.swal2-no-backdrop .swal2-shown>.swal2-modal {
-            box-shadow: 0 0 10px rgba(0, 0, 0, .4)
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-top {
             top: 0;
             left: 50%;
             -webkit-transform: translateX(-50%);
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-top-left,
         body.swal2-no-backdrop .swal2-shown.swal2-top-start {
             top: 0;
-            left: 0
+            left: 0;
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-top-end,
         body.swal2-no-backdrop .swal2-shown.swal2-top-right {
             top: 0;
-            right: 0
+            right: 0;
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-center {
             top: 50%;
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-center-left,
@@ -1533,7 +1549,7 @@
             top: 50%;
             left: 0;
             -webkit-transform: translateY(-50%);
-            transform: translateY(-50%)
+            transform: translateY(-50%);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-center-end,
@@ -1541,26 +1557,26 @@
             top: 50%;
             right: 0;
             -webkit-transform: translateY(-50%);
-            transform: translateY(-50%)
+            transform: translateY(-50%);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-bottom {
             bottom: 0;
             left: 50%;
             -webkit-transform: translateX(-50%);
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,
         body.swal2-no-backdrop .swal2-shown.swal2-bottom-start {
             bottom: 0;
-            left: 0
+            left: 0;
         }
 
         body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,
         body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
             right: 0;
-            bottom: 0
+            bottom: 0;
         }
 
         .swal2-container {
@@ -1577,80 +1593,80 @@
             background-color: transparent;
             z-index: 1060;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch
+            -webkit-overflow-scrolling: touch;
         }
 
         .swal2-container.swal2-top {
-            align-items: flex-start
+            align-items: flex-start;
         }
 
         .swal2-container.swal2-top-left,
         .swal2-container.swal2-top-start {
             align-items: flex-start;
-            justify-content: flex-start
+            justify-content: flex-start;
         }
 
         .swal2-container.swal2-top-end,
         .swal2-container.swal2-top-right {
             align-items: flex-start;
-            justify-content: flex-end
+            justify-content: flex-end;
         }
 
         .swal2-container.swal2-center {
-            align-items: center
+            align-items: center;
         }
 
         .swal2-container.swal2-center-left,
         .swal2-container.swal2-center-start {
             align-items: center;
-            justify-content: flex-start
+            justify-content: flex-start;
         }
 
         .swal2-container.swal2-center-end,
         .swal2-container.swal2-center-right {
             align-items: center;
-            justify-content: flex-end
+            justify-content: flex-end;
         }
 
         .swal2-container.swal2-bottom {
-            align-items: flex-end
+            align-items: flex-end;
         }
 
         .swal2-container.swal2-bottom-left,
         .swal2-container.swal2-bottom-start {
             align-items: flex-end;
-            justify-content: flex-start
+            justify-content: flex-start;
         }
 
         .swal2-container.swal2-bottom-end,
         .swal2-container.swal2-bottom-right {
             align-items: flex-end;
-            justify-content: flex-end
+            justify-content: flex-end;
         }
 
         .swal2-container.swal2-grow-fullscreen>.swal2-modal {
             display: flex !important;
             flex: 1;
             align-self: stretch;
-            justify-content: center
+            justify-content: center;
         }
 
         .swal2-container.swal2-grow-row>.swal2-modal {
             display: flex !important;
             flex: 1;
             align-content: center;
-            justify-content: center
+            justify-content: center;
         }
 
         .swal2-container.swal2-grow-column {
             flex: 1;
-            flex-direction: column
+            flex-direction: column;
         }
 
         .swal2-container.swal2-grow-column.swal2-bottom,
         .swal2-container.swal2-grow-column.swal2-center,
         .swal2-container.swal2-grow-column.swal2-top {
-            align-items: center
+            align-items: center;
         }
 
         .swal2-container.swal2-grow-column.swal2-bottom-left,
@@ -1659,7 +1675,7 @@
         .swal2-container.swal2-grow-column.swal2-center-start,
         .swal2-container.swal2-grow-column.swal2-top-left,
         .swal2-container.swal2-grow-column.swal2-top-start {
-            align-items: flex-start
+            align-items: flex-start;
         }
 
         .swal2-container.swal2-grow-column.swal2-bottom-end,
@@ -1668,33 +1684,33 @@
         .swal2-container.swal2-grow-column.swal2-center-right,
         .swal2-container.swal2-grow-column.swal2-top-end,
         .swal2-container.swal2-grow-column.swal2-top-right {
-            align-items: flex-end
+            align-items: flex-end;
         }
 
         .swal2-container.swal2-grow-column>.swal2-modal {
             display: flex !important;
             flex: 1;
             align-content: center;
-            justify-content: center
+            justify-content: center;
         }
 
         .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right)>.swal2-modal {
-            margin: auto
+            margin: auto;
         }
 
-        @media all and (-ms-high-contrast:none),
-        (-ms-high-contrast:active) {
+        @media all and (-ms-high-contrast: none),
+        (-ms-high-contrast: active) {
             .swal2-container .swal2-modal {
-                margin: 0 !important
+                margin: 0 !important;
             }
         }
 
         .swal2-container.swal2-fade {
-            transition: background-color .1s
+            transition: background-color 0.1s;
         }
 
         .swal2-container.swal2-shown {
-            background-color: rgba(0, 0, 0, .4)
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .swal2-popup {
@@ -1705,49 +1721,49 @@
             width: 32em;
             max-width: 100%;
             padding: 1.25em;
-            border-radius: .3125em;
+            border-radius: 0.3125em;
             background: #fff;
             font-family: inherit;
             font-size: 1rem;
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         .swal2-popup:focus {
-            outline: 0
+            outline: 0;
         }
 
         .swal2-popup.swal2-loading {
-            overflow-y: hidden
+            overflow-y: hidden;
         }
 
         .swal2-popup .swal2-header {
             display: flex;
             flex-direction: column;
-            align-items: center
+            align-items: center;
         }
 
         .swal2-popup .swal2-title {
             display: block;
             position: relative;
             max-width: 100%;
-            margin: 0 0 .4em;
+            margin: 0 0 0.4em;
             padding: 0;
             color: #595959;
             font-size: 1.875em;
             font-weight: 600;
             text-align: center;
             text-transform: none;
-            word-wrap: break-word
+            word-wrap: break-word;
         }
 
         .swal2-popup .swal2-actions {
             align-items: center;
             justify-content: center;
-            margin: 1.25em auto 0
+            margin: 1.25em auto 0;
         }
 
         .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
-            opacity: .4
+            opacity: 0.4;
         }
 
         .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
@@ -1756,15 +1772,16 @@
         }
 
         .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:active {
-            background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2))
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.2));
         }
 
         .swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
             width: 2.5em;
             height: 2.5em;
-            margin: .46875em;
+            margin: 0.46875em;
             padding: 0;
-            border: .25em solid transparent;
+            border: 0.25em solid transparent;
             border-radius: 100%;
             border-color: transparent;
             background-color: transparent !important;
@@ -1776,12 +1793,12 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none
+            user-select: none;
         }
 
         .swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-cancel {
             margin-right: 30px;
-            margin-left: 30px
+            margin-left: 30px;
         }
 
         .swal2-popup .swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after {
@@ -1793,29 +1810,29 @@
             border-radius: 50%;
             border-right-color: transparent;
             box-shadow: 1px 1px 1px #fff;
-            content: '';
+            content: "";
             -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-            animation: swal2-rotate-loading 1.5s linear 0s infinite normal
+            animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
         }
 
         .swal2-popup .swal2-styled {
-            margin: 0 .3125em;
-            padding: .625em 2em;
+            margin: 0 0.3125em;
+            padding: 0.625em 2em;
             font-weight: 500;
-            box-shadow: none
+            box-shadow: none;
         }
 
         .swal2-popup .swal2-styled:not([disabled]) {
-            cursor: pointer
+            cursor: pointer;
         }
 
         .swal2-popup .swal2-styled.swal2-confirm {
             border: 0;
-            border-radius: .25em;
+            border-radius: 0.25em;
             background: initial;
             background-color: #4361ee;
             color: #fff;
-            font-size: 14px
+            font-size: 14px;
         }
 
         .swal2-popup .swal2-styled.swal2-cancel {
@@ -1827,11 +1844,11 @@
 
         .swal2-popup .swal2-styled:focus {
             outline: 0;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, .4)
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
         }
 
         .swal2-popup .swal2-styled::-moz-focus-inner {
-            border: 0
+            border: 0;
         }
 
         .swal2-popup .swal2-footer {
@@ -1840,12 +1857,12 @@
             padding-top: 1em;
             border-top: 1px solid #eee;
             color: #545454;
-            font-size: 1em
+            font-size: 1em;
         }
 
         .swal2-popup .swal2-image {
             max-width: 100%;
-            margin: 1.25em auto
+            margin: 1.25em auto;
         }
 
         .swal2-popup .swal2-close {
@@ -1856,7 +1873,7 @@
             width: 1.2em;
             height: 1.2em;
             padding: 0;
-            transition: color .1s ease-out;
+            transition: color 0.1s ease-out;
             border: none;
             border-radius: 0;
             background: 0 0;
@@ -1865,13 +1882,13 @@
             font-size: 2.5em;
             line-height: 1.2;
             cursor: pointer;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .swal2-popup .swal2-close:hover {
             -webkit-transform: none;
             transform: none;
-            color: #f27474
+            color: #f27474;
         }
 
         .swal2-popup>.swal2-checkbox,
@@ -1880,7 +1897,7 @@
         .swal2-popup>.swal2-radio,
         .swal2-popup>.swal2-select,
         .swal2-popup>.swal2-textarea {
-            display: none
+            display: none;
         }
 
         .swal2-popup .swal2-content {
@@ -1891,11 +1908,11 @@
             font-size: 1.125em;
             font-weight: 300;
             line-height: normal;
-            word-wrap: break-word
+            word-wrap: break-word;
         }
 
         .swal2-popup #swal2-content {
-            text-align: center
+            text-align: center;
         }
 
         .swal2-popup .swal2-checkbox,
@@ -1904,26 +1921,26 @@
         .swal2-popup .swal2-radio,
         .swal2-popup .swal2-select,
         .swal2-popup .swal2-textarea {
-            margin: 1em auto
+            margin: 1em auto;
         }
 
         .swal2-popup .swal2-file,
         .swal2-popup .swal2-input,
         .swal2-popup .swal2-textarea {
             width: 100%;
-            transition: border-color .3s, box-shadow .3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
             border: 1px solid #d9d9d9;
-            border-radius: .1875em;
+            border-radius: 0.1875em;
             font-size: 1.125em;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06);
-            box-sizing: border-box
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+            box-sizing: border-box;
         }
 
         .swal2-popup .swal2-file.swal2-inputerror,
         .swal2-popup .swal2-input.swal2-inputerror,
         .swal2-popup .swal2-textarea.swal2-inputerror {
             border-color: #f27474 !important;
-            box-shadow: 0 0 2px #f27474 !important
+            box-shadow: 0 0 2px #f27474 !important;
         }
 
         .swal2-popup .swal2-file:focus,
@@ -1931,41 +1948,41 @@
         .swal2-popup .swal2-textarea:focus {
             border: 1px solid #b4dbed;
             outline: 0;
-            box-shadow: 0 0 3px #c4e6f5
+            box-shadow: 0 0 3px #c4e6f5;
         }
 
         .swal2-popup .swal2-file::-webkit-input-placeholder,
         .swal2-popup .swal2-input::-webkit-input-placeholder,
         .swal2-popup .swal2-textarea::-webkit-input-placeholder {
-            color: #ccc
+            color: #ccc;
         }
 
         .swal2-popup .swal2-file:-ms-input-placeholder,
         .swal2-popup .swal2-input:-ms-input-placeholder,
         .swal2-popup .swal2-textarea:-ms-input-placeholder {
-            color: #ccc
+            color: #ccc;
         }
 
         .swal2-popup .swal2-file::-ms-input-placeholder,
         .swal2-popup .swal2-input::-ms-input-placeholder,
         .swal2-popup .swal2-textarea::-ms-input-placeholder {
-            color: #ccc
+            color: #ccc;
         }
 
         .swal2-popup .swal2-file::placeholder,
         .swal2-popup .swal2-input::placeholder,
         .swal2-popup .swal2-textarea::placeholder {
-            color: #ccc
+            color: #ccc;
         }
 
         .swal2-popup .swal2-range input {
-            width: 80%
+            width: 80%;
         }
 
         .swal2-popup .swal2-range output {
             width: 20%;
             font-weight: 600;
-            text-align: center
+            text-align: center;
         }
 
         .swal2-popup .swal2-range input,
@@ -1974,62 +1991,62 @@
             margin: 1em auto;
             padding: 0;
             font-size: 1.125em;
-            line-height: 2.625em
+            line-height: 2.625em;
         }
 
         .swal2-popup .swal2-input {
             height: 2.625em;
-            padding: .75em
+            padding: 0.75em;
         }
 
-        .swal2-popup .swal2-input[type=number] {
-            max-width: 10em
+        .swal2-popup .swal2-input[type="number"] {
+            max-width: 10em;
         }
 
         .swal2-popup .swal2-file {
-            font-size: 1.125em
+            font-size: 1.125em;
         }
 
         .swal2-popup .swal2-textarea {
             height: 6.75em;
-            padding: .75em
+            padding: 0.75em;
         }
 
         .swal2-popup .swal2-select {
             min-width: 50%;
             max-width: 100%;
-            padding: .375em .625em;
+            padding: 0.375em 0.625em;
             color: #545454;
-            font-size: 1.125em
+            font-size: 1.125em;
         }
 
         .swal2-popup .swal2-checkbox,
         .swal2-popup .swal2-radio {
             align-items: center;
-            justify-content: center
+            justify-content: center;
         }
 
         .swal2-popup .swal2-checkbox label,
         .swal2-popup .swal2-radio label {
-            margin: 0 .6em;
-            font-size: 1.125em
+            margin: 0 0.6em;
+            font-size: 1.125em;
         }
 
         .swal2-popup .swal2-checkbox input,
         .swal2-popup .swal2-radio input {
-            margin: 0 .4em
+            margin: 0 0.4em;
         }
 
         .swal2-popup .swal2-validationerror {
             display: none;
             align-items: center;
             justify-content: center;
-            padding: .625em;
+            padding: 0.625em;
             background: #f0f0f0;
             color: #666;
             font-size: 1em;
             font-weight: 300;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .swal2-popup .swal2-validationerror::before {
@@ -2037,41 +2054,41 @@
             width: 1.5em;
             min-width: 1.5em;
             height: 1.5em;
-            margin: 0 .625em;
+            margin: 0 0.625em;
             border-radius: 50%;
             background-color: #f27474;
             color: #fff;
             font-weight: 600;
             line-height: 1.5em;
             text-align: center;
-            content: '!';
-            zoom: normal
+            content: "!";
+            zoom: normal;
         }
 
-        @supports (-ms-accelerator:true) {
+        @supports (-ms-accelerator: true) {
             .swal2-range input {
-                width: 100% !important
+                width: 100% !important;
             }
 
             .swal2-range output {
-                display: none
+                display: none;
             }
         }
 
-        @media all and (-ms-high-contrast:none),
-        (-ms-high-contrast:active) {
+        @media all and (-ms-high-contrast: none),
+        (-ms-high-contrast: active) {
             .swal2-range input {
-                width: 100% !important
+                width: 100% !important;
             }
 
             .swal2-range output {
-                display: none
+                display: none;
             }
         }
 
         @-moz-document url-prefix() {
             .swal2-close:focus {
-                outline: 2px solid rgba(50, 100, 150, .4)
+                outline: 2px solid rgba(50, 100, 150, 0.4);
             }
         }
 
@@ -2081,7 +2098,7 @@
             width: 5em;
             height: 5em;
             margin: 1.25em auto 1.875em;
-            border: .25em solid transparent;
+            border: 0.25em solid transparent;
             border-radius: 50%;
             line-height: 5em;
             cursor: default;
@@ -2090,150 +2107,150 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            zoom: normal
+            zoom: normal;
         }
 
         .swal2-icon-text {
-            font-size: 3.75em
+            font-size: 3.75em;
         }
 
         .swal2-icon.swal2-error {
-            border-color: #f27474
+            border-color: #f27474;
         }
 
         .swal2-icon.swal2-error .swal2-x-mark {
             position: relative;
-            flex-grow: 1
+            flex-grow: 1;
         }
 
-        .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+        .swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
             display: block;
             position: absolute;
             top: 2.3125em;
             width: 2.9375em;
-            height: .3125em;
-            border-radius: .125em;
-            background-color: #f27474
+            height: 0.3125em;
+            border-radius: 0.125em;
+            background-color: #f27474;
         }
 
-        .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+        .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="left"] {
             left: 1.0625em;
             -webkit-transform: rotate(45deg);
-            transform: rotate(45deg)
+            transform: rotate(45deg);
         }
 
-        .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+        .swal2-icon.swal2-error [class^="swal2-x-mark-line"][class$="right"] {
             right: 1em;
             -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg)
+            transform: rotate(-45deg);
         }
 
         .swal2-icon.swal2-warning {
             border-color: #facea8;
-            color: #f8bb86
+            color: #f8bb86;
         }
 
         .swal2-icon.swal2-info {
             border-color: #9de0f6;
-            color: #3fc3ee
+            color: #3fc3ee;
         }
 
         .swal2-icon.swal2-question {
             border-color: #c9dae1;
-            color: #87adbd
+            color: #87adbd;
         }
 
         .swal2-icon.swal2-success {
-            border-color: #a5dc86
+            border-color: #a5dc86;
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-circular-line] {
+        .swal2-icon.swal2-success [class^="swal2-success-circular-line"] {
             position: absolute;
             width: 3.75em;
             height: 7.5em;
             -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
-            border-radius: 50%
+            border-radius: 50%;
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left] {
-            top: -.4375em;
+        .swal2-icon.swal2-success [class^="swal2-success-circular-line"][class$="left"] {
+            top: -0.4375em;
             left: -2.0635em;
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             -webkit-transform-origin: 3.75em 3.75em;
             transform-origin: 3.75em 3.75em;
-            border-radius: 7.5em 0 0 7.5em
+            border-radius: 7.5em 0 0 7.5em;
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right] {
-            top: -.6875em;
+        .swal2-icon.swal2-success [class^="swal2-success-circular-line"][class$="right"] {
+            top: -0.6875em;
             left: 1.875em;
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             -webkit-transform-origin: 0 3.75em;
             transform-origin: 0 3.75em;
-            border-radius: 0 7.5em 7.5em 0
+            border-radius: 0 7.5em 7.5em 0;
         }
 
         .swal2-icon.swal2-success .swal2-success-ring {
             position: absolute;
-            top: -.25em;
-            left: -.25em;
+            top: -0.25em;
+            left: -0.25em;
             width: 100%;
             height: 100%;
-            border: .25em solid rgba(165, 220, 134, .3);
+            border: 0.25em solid rgba(165, 220, 134, 0.3);
             border-radius: 50%;
             z-index: 2;
-            box-sizing: content-box
+            box-sizing: content-box;
         }
 
         .swal2-icon.swal2-success .swal2-success-fix {
             position: absolute;
-            top: .5em;
+            top: 0.5em;
             left: 1.625em;
-            width: .4375em;
+            width: 0.4375em;
             height: 5.625em;
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
-            z-index: 1
+            z-index: 1;
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-line] {
+        .swal2-icon.swal2-success [class^="swal2-success-line"] {
             display: block;
             position: absolute;
-            height: .3125em;
-            border-radius: .125em;
+            height: 0.3125em;
+            border-radius: 0.125em;
             background-color: #a5dc86;
-            z-index: 2
+            z-index: 2;
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+        .swal2-icon.swal2-success [class^="swal2-success-line"][class$="tip"] {
             top: 2.875em;
-            left: .875em;
+            left: 0.875em;
             width: 1.5625em;
             -webkit-transform: rotate(45deg);
-            transform: rotate(45deg)
+            transform: rotate(45deg);
         }
 
-        .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+        .swal2-icon.swal2-success [class^="swal2-success-line"][class$="long"] {
             top: 2.375em;
-            right: .5em;
+            right: 0.5em;
             width: 2.9375em;
             -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg)
+            transform: rotate(-45deg);
         }
 
         .swal2-progresssteps {
             align-items: center;
             margin: 0 0 1.25em;
             padding: 0;
-            font-weight: 600
+            font-weight: 600;
         }
 
         .swal2-progresssteps li {
             display: inline-block;
-            position: relative
+            position: relative;
         }
 
         .swal2-progresssteps .swal2-progresscircle {
@@ -2244,112 +2261,112 @@
             color: #fff;
             line-height: 2em;
             text-align: center;
-            z-index: 20
+            z-index: 20;
         }
 
         .swal2-progresssteps .swal2-progresscircle:first-child {
-            margin-left: 0
+            margin-left: 0;
         }
 
         .swal2-progresssteps .swal2-progresscircle:last-child {
-            margin-right: 0
+            margin-right: 0;
         }
 
         .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep {
-            background: #3085d6
+            background: #3085d6;
         }
 
         .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle {
-            background: #add8e6
+            background: #add8e6;
         }
 
         .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progressline {
-            background: #add8e6
+            background: #add8e6;
         }
 
         .swal2-progresssteps .swal2-progressline {
             width: 2.5em;
-            height: .4em;
+            height: 0.4em;
             margin: 0 -1px;
             background: #3085d6;
-            z-index: 10
+            z-index: 10;
         }
 
-        [class^=swal2] {
-            -webkit-tap-highlight-color: transparent
+        [class^="swal2"] {
+            -webkit-tap-highlight-color: transparent;
         }
 
         .swal2-show {
-            -webkit-animation: swal2-show .3s;
-            animation: swal2-show .3s
+            -webkit-animation: swal2-show 0.3s;
+            animation: swal2-show 0.3s;
         }
 
         .swal2-show.swal2-noanimation {
             -webkit-animation: none;
-            animation: none
+            animation: none;
         }
 
         .swal2-hide {
-            -webkit-animation: swal2-hide .15s forwards;
-            animation: swal2-hide .15s forwards
+            -webkit-animation: swal2-hide 0.15s forwards;
+            animation: swal2-hide 0.15s forwards;
         }
 
         .swal2-hide.swal2-noanimation {
             -webkit-animation: none;
-            animation: none
+            animation: none;
         }
 
-        [dir=rtl] .swal2-close {
+        [dir="rtl"] .swal2-close {
             right: auto;
-            left: 0
+            left: 0;
         }
 
         .swal2-animate-success-icon .swal2-success-line-tip {
-            -webkit-animation: swal2-animate-success-line-tip .75s;
-            animation: swal2-animate-success-line-tip .75s
+            -webkit-animation: swal2-animate-success-line-tip 0.75s;
+            animation: swal2-animate-success-line-tip 0.75s;
         }
 
         .swal2-animate-success-icon .swal2-success-line-long {
-            -webkit-animation: swal2-animate-success-line-long .75s;
-            animation: swal2-animate-success-line-long .75s
+            -webkit-animation: swal2-animate-success-line-long 0.75s;
+            animation: swal2-animate-success-line-long 0.75s;
         }
 
         .swal2-animate-success-icon .swal2-success-circular-line-right {
             -webkit-animation: swal2-rotate-success-circular-line 4.25s ease-in;
-            animation: swal2-rotate-success-circular-line 4.25s ease-in
+            animation: swal2-rotate-success-circular-line 4.25s ease-in;
         }
 
         .swal2-animate-error-icon {
-            -webkit-animation: swal2-animate-error-icon .5s;
-            animation: swal2-animate-error-icon .5s
+            -webkit-animation: swal2-animate-error-icon 0.5s;
+            animation: swal2-animate-error-icon 0.5s;
         }
 
         .swal2-animate-error-icon .swal2-x-mark {
-            -webkit-animation: swal2-animate-error-x-mark .5s;
-            animation: swal2-animate-error-x-mark .5s
+            -webkit-animation: swal2-animate-error-x-mark 0.5s;
+            animation: swal2-animate-error-x-mark 0.5s;
         }
 
         @-webkit-keyframes swal2-rotate-loading {
             0% {
                 -webkit-transform: rotate(0);
-                transform: rotate(0)
+                transform: rotate(0);
             }
 
             100% {
                 -webkit-transform: rotate(360deg);
-                transform: rotate(360deg)
+                transform: rotate(360deg);
             }
         }
 
         @keyframes swal2-rotate-loading {
             0% {
                 -webkit-transform: rotate(0);
-                transform: rotate(0)
+                transform: rotate(0);
             }
 
             100% {
                 -webkit-transform: rotate(360deg);
-                transform: rotate(360deg)
+                transform: rotate(360deg);
             }
         }
     </style>
@@ -2361,122 +2378,186 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-        <?php  include('../includes/nav.php')  ?>
+    <?php  include('../includes/nav.php')  ?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
-    <div class="main-container" id="container">
-
+    <div class="main-container sidebar-closed" id="container">
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
-            <?php  include('../includes/sidebar.php')  ?>
+        <?php  include('../includes/sidebar.php')  ?>
         <!--  END SIDEBAR  -->
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
+                <div class="account-settings-container layout-top-spacing">
+                    <div class="account-content">
+                        <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll"
+                            data-offset="-100">
+                            <div class="row">
+                         
 
-                <div class="row layout-spacing">
+                                <div class="col-xl-6 col-lg-6 col-md-6 layout-spacing">
+                                    <form class="section about" method="post">
+                                        <div class="info">
+                                            <h5 class="">Change Password</h5>
+                                            <div class="row">
+                                                <div class="col-md-11 mx-auto">
+                                                    <div class="form-group">
+                                                        <label>Old Password</label>
+                                                        <input type="password" class="form-control mb-4"
+                                                            name="old_password" placeholder="Old Password" value="" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>New Password</label>
+                                                        <input type="password" class="form-control mb-4"
+                                                            name="new_password" placeholder="New Password" value="" />
+                                                    </div>
 
-                    <!-- Content -->
-                    <div class="col-xl-8 col-lg-6 col-md-5 col-sm-12 offset-md-2 layout-top-spacing">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password</label>
+                                                        <input type="password" class="form-control mb-4"
+                                                            name="confirm_password" placeholder="Confirm Password" />
+                                                    </div>
 
-                        <div class="user-profile layout-spacing">
-                            <div class="widget-content widget-content-area">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class=""> <?php   echo $first_name ?> Profile</h3>
-                                    <a href="../setting" class="mt-2 edit-profile"> <svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-edit-3">
-                                            <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                        </svg></a>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary" name="change_password">
+                                                            Change Password
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <?php 
+
+                                        if (isset($_POST['change_password'])) {
+
+                                            $old_password = mysqli_real_escape_string($connection, $_POST['old_password']);
+                                            $new_password = mysqli_real_escape_string($connection, $_POST['new_password']);
+                                            $confirm_password = mysqli_real_escape_string($connection, $_POST['confirm_password']);
+
+                                            if ($old_password == "" || $new_password == "" || $confirm_password == "") {
+                                                echo "<script>toastr.error('Please fill all fields');</script>";
+                                            } else {
+                                                if ($new_password != $confirm_password) {
+                                                    echo "<script>toastr.error('New Password and Confirm Password do not match');</script>";
+                                                } else {
+                                                    $id = $_SESSION['user_id'];
+                                                    $select = mysqli_query($connection, "SELECT * FROM `users` WHERE `id`=$id");
+                                                    if (mysqli_num_rows($select)) {
+                                                        $row = mysqli_fetch_assoc($select);
+                                                        if ($row['pin'] == $old_password) {
+                                                            $update = mysqli_query($connection, "UPDATE `users` SET `pin`='$new_password' WHERE `id`=$id");
+                                                            if ($update) {
+                                                                echo "<script>toastr.success('Password changed successfully');</script>";
+                                                            } else {
+                                                                echo "<script>toastr.error('Error changing password');</script>";
+                                                            }
+                                                        } else {
+                                                            echo "<script>toastr.error('Old Password is incorrect');</script>";
+                                                        }
+                                                    } else {
+                                                        echo "<script>toastr.error('User not found');</script>";
+                                                    }
+                                                }
+                                            }
+
+                                        }
+
+                                    ?>
                                 </div>
-                                <div class="text-center user-info">
-                                    <img src="<?php  echo $profile_pic ?>" width="20%"
-                                        alt="avatar">
-                                    <p class=""><?php   echo $fullname ?></p>
-                                </div>
-                                <div class="user-info-list">
+                                <div class="col-xl-6 col-lg-6 col-md-6 layout-spacing">
+                                    <form class="section about" method="post" autocomplete="off" autofocus="off">
+                                        <div class="info">
+                                            <h5 class="">Change Pin</h5>
+                                            <div class="row">
+                                                <div class="col-md-11 mx-auto">
+                                                    <div class="form-group">
+                                                        <label>Current Pin</label>
+                                                        <input type="password" class="form-control mb-4"
+                                                            name="current_pin" placeholder="Current Pin" value="" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>New Pin</label>
+                                                        <input type="password" class="form-control mb-4" name="new_pin"
+                                                            placeholder="New Pin" value="" />
+                                                    </div>
 
-                                    <div >
-                                        <ul class="contacts-block list-unstyled" style="display:grid; grid-template-columns: repeat(1, 1fr);gap: 12px;">
-                                            <li class="contacts-block__item">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-coffee">
-                                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                                                    <line x1="6" y1="1" x2="6" y2="4"></line>
-                                                    <line x1="10" y1="1" x2="10" y2="4"></line>
-                                                    <line x1="14" y1="1" x2="14" y2="4"></line>
-                                                </svg> 
+                                                    <div class="form-group">
+                                                        <label>Confirm Pin</label>
+                                                        <input type="password" class="form-control mb-4"
+                                                            name="confirm_pin" placeholder="Confirm Pin" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary" name="change_pin">
+                                                            Change Pin
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
 
-                                                 <?php   echo $account_type ?>
-                                            </li>
-                                            <li class="contacts-block__item">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-calendar">
-                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                                </svg> <?php   echo $date_of_birth ?>
-                                            </li>
-                                            <li class="contacts-block__item">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-map-pin">
-                                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                </svg> <?php   echo $address ?>
-                                            </li>
-                                            <li class="contacts-block__item">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-phone">
-                                                    <path
-                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                                                    </path>
-                                                </svg> <?php   echo $phone ?>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <?php 
+
+                                            if (isset($_POST['change_pin'])) {
+
+                                                $current_pin = mysqli_real_escape_string($connection, $_POST['current_pin']);
+                                                $new_pin = mysqli_real_escape_string($connection, $_POST['new_pin']);
+                                                $confirm_pin = mysqli_real_escape_string($connection, $_POST['confirm_pin']);
+
+                                                if ($current_pin == "" || $new_pin == "" || $confirm_pin == "") {
+                                                    echo "<script>toastr.error('Please fill all fields');</script>";
+                                                } else {
+                                                    if ($new_pin != $confirm_pin) {
+                                                        echo "<script>toastr.error('New Pin and Confirm Pin do not match');</script>";
+                                                    } else {
+                                                        $id = $_SESSION['user_id'];
+                                                        $select = mysqli_query($connection, "SELECT * FROM `users` WHERE `id`=$id");
+                                                        if (mysqli_num_rows($select)) {
+                                                            $row = mysqli_fetch_assoc($select);
+                                                            if ($row['pin'] == $current_pin) {
+                                                                $update = mysqli_query($connection, "UPDATE `users` SET `pin`='$new_pin' WHERE `id`=$id");
+                                                                if ($update) {
+                                                                    echo "<script>toastr.success('Pin changed successfully');</script>";
+                                                                } else {
+                                                                    echo "<script>toastr.error('Error changing pin');</script>";
+                                                                }
+                                                            } else {
+                                                                echo "<script>toastr.error('Current Pin is incorrect');</script>";
+                                                            }
+                                                        } else {
+                                                            echo "<script>toastr.error('User not found');</script>";
+                                                        }
+                                                    }
+                                                }
+
+                                            }
+
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-
-
-
-
-
                 </div>
-
             </div>
             <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
-                    <p class="">Copyright © 2021 <?php echo  $sitename ?>, All rights reserved.</p>
+                    <p class="">
+                        Copyright © 2021 <?php echo  $sitename ?>, All rights reserved.
+                    </p>
                 </div>
                 <div class="footer-section f-section-2">
-                    <p class=""><?php echo  $sitename ?> </p>
+                    <p class=""><?php echo  $sitename ?></p>
                 </div>
             </div>
         </div>
         <!--  END CONTENT AREA  -->
-
-
     </div>
 
     <!-- END MAIN CONTAINER -->
@@ -2509,34 +2590,43 @@
                 }
             }
         }
-        var firstUpload = new FileUploadWithPreview('myFirstImage')
+        var firstUpload = new FileUploadWithPreview("myFirstImage");
     </script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
-
 
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="../source/plugins/table/datatable/datatables.js"></script>
     <script>
-        $('#default-ordering').DataTable({
-            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+        $("#default-ordering").DataTable({
+            dom:
+                "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
                 "<'table-responsive'tr>" +
                 "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
-            "oLanguage": {
-                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                "sInfo": "Showing page _PAGE_ of _PAGES_",
-                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                "sSearchPlaceholder": "Search...",
-                "sLengthMenu": "Results :  _MENU_",
+            oLanguage: {
+                oPaginate: {
+                    sPrevious:
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    sNext:
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>',
+                },
+                sInfo: "Showing page _PAGE_ of _PAGES_",
+                sSearch:
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                sSearchPlaceholder: "Search...",
+                sLengthMenu: "Results :  _MENU_",
             },
             //"order": [[ 3, "desc" ]],
-            "stripeClasses": [],
-            "lengthMenu": [7, 10, 20, 50],
-            "pageLength": 7,
-            drawCallback: function () { $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered'); }
+            stripeClasses: [],
+            lengthMenu: [7, 10, 20, 50],
+            pageLength: 7,
+            drawCallback: function () {
+                $(".dataTables_paginate > .pagination").addClass(
+                    " pagination-style-13 pagination-bordered"
+                );
+            },
         });
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
-
 
     <script>
         // Get the Toast button
@@ -2545,13 +2635,9 @@
         var toastElement = document.getElementsByClassName("toast")[0];
 
         toastButton.onclick = function () {
-            $('.toast').toast('show');
-        }
-
-
+            $(".toast").toast("show");
+        };
     </script>
-
-
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
@@ -2570,16 +2656,16 @@
     <!-- END PAGE LEVEL PLUGINS -->
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    
-
-
-
-
-
+    <script src="../source/assets/js/components/notification/custom-snackbar.js"></script>
 
     <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
-        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
-        style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="
+        overflow: hidden;
+        top: -100%;
+        left: -100%;
+        position: absolute;
+        opacity: 0;
+      ">
         <defs id="SvgjsDefs1002"></defs>
         <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
         <path id="SvgjsPath1004" d="M0 0 "></path>

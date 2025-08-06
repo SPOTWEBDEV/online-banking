@@ -177,7 +177,7 @@
                                 <a href="<?php  echo $domain . "app/setting/password-reset.php"   ?>"> profile Account </a>
                             </li>
                             <li>
-                                <a href="<?php  echo $domain . "app/setting/"   ?>">Account</a>
+                                <a href="<?php  echo $domain . "app/setting/"   ?>"> Account </a>
                             </li>
                         </ul>
                     </li>
