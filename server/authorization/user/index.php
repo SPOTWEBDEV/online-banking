@@ -36,6 +36,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != "") {
             $imf = $row['imf_code'];
             $tax = $row['tax_code'];
             $kyc = $row['kyc'];
+            $step_verification = $row['2_step_verification'];
         }
     } else {
         echo "<script>window.open('$url', '_self');</script>";

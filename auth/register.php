@@ -1,4 +1,4 @@
-<?php  include("../server/connection.php") ?>
+<?php include("../server/connection.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -451,16 +451,16 @@
 
                             <div class="form-group">
                                 <select class="form-control" name="account-type" id="currency-select" required>
-                                    <option selected disabled>Account  Type</option>
+                                    <option selected disabled>Account Type</option>
 
-									    <option value="Savings" data-select2-id="13">Savings Account</option>
-									    <option value="Current" data-select2-id="14">Current Account</option>
-									    <option value="Checking" data-select2-id="15">Checking Account</option>
-									    <option value="Fixed Deposit" data-select2-id="16">Fixed Deposit</option>
-									    <option value="Non Resident" data-select2-id="17">Non Resident Account</option>
-									    <option value="Online Banking" data-select2-id="18">Online Banking</option>
-									    <option value="Domicilary Account" data-select2-id="19">Domicilary Account</option>
-									    <option value="Joint Account" data-select2-id="20">Joint Account</option>
+                                    <option value="Savings" data-select2-id="13">Savings Account</option>
+                                    <option value="Current" data-select2-id="14">Current Account</option>
+                                    <option value="Checking" data-select2-id="15">Checking Account</option>
+                                    <option value="Fixed Deposit" data-select2-id="16">Fixed Deposit</option>
+                                    <option value="Non Resident" data-select2-id="17">Non Resident Account</option>
+                                    <option value="Online Banking" data-select2-id="18">Online Banking</option>
+                                    <option value="Domicilary Account" data-select2-id="19">Domicilary Account</option>
+                                    <option value="Joint Account" data-select2-id="20">Joint Account</option>
 
 
                                 </select>
@@ -661,6 +661,8 @@
                             </div>
                         </fieldset>
 
+
+                        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
                         <script>
                             document.getElementById('url').value = window.location.href;
                             toastr.options = {
@@ -671,52 +673,44 @@
                                 "timeOut": "2000" // milliseconds before toast disappears
                             }
 
-                            // toastr.success('Login successful!');
-                            // toastr.error('Invalid username or password.');
-                            // toastr.info('Please enter your details.');
-                            // toastr.warning('Your session will expire soon.');
+
+
 
                             let form = document.getElementById('regForm');
                             form.addEventListener('submit', (event) => {
                                 event.preventDefault();
+
                                 let formData = new FormData(form);
 
-                                fetch('<?php echo $domain; ?>server/api/client/register.php', {
-                                    method: 'POST',
-                                    body: formData
-                                })
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            throw new Error('Network response was not ok: ' + response.statusText);
-                                        }
-                                        return response.json(); // Or .json() if your API sends JSON
-                                    })
-                                    .then(data => {
-
+                                $.ajax({
+                                    url: '<?php echo $domain; ?>server/api/client/register.php',
+                                    type: 'POST',
+                                    data: formData,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function(data) {
                                         console.log(data);
-                                        if (data.status == 'success') {
+
+                                        // If your server returns JSON as a string, parse it
+                                        if (typeof data === 'string') {
+                                            data = JSON.parse(data);
+                                        }
+
+                                        if (data.status === 'success') {
                                             toastr.success(data.message);
                                             setTimeout(() => {
-
                                                 location.href = '<?php echo $domain; ?>auth/index.php';
                                             }, 3000);
-
-                                        }
-
-                                        if (data.status == 'error') {
+                                        } else if (data.status === 'error') {
                                             toastr.error(data.message);
-
                                         }
-                                    })
-                                    .catch(error => {
+                                    },
+                                    error: function(xhr, status, error) {
                                         console.error('Error:', error);
                                         toastr.error('An error occurred while processing your request.');
-                                    });
+                                    }
+                                });
                             });
-
-
-
-
                         </script>
 
                     </form>
@@ -755,38 +749,38 @@
     <script src="./extra/formjs.js"></script>
     <!-- END THEME GLOBAL STYLE -->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $(".numpad").hide();
-            $('.input').click(function () {
+            $('.input').click(function() {
                 $('.numpad').fadeToggle('fast');
             });
 
-            $('.del').click(function () {
+            $('.del').click(function() {
                 $('.input').val($('.input').val().substring(0, $('.input').val().length - 1));
             });
-            $('.faq').click(function () {
+            $('.faq').click(function() {
                 alert("Enter Your OTP Sent to you ");
             })
-            $('.shuffle').click(function () {
+            $('.shuffle').click(function() {
                 $('.input').val($('.input').val() + $(this).text());
                 $('.shuffle').shuffle();
             });
-            (function ($) {
+            (function($) {
 
-                $.fn.shuffle = function () {
+                $.fn.shuffle = function() {
 
                     var allElems = this.get(),
-                        getRandom = function (max) {
+                        getRandom = function(max) {
                             return Math.floor(Math.random() * max);
                         },
-                        shuffled = $.map(allElems, function () {
+                        shuffled = $.map(allElems, function() {
                             var random = getRandom(allElems.length),
                                 randEl = $(allElems[random]).clone(true)[0];
                             allElems.splice(random, 1);
                             return randEl;
                         });
 
-                    this.each(function (i) {
+                    this.each(function(i) {
                         $(this).replaceWith($(shuffled[i]));
                     });
 
@@ -799,8 +793,8 @@
         });
     </script>
     <script>
-        $(function () {
-            $('#datepicker').keypress(function (event) {
+        $(function() {
+            $('#datepicker').keypress(function(event) {
                 event.preventDefault();
                 return false;
             });
@@ -814,8 +808,7 @@
                     document.getElementById('Div1').style.display = 'block';
                     document.getElementById('Div2').style.display = 'none';
                     document.getElementById('nextShow').style.display = 'none';
-                }
-                else {
+                } else {
                     document.getElementById('Div1').style.display = 'none';
                     document.getElementById('Div2').style.display = 'block';
                     document.getElementById('nextShow').style.display = 'block';
@@ -823,8 +816,6 @@
                 }
             }
         }
-
-
     </script>
 
 
