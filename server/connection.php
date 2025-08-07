@@ -34,9 +34,9 @@ if ($isLocalhost) {
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-    if (!$connection) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    // if (!$connection) {
+    //     die("Connection failed: " . mysqli_connect_error());
+    // }
 
   
 } else {
@@ -48,11 +48,11 @@ if ($isLocalhost) {
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-    if (!$connection) {
-        die("Connection failed: " . mysqli_connect_error());
-    }else{
-        echo 'success';
-    }
+    // if (!$connection) {
+    //     die("Connection failed: " . mysqli_connect_error());
+    // }else{
+    //     echo 'success';
+    // }
 
    
 }
