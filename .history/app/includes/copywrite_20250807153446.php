@@ -1,1 +1,0 @@
-   <p class="">Copyright © 2022 <?php echo $sitename ?>, All rights reserved.</p>
