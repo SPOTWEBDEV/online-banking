@@ -2,7 +2,7 @@
 
     include('../../server/connection.php');
     include("../../server/mailer.php");
-    require($_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/PHPMailer/PHPMailerAutoload.php');
+    require('../../PHPMailer/PHPMailer/PHPMailerAutoload.php');
     include('../../server/authorization/admin/index.php');
 
 ?>

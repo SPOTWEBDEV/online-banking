@@ -2491,14 +2491,16 @@
 
 
         </div>
-                <div class="col-12 layout-spacing mt-4">
+
+        <!-- commented for furture use take note dont delete  -->
+         <!-- <div class="col-12 layout-spacing mt-4">
           <div class="widget widget-card-one">
             <div class="widget-heading">
               <h5>Currency Exchange Checker</h5>
             </div>
             <div class="widget-content">
               <div class="row g-3">
-                <!-- Amount Input -->
+              
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                   <div class="form-group">
                     <label for="exchange-amount">Amount</label>
@@ -2506,37 +2508,36 @@
                   </div>
                 </div>
 
-                <!-- From Currency -->
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                   <div class="form-group">
                     <label for="from-currency">From</label>
                     <select class="form-control" id="from-currency">
                       <option value="" disabled selected>Select Currency</option>
-                      <!-- Insert your full currency list here -->
+                  
                       <option value="USD">USD</option>
                       <option value="EUR">EUR</option>
                       <option value="INR">INR</option>
-                      <!-- ... -->
+                  
                     </select>
                   </div>
                 </div>
 
-                <!-- To Currency -->
+       
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                   <div class="form-group">
                     <label for="to-currency">To</label>
                     <select class="form-control" id="to-currency">
                       <option value="" disabled selected>Select Currency</option>
-                      <!-- Insert your full currency list here -->
+                  
                       <option value="USD">USD</option>
                       <option value="EUR">EUR</option>
                       <option value="INR">INR</option>
-                      <!-- ... -->
+                   
                     </select>
                   </div>
                 </div>
 
-                <!-- Convert Button -->
+            
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                   <div class="form-group d-grid mt-2">
                     <button class="btn btn-primary w-100" onclick="convertCurrency()">Convert</button>
@@ -2544,10 +2545,10 @@
                 </div>
               </div>
 
-              <!-- Result -->
+           
               <div class="mt-4" id="exchange-result" style="font-weight: bold; font-size: 16px;"></div>
 
-              <!-- Script -->
+            
               <script>
                 async function convertCurrency() {
                   const amount = parseFloat(document.getElementById('exchange-amount').value);
@@ -2581,7 +2582,7 @@
               </script>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="footer-wrapper">
