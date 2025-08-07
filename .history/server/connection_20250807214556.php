@@ -42,6 +42,7 @@ if ($isLocalhost) {
 } else {
     // Online (Live Server)
     $domain = "https://vanguardshieldsfin.com/"; 
+   define("HOST", "localhost");
     define("USER", "vanguar6_vanguardshieldsfin");
     define("PASSWORD", "vanguar6_vanguardshieldsfin");
     define("DATABASE", "vanguar6_vanguardshieldsfin");

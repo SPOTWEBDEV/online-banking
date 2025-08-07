@@ -42,16 +42,15 @@ if ($isLocalhost) {
 } else {
     // Online (Live Server)
     $domain = "https://vanguardshieldsfin.com/"; 
-    define("USER", "vanguar6_vanguardshieldsfin");
-    define("PASSWORD", "vanguar6_vanguardshieldsfin");
-    define("DATABASE", "vanguar6_vanguardshieldsfin");
+
+    define("USER", "vanguar6__vanguardshieldsfin");
+    define("PASSWORD", "vanguar6__vanguardshieldsfin");
+    define("DATABASE", "vanguar6__vanguardshieldsfin");
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
     if (!$connection) {
         die("Connection failed: " . mysqli_connect_error());
-    }else{
-        echo 'success';
     }
 
    
@@ -63,7 +62,7 @@ $sitename = "vanguard shield online bank";
 // Email Config 
 $siteemail = "support@vanguardshield.com";
 $emailpassword  = "support@vanguardshield.com";
-$host = 'mail.vanguardshieldsfin.com';
+$host = 'mail.vanguardvanguardshield.com';
 $sitephone  = "+44 776 0957 798";
 $siteaddress  = "Weston, New York";
 
