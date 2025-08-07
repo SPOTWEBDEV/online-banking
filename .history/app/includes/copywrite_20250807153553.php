@@ -1,0 +1,1 @@
+   <p class="">Copyright © <script></script> <?php echo $sitename ?>, All rights reserved.</p>

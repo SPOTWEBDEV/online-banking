@@ -1,0 +1,1 @@
+   <p class="">Copyright © <script>document.write(new Date().getFullYear)</script> <?php echo $sitename ?>, All rights reserved.</p>
