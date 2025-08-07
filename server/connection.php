@@ -57,6 +57,8 @@ if ($isLocalhost) {
    
 }
 
+
+
 // Site configurations
 $sitename = "vanguard shield online bank";
 
