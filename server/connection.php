@@ -64,7 +64,7 @@ $siteemail = "support@vanguardshield.com";
 $emailpassword  = "support@vanguardshield.com";
 $host = 'mail.vanguardvanguardshield.com';
 $sitephone  = "+44 776 0957 798";
-$siteaddress  = "Weston, New York";
+$siteaddress  = " 221 W 34th St, New York, NY 10001";
 
 session_start();
 
