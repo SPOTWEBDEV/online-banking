@@ -41,7 +41,7 @@
                                 class="router-link-active active navbar-brand"><img class="logo-light"
                                     src=""
                                     alt="logo"><img class="logo-dark"
-                                    src="../img/VAN-BANK.png"
+                                    src=""
                                     alt="logo"></a>
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav ms-auto">

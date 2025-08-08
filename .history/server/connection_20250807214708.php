@@ -50,6 +50,8 @@ if ($isLocalhost) {
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
     if (!$connection) {
         die("Connection failed: " . mysqli_connect_error());
+    }else{
+        echo 'success';
     }
 
    
