@@ -37,6 +37,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != "") {
             $tax = $row['tax_code'];
             $kyc = $row['kyc'];
             $step_verification = $row['2_step_verification'];
+            $status = $row['status'];
+            $status_message = $row['status_message'];
         }
     } else {
         echo "<script>window.open('$url', '_self');</script>";
@@ -69,4 +71,45 @@ function getClientIP() {
         session_destroy();
         echo "<script>window.open('$url', '_self');</script>";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if ($status === 'suspended' && !empty($status_message)) {
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Account Suspended',
+                html: `" . addslashes($status_message) . "`,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            });
+        });
+    </script>";
+}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+

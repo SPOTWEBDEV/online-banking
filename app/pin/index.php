@@ -1,63 +1,12 @@
 <?php
 
-    include('../../server/connection.php');
-    include('../../server/mailer.php');
-    include('../../server/authorization/user/index.php');
-    require('../../PHPMailer/PHPMailer/PHPMailerAutoload.php');
-     
-     
-     if (isset($_SESSION['otp'])){
-         
-         
-          $sms_code = $_SESSION['otp'];
-         
-                               
-                    // Create message
-                    $message = '<body style="margin: 0;">
-                        <section style="width: 100%; padding: 10px 0; background: #131722; padding-bottom: 40px;">
-                            <br>
-                            <div style="width: 90%; padding: 10px; margin-left: 20px; background: white; box-sizing: border-box;">
-                                <p style="font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif;">
-                                    Hello ' . $username . '
-                                </p>
-                                <p style="font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif; font-size: 14px;">
-                                    Please copy the OTP code below to verify your ' . $sitename . ' account
-                                </p>
-                                <a href="#" style="text-decoration: none;">
-                                    <button style="border: none; border-radius: 4px; padding: 14px 10px; background: #007bff; color: white; margin-top: 10px; width: 70%; text-align: center; font-size:25px">
-                                        ' . $sms_code . '
-                                    </button>
-                                </a>
-                                <p style="font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif; font-size: 14px; margin-top: 20px;">
-                                    if you did not request for transfer, contact our support team.
-                                </p>
-                                <p style="font-size: 15px; font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif;">
-                                    Best regards,
-                                </p>
-                                <p style="font-size: 15px; font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif;">
-                                  '.$sitename.' Team
-                                </p>
-                                <p style="font-size: 13px; font-family: \'Trebuchet MS\', \'Lucida Sans Unicode\', \'Lucida Grande\', \'Lucida Sans\', Arial, sans-serif; margin-top: 30px;">
-                                    ©  '.$sitename.' All rights reserved.
-                                </p>
-                                
-                            </div>
-                        </section>
-                    </body>';
-                    
-                            $from = "contact@greenshieldfine.com";
-                            $from_name = "$sitename";
-                            $subject = 'Welcome to ' . $sitename;
-                            $result = smtpmailer($email, $from, $from_name, $subject, $message);
-                            
-                            
-         
-         
-         
-         
-         
-         
-     }
+include('../../server/connection.php');
+include('../../server/mailer.php');
+include('../../server/authorization/user/index.php');
+
+
+$transfer_id = $_GET['id'];
+
 
 ?>
 
@@ -106,10 +55,10 @@
     <link href="../source/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" type="text/css">
     <script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>
 
-            <!-- SweetAlert2 CSS -->
+    <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
-      <!-- SweetAlert2 JS -->
+    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -2436,7 +2385,7 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-        <?php  include('../includes/nav.php')  ?>
+    <?php include('../includes/nav.php')  ?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
@@ -2447,7 +2396,7 @@
 
         <!--  BEGIN SIDEBAR  -->
 
-        <?php  include('../includes/sidebar.php')  ?>
+        <?php include('../includes/sidebar.php')  ?>
 
         <!--  END SIDEBAR  -->
         <div id="content" class="main-content">
@@ -2459,15 +2408,141 @@
                                 <div class="user-profile">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h4 class="text-center">OTP  CODE VERIFICATION</h4>
+                                            <h4 class="text-center">PIN VERIFICATION</h4>
 
                                         </div>
                                     </div>
-                                    <form action="" method="post">
+
+                                    <?php
+                                    if (isset($_POST['otp_submit'])) {
+                                        $pin_code = $_POST['pin_code'];
+                                        $user_id = $_SESSION['user_id'];
+
+                                        // Fetch the correct pin and current transfer count and wrong attempts
+                                        $userQuery = $connection->prepare("SELECT pin, wrong_attempts, status, status_message FROM users WHERE id = ?");
+                                        $userQuery->bind_param("i", $user_id);
+                                        $userQuery->execute();
+                                        $userResult = $userQuery->get_result();
+
+                                        if ($userResult->num_rows > 0) {
+                                            $user = $userResult->fetch_assoc();
+                                            $correct_pin = $user['pin'];
+                                            $wrong_attempts = $user['wrong_attempts'];
+                                            $userQuery->close();
+
+                                            if ($user['status'] === 'suspended') {
+                                                echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Account Suspended',
+                        text: '{$user['status_message']}',
+                        confirmButtonText: 'OK',
+                    });
+                </script>";
+                                                exit;
+                                            }
+
+                                            if ($pin_code == $correct_pin) {
+                                                // Reset wrong_attempts after correct entry
+                                                $resetAttempts = $connection->prepare("UPDATE users SET wrong_attempts = 0 WHERE id = ?");
+                                                $resetAttempts->bind_param("i", $user_id);
+                                                $resetAttempts->execute();
+                                                $resetAttempts->close();
+
+                                                // Update transfer count
+                                                $updateTransfer = $connection->prepare("UPDATE transfer SET transfer_count = transfer_count + 1 WHERE user_id = ?");
+                                                $updateTransfer->bind_param("i", $user_id);
+                                                $updateTransfer->execute();
+                                                $updateTransfer->close();
+
+                                                // Fetch new transfer count
+                                                $countQuery = $connection->prepare("SELECT transfer_count FROM transfer WHERE user_id = ?");
+                                                $countQuery->bind_param("i", $user_id);
+                                                $countQuery->execute();
+                                                $countResult = $countQuery->get_result();
+                                                $transferData = $countResult->fetch_assoc();
+                                                $transferCount = $transferData['transfer_count'];
+                                                $countQuery->close();
+
+                                                // Block user if 3 successful transfers
+                                                if ($transferCount >= 3) {
+                                                    $msg = "Your account has been suspended after reaching 3 successful transfers.";
+                                                    $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
+                                                    $suspend->bind_param("si", $msg, $user_id);
+                                                    $suspend->execute();
+                                                    $suspend->close();
+
+                                                    echo "<script>
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Account Suspended',
+                            text: '$msg',
+                            confirmButtonText: 'OK',
+                        });
+                    </script>";
+                                                    exit;
+                                                }
+
+                                                // Successful transfer — redirect
+                                                echo "<script>window.location.href = \"../otp_confirm?id={$transfer_id}&table=transfer\";</script>";
+                                                exit;
+                                            } else {
+                                                // Increment wrong_attempts
+                                                $wrong_attempts++;
+                                                $updateAttempts = $connection->prepare("UPDATE users SET wrong_attempts = ? WHERE id = ?");
+                                                $updateAttempts->bind_param("ii", $wrong_attempts, $user_id);
+                                                $updateAttempts->execute();
+                                                $updateAttempts->close();
+
+                                                // Block user after 3 failed attempts
+                                                if ($wrong_attempts >= 3) {
+                                                    $msg = "Your account has been suspended after 3 incorrect PIN attempts.";
+                                                    $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
+                                                    $suspend->bind_param("si", $msg, $user_id);
+                                                    $suspend->execute();
+                                                    $suspend->close();
+
+                                                    echo "<script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Account Suspended',
+                            text: '$msg',
+                            confirmButtonText: 'OK',
+                        });
+                    </script>";
+                                                    
+                                                }
+
+                                                echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Incorrect Pin Code',
+                        text: 'Please check the pin code you entered and try again.',
+                        confirmButtonText: 'OK',
+                    });
+                </script>";
+                                              
+                                            }
+                                        } else {
+                                            echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'User Not Found',
+                    text: 'Invalid session or user does not exist.',
+                    confirmButtonText: 'OK',
+                });
+            </script>";
+                                            exit;
+                                        }
+                                    }
+                                    ?>
+
+
+                                    <form method="post">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="text-center text-info text-uppercase">
-                                                     please enter the One-Time Password (OTP) code sent to your registered email address.
+                                                    please enter the Your Transfer Pin code sent to your registered email address.
                                                 </p>
 
                                             </div>
@@ -2476,7 +2551,7 @@
                                             <div class="col-md-6 ">
                                                 <div class="form-group">
                                                     <div class="input-group ">
-                                                        <input type="number" class="form-control" name="otp_code"
+                                                        <input type="number" class="form-control" name="pin_code"
                                                             placeholder="input code" aria-label="notification"
                                                             aria-describedby="basic-addon1" required="">
                                                     </div>
@@ -2486,150 +2561,12 @@
                                             <div class="col-md-6 ">
                                                 <div class="form-group ">
                                                     <button class="btn btn-primary col-12" name="otp_submit">Continue
-                                                        Transfer 
+                                                        Transfer
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-
-                                                                        <?php
-                                        if (isset($_POST['otp_submit'])) {
-                                            // Sanitize input
-                                            $inputed_otp = trim($_POST['otp_code']);
-                                            $transaction_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-                                            $table = $_GET['table'];
-
-                                            if ($transaction_id <= 0) {
-                                                echo "<script>
-                                                    Swal.fire({
-                                                        icon: 'error',
-                                                        title: 'Invalid Transaction',
-                                                        text: 'Transaction ID is invalid.'
-                                                    });
-                                                </script>";
-                                                exit;
-                                            }
-
-                                            // Fetch transfer details securely
-                                            $stmt = mysqli_prepare($connection, "SELECT amount, otp_code, status FROM `$table` WHERE id = ?");
-                                            mysqli_stmt_bind_param($stmt, "i", $transaction_id);
-                                            mysqli_stmt_execute($stmt);
-                                            $result = mysqli_stmt_get_result($stmt);
-
-                                            if ($result && mysqli_num_rows($result) > 0) {
-                                                $transfer = mysqli_fetch_assoc($result);
-
-                                                // Check if already approved
-                                                if ($transfer['status'] === 'approved') {
-                                                    echo "<script>
-                                                        Swal.fire({
-                                                            icon: 'info',
-                                                            title: 'Already Confirmed',
-                                                            text: 'This transaction has already been confirmed.'
-                                                        });
-                                                    </script>";
-                                                    exit;
-                                                }
-
-                                                // Validate OTP
-                                                if ($inputed_otp === $transfer['otp_code']) {
-                                                    // Fetch current user balance
-                                                    $stmt = mysqli_prepare($connection, "SELECT balance FROM users WHERE id = ?");
-                                                    mysqli_stmt_bind_param($stmt, "i", $id);
-                                                    mysqli_stmt_execute($stmt);
-                                                    $balance_result = mysqli_stmt_get_result($stmt);
-
-                                                    if ($balance_result && mysqli_num_rows($balance_result) > 0) {
-                                                        $user = mysqli_fetch_assoc($balance_result);
-                                                        $current_balance = floatval($user['balance']);
-                                                        $amount = floatval($transfer['amount']);
-
-                                                        if ($current_balance >= $amount) {
-                                                            $updated_balance = $current_balance - $amount;
-
-                                                            // Start transaction for atomicity
-                                                            mysqli_begin_transaction($connection);
-
-                                                            // Update user balance
-                                                            $stmt_update_balance = mysqli_prepare($connection, "UPDATE users SET balance = ? WHERE id = ?");
-                                                            mysqli_stmt_bind_param($stmt_update_balance, "di", $updated_balance, $id);
-                                                            $balance_updated = mysqli_stmt_execute($stmt_update_balance);
-
-                                                            // Update transfer status
-                                                            $stmt_update_transfer = mysqli_prepare($connection, "UPDATE $table SET status = 'pending' WHERE id = ?");
-                                                            mysqli_stmt_bind_param($stmt_update_transfer, "i", $transaction_id);
-                                                            $transfer_updated = mysqli_stmt_execute($stmt_update_transfer);
-
-                                                            if ($balance_updated && $transfer_updated) {
-                                                                mysqli_commit($connection);
-                                                                echo "<script>
-                                                                    Swal.fire({
-                                                                        icon: 'success',
-                                                                        title: 'OTP Verified!',
-                                                                        text: 'Your transaction has been confirmed.'
-                                                                    }).then(() => {
-                                                                        window.location.href = './print.php?table=$table&id=$transaction_id';
-                                                                    });
-                                                                </script>";
-                                                                exit;
-                                                            } else {
-                                                                mysqli_rollback($connection);
-                                                                echo "<script>
-                                                                    Swal.fire({
-                                                                        icon: 'error',
-                                                                        title: 'Verification Failed',
-                                                                        text: 'An error occurred while confirming your transaction. Please try again.'
-                                                                    });
-                                                                </script>";
-                                                                exit;
-                                                            }
-                                                        } else {
-                                                            echo "<script>
-                                                                Swal.fire({
-                                                                    icon: 'error',
-                                                                    title: 'Insufficient Balance',
-                                                                    text: 'Your account balance is insufficient to complete this transaction.'
-                                                                });
-                                                            </script>";
-                                                            exit;
-                                                        }
-                                                    } else {
-                                                        echo "<script>
-                                                            Swal.fire({
-                                                                icon: 'error',
-                                                                title: 'User Not Found',
-                                                                text: 'Unable to retrieve user balance.'
-                                                            });
-                                                        </script>";
-                                                        exit;
-                                                    }
-                                                } else {
-                                                    echo "<script>
-                                                        Swal.fire({
-                                                            icon: 'error',
-                                                            title: 'Verification Failed',
-                                                            text: 'Incorrect OTP verification code. Please try again.'
-                                                        });
-                                                    </script>";
-                                                    
-                                                    exit;
-                                                }
-                                            } else {
-                                                echo "<script>
-                                                    Swal.fire({
-                                                        icon: 'error',
-                                                        title: 'Transaction Not Found',
-                                                        text: 'The specified transaction does not exist.'
-                                                    });
-                                                </script>";
-                                                exit;
-                                            }
-                                        }
-                                    ?>
-
-
-
                                 </div>
                             </div>
 
@@ -2655,66 +2592,67 @@
 
     <!-- END MAIN CONTAINER -->
 
-        <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
-        <!--<script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>-->
-        <script src="../source/bootstrap/js/popper.min.js"></script>
-        <script src="../source/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../source/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="../source/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="../source/plugins/file-upload/file-upload-with-preview.min.js"></script>
-        <script src="../source/assets/js/app.js"></script>
-        <script src="../source/assets/js/users/account-settings.js"></script>
-        <script src="../source/plugins/dropify/dropify.min.js"></script>
-        <script src="../source/plugins/blockui/jquery.blockUI.min.js"></script>
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <!--<script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>-->
+    <script src="../source/bootstrap/js/popper.min.js"></script>
+    <script src="../source/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../source/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../source/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../source/plugins/file-upload/file-upload-with-preview.min.js"></script>
+    <script src="../source/assets/js/app.js"></script>
+    <script src="../source/assets/js/users/account-settings.js"></script>
+    <script src="../source/plugins/dropify/dropify.min.js"></script>
+    <script src="../source/plugins/blockui/jquery.blockUI.min.js"></script>
 
-        <script>
-            $(document).ready(function () {
-                App.init();
-            });
-        </script>
-        <script src="../source/assets/js/custom.js"></script>
-        <script>
-            var data = null;
-            console.log(data);
-            function crypto_type(id) {
-                for (var i = 0; i < data.length; i++) {
-                    if (id == data[i].id) {
-                        $("#wallet_address").val(data[i].wallet_address);
-                    }
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    <script src="../source/assets/js/custom.js"></script>
+    <script>
+        var data = null;
+        console.log(data);
+
+        function crypto_type(id) {
+            for (var i = 0; i < data.length; i++) {
+                if (id == data[i].id) {
+                    $("#wallet_address").val(data[i].wallet_address);
                 }
             }
-            var firstUpload = new FileUploadWithPreview('myFirstImage')
-        </script>
-        <!-- END GLOBAL MANDATORY SCRIPTS -->
+        }
+        var firstUpload = new FileUploadWithPreview('myFirstImage')
+    </script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="../source/plugins/table/datatable/datatables.js"></script>
-
-
-
-
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="../source/plugins/table/datatable/datatables.js"></script>
 
 
 
-        <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
-        <script src="../source/plugins/apex/apexcharts.min.js"></script>
-        <script src="../source/assets/js/custom.js"></script>
-        <script src="../source/assets/js/dashboard/dash_1.js"></script>
-        <script src="../source/plugins/sweetalerts/sweetalert2.min.js"></script>
-        <script src="../source/plugins/sweetalerts/custom-sweetalert.js"></script>
-        <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
-        <script src="../source/plugins/notification/snackbar/snackbar.min.js"></script>
-        <script src="../source/assets/js/clipboard/clipboard.min.js"></script>
-        <script src="../source/assets/js/forms/custom-clipboard.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
-        <script src="../source/assets/js/card/card.js"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
 
-        <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-        <script src="../source/assets/js/components/notification/custom-snackbar.js"></script>
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+    <script src="../source/plugins/apex/apexcharts.min.js"></script>
+    <script src="../source/assets/js/custom.js"></script>
+    <script src="../source/assets/js/dashboard/dash_1.js"></script>
+    <script src="../source/plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="../source/plugins/sweetalerts/custom-sweetalert.js"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+    <script src="../source/plugins/notification/snackbar/snackbar.min.js"></script>
+    <script src="../source/assets/js/clipboard/clipboard.min.js"></script>
+    <script src="../source/assets/js/forms/custom-clipboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+    <script src="../source/assets/js/card/card.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
+    <script src="../source/assets/js/components/notification/custom-snackbar.js"></script>
 
 </body>
 
