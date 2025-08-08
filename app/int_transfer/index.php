@@ -3050,7 +3050,7 @@
                             text: 'Your transaction is pending confirmation.',
                             confirmButtonText: 'Proceed'
                         }).then(() => {
-                            window.location.href = \"../otp_confirm?id={$transfer_id}&table=transfer\";
+                            window.location.href = \"../pin?id={$transfer_id}&table=transfer\";
                         });
                     </script>";
                 }

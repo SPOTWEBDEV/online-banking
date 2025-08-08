@@ -744,6 +744,7 @@
         </div>
         <!-- END MAIN CONTAINER -->
 
+
         <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
         <!--<script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>-->
         <script src="../source/bootstrap/js/popper.min.js"></script>
@@ -804,6 +805,9 @@
 
         <!--  BEGIN CUSTOM SCRIPTS FILE  -->
         <script src="../source/assets/js/components/notification/custom-snackbar.js"></script>
+
+
+        
 
 
 

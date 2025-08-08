@@ -41,7 +41,8 @@ if ($isLocalhost) {
   
 } else {
     // Online (Live Server)
-    $domain = "https://vanguardshieldsfin.com/"; 
+    $domain = "https://quanstofy.com/";
+
     define("USER", "vanguar6_vanguardshieldsfin");
     define("PASSWORD", "vanguar6_vanguardshieldsfin");
     define("DATABASE", "vanguar6_vanguardshieldsfin");
@@ -56,12 +57,12 @@ if ($isLocalhost) {
 }
 
 // Site configurations
-$sitename = "vanguard shield online bank";
+$sitename = "Vanguard Shield Bank";
 
 // Email Config 
 $siteemail = "support@vanguardshield.com";
 $emailpassword  = "support@vanguardshield.com";
-$host = 'mail.vanguardshieldsfin.com';
+$host = 'mail.vanguardvanguardshield.com';
 $sitephone  = "+44 776 0957 798";
 $siteaddress  = "Weston, New York";
 
