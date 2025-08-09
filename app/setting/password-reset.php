@@ -2549,7 +2549,7 @@
             <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
                     <p class="">
-                        Copyright © 2021 <?php echo  $sitename ?>, All rights reserved.
+                        Copyright © </i><script>document.write( new Date().getFullYear())</script> <?php echo  $sitename ?>, All rights reserved.
                     </p>
                 </div>
                 <div class="footer-section f-section-2">
