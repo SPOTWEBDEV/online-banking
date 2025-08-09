@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 include("../../connection.php");
 include("../../mailer.php");
-require($_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/PHPMailer/PHPMailerAutoload.php');
+require('../../../PHPMailer/PHPMailer/PHPMailerAutoload.php');
 
 
 
@@ -49,7 +49,6 @@ if (isset($_POST['url'])) {
   $lastname = $_POST['lastname'];
   $country = $_POST['country'];
   $email = $_POST['acct_email'];
-  $phoneNumber = $_POST['phoneNumber'];
   $pin = $_POST['acct_pin'];
   $password = $_POST['acct_password'];
   $confirmPassword = $_POST['confirmPassword'];
@@ -95,8 +94,8 @@ if (isset($_POST['url'])) {
       // Step 3: Insert new user record
       $insert_stmt = $connection->prepare("
                     INSERT INTO users 
-                    (username, email, `password`, pin, firstname, lastname,occupation, country, address, gender, balance, phone, ssn, profile,currency,status,account_number,birth,account_type,date_created) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)
+                    (email, `password`, pin, firstname, lastname, country, balance, ssn, profile,currency,status,account_number,birth,account_type,date_created) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)
                 ");
 
       if (!$insert_stmt) {
@@ -108,19 +107,14 @@ if (isset($_POST['url'])) {
       }
 
       $insert_stmt->bind_param(
-        "ssssssssssssssssssss",
-        $username,
+        "sssssssssssssss",
         $email,
         $passwordHash,
         $pin,
         $firstname,
         $lastname,
-        $occupation,
         $country,
-        $address,
-        $gender,
         $balance,
-        $phoneNumber,
         $ssn,
         $profilePic,
         $currency,
@@ -204,7 +198,7 @@ if (isset($_POST['url'])) {
                     
                         </div>
                         <div class="content">
-                          <p>Welcome! ' . htmlspecialchars($username) . ', thank you so much for allowing us to help you with your recent account opening.</p>
+                          <p>Welcome! ' . htmlspecialchars($firstname . ' ' . $lastname). ', thank you so much for allowing us to help you with your recent account opening.</p>
                     
                           <div class="details">
                             <strong>Here are your details:</strong><br>

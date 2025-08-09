@@ -134,7 +134,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="email" class="form-control wizard-required" id="Email"
-                                            name="Email">
+                                            name="acct_email">
                                         <label for="Email" class="wizard-form-text-label">Email</label>
                                         <div class="wizard-form-error"></div>
                                     </div>
@@ -669,26 +669,29 @@
 
                                 let formData = new FormData(form);
 
+                                // Debug: log form values
+                                for (let [key, value] of formData.entries()) {
+                                    console.log(`${key}: ${value}`);
+                                }
+
                                 $.ajax({
                                     url: '<?php echo $domain; ?>server/api/client/register.php',
                                     type: 'POST',
                                     data: formData,
-                                    contentType: false,
-                                    processData: false,
+                                    processData: false, // 👈 Required for FormData
+                                    contentType: false, // 👈 Required for FormData
                                     success: function(data) {
                                         console.log(data);
 
-                                        // If your server returns JSON as a string, parse it
-                                        if (typeof data === 'string') {
-                                            data = JSON.parse(data);
-                                        }
+                                        // If needed, parse JSON string
+                                        // if (typeof data === 'string') data = JSON.parse(data);
 
                                         if (data.status === 'success') {
                                             toastr.success(data.message);
                                             setTimeout(() => {
                                                 location.href = '<?php echo $domain; ?>auth/index.php';
                                             }, 3000);
-                                        } else if (data.status === 'error') {
+                                        } else {
                                             toastr.error(data.message);
                                         }
                                     },
