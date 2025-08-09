@@ -62,8 +62,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                             <div class="footer-widget">
                                 <h3 class="footer-widget-title">Subscribe</h3>
-                                <p class="newsletter-text"> Tablished fact that a reader will be distrated by the
-                                    readable content </p>
+                                <p class="newsletter-text"> It’s a proven fact that customers prefer clear, trustworthy, and easy-to-read information when managing their finances online.</p>
                                 <form class="newsletter-form"><input type="email" placeholder="Your Email"><button
                                         type="button">Subscribe</button></form>
                             </div>
