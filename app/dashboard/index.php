@@ -1,7 +1,7 @@
 <?php
 
-    include('../../server/connection.php');
-    include('../../server/authorization/user/index.php');
+include('../../server/connection.php');
+include('../../server/authorization/user/index.php');
 
 ?>
 
@@ -88,7 +88,7 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-        <?php  include('../includes/nav.php')  ?>
+    <?php include('../includes/nav.php')  ?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
@@ -99,7 +99,7 @@
 
         <!--  BEGIN SIDEBAR  -->
 
-        <?php  include('../includes/sidebar.php')  ?>
+        <?php include('../includes/sidebar.php')  ?>
 
         <!--  END SIDEBAR  -->
 
@@ -161,10 +161,10 @@
 
                                             <div class="w-summary-info">
                                                 <h6>Limit</h6>
-                                                <p class="summary-count"><?php echo   $currency_type.$account_limit  ?></p>
+                                                <p class="summary-count"><?php echo   $currency_type . $account_limit  ?></p>
                                             </div>
 
-                                            
+
 
                                             <div class="w-summary-stats">
                                                 <div class="progress">
@@ -276,9 +276,9 @@
                             <div class="widget-heading">
                                 <div class="wallet-usr-info">
                                     <div class="usr-name">
-                                        <span><img src="<?php   echo $profile_pic ?>" alt="admin-profile"
+                                        <span><img src="<?php echo $profile_pic ?>" alt="admin-profile"
                                                 class="img-fluid">
-                                            <?php   echo $fullname ?>
+                                            <?php echo $fullname ?>
                                         </span>
                                     </div>
                                     <div class="add">
@@ -295,9 +295,9 @@
                                 <div class="wallet-balance">
                                     <p>Balance</p>
                                     <h5 class=""><span class="w-currency">
-                                            <?php   echo $currency_type ?>
+                                            <?php echo $currency_type ?>
                                         </span>
-                                        <?php   echo formatNumber($balance) ?>
+                                        <?php echo formatNumber($balance) ?>
                                     </h5>
                                 </div>
                             </div>
@@ -315,7 +315,7 @@
 
                                     <p>
                                         <a class="btn btn-success btn-sm col-12" data-toggle="modal"
-                                            data-target="#exampleModal" >Deposit</a>
+                                            data-target="#exampleModal">Deposit</a>
                                     </p>
                                 </div>
 
@@ -344,14 +344,14 @@
                                             <p>Account Status:</p>
                                             <p><span class="w-currency">
                                                 </span> <span class="bill-amount">
-                                                    
+
                                                     <?php
 
-                                                            if ($account_status == 'active') {
-                                                                echo '<span class="badge outline-badge-success shadow-none col-md-12">Active</span>';
-                                                            } else {
-                                                                echo '<span class="badge outline-badge-danger shadow-none col-md-12">suspended</span>';
-                                                            }
+                                                    if ($account_status == 'active') {
+                                                        echo '<span class="badge outline-badge-success shadow-none col-md-12">Active</span>';
+                                                    } else {
+                                                        echo '<span class="badge outline-badge-danger shadow-none col-md-12">suspended</span>';
+                                                    }
 
                                                     ?>
 
@@ -361,9 +361,9 @@
                                         <div class="info-detail-1">
                                             <p>Limit:</p>
                                             <p><span class="w-currency">
-                                                    <?php  echo $currency_type ?>
+                                                    <?php echo $currency_type ?>
                                                 </span> <span class="bill-amount">
-                                                    <?php  echo $account_limit ?>
+                                                    <?php echo $account_limit ?>
                                                 </span>
                                             </p>
                                         </div>
@@ -378,7 +378,7 @@
 
                                             <p>
                                                 <?php
-                                                    $sql = "
+                                                $sql = "
                                                     (
                                                         SELECT id, amount, date, time, description, status, 'transfer' AS source FROM transfer WHERE user = '$id'
                                                     )
@@ -395,14 +395,14 @@
 
 
 
-                                                        $result = mysqli_query($connection, $sql);
+                                                $result = mysqli_query($connection, $sql);
 
-                                                        if ($result && mysqli_num_rows($result) > 0) {
-                                                            $row = mysqli_fetch_assoc($result);
-                                                            echo " $currency_type " . htmlspecialchars($row['amount']);
-                                                        } else {
-                                                            echo "0.00";
-                                                        }
+                                                if ($result && mysqli_num_rows($result) > 0) {
+                                                    $row = mysqli_fetch_assoc($result);
+                                                    echo " $currency_type " . htmlspecialchars($row['amount']);
+                                                } else {
+                                                    echo "0.00";
+                                                }
                                                 ?>
 
 
@@ -414,22 +414,21 @@
                                         <div class="info-detail-2">
                                             <p>Account Number:</p>
                                             <p class=""><span class="bill-amount text-primary">
-                                                    <?php  echo $account_number ?>
+                                                    <?php echo $account_number ?>
                                                 </span></p>
                                         </div>
 
                                         <div class="info-detail-1">
                                             <p>Kyc:</p>
-                                            <p><span class="w-currency">
-                                                </span> <span class="bill-amount">
-                                                    
+                                            <p><span class="bill-amount" style="text-transform: capitalize;">
+
                                                     <?php
 
-                                                            if ($kyc == 'verified') {
-                                                                echo '<span class="badge outline-badge-success shadow-none col-md-12">verified</span>';
-                                                            } else {
-                                                                echo '<span class="badge outline-badge-danger shadow-none col-md-12">unverified</span>';
-                                                            }
+                                                    if ($kyc == 'verified') {
+                                                        echo '<span class="badge outline-badge-success shadow-none col-md-12">verified</span>';
+                                                    } else {
+                                                        echo '<span class="badge outline-badge-danger shadow-none col-md-12">unverified</span>';
+                                                    }
 
                                                     ?>
 
@@ -503,7 +502,7 @@
                                         <tbody>
 
                                             <?php
-                                                            $sql = "
+                                            $sql = "
                                                             (
                                                                 SELECT amount, time, date, status, description, type, receiver_name FROM transfer WHERE user = '$id'
                                                             )
@@ -519,60 +518,59 @@
                                                             LIMIT 5
                                                             ";
 
-                                                            $statment = mysqli_query($connection, $sql);
+                                            $statment = mysqli_query($connection, $sql);
 
-                                                            if ($statment && mysqli_num_rows($statment) > 0) {
-                                                                $count = 1;
-                                                                while ($row = mysqli_fetch_assoc($statment)) {
-                                                                    echo "<tr>";
-                                                                    echo "<td>" . $count++ . "</td>";
+                                            if ($statment && mysqli_num_rows($statment) > 0) {
+                                                $count = 1;
+                                                while ($row = mysqli_fetch_assoc($statment)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . $count++ . "</td>";
 
-                                                                    // Type with color class
-                                                                    $type = ucfirst(strtolower($row['type']));
-                                                                    $typeClass = ($type === 'Credit') ? 'text-success' : 'text-danger';
-                                                                    echo "<td><div class='td-content product-invoice $typeClass'>" . htmlspecialchars($type) . "</div></td>";
+                                                    // Type with color class
+                                                    $type = ucfirst(strtolower($row['type']));
+                                                    $typeClass = ($type === 'Credit') ? 'text-success' : 'text-danger';
+                                                    echo "<td><div class='td-content product-invoice $typeClass'>" . htmlspecialchars($type) . "</div></td>";
 
-                                                                    // Amount
-                                                                    echo "<td><div class='td-content product-invoice'>" . $currency_type . ' ' . htmlspecialchars($row['amount']) . "</div></td>";
+                                                    // Amount
+                                                    echo "<td><div class='td-content product-invoice'>" . $currency_type . ' ' . htmlspecialchars($row['amount']) . "</div></td>";
 
 
-                                                                    // Receiver name or username fallback
-                                                                    $receiver = (!empty($row['receiver_name'])) ? htmlspecialchars($row['receiver_name']) : htmlspecialchars($username);
-                                                                    echo "<td><div class='td-content product-invoice'>$receiver</div></td>";
+                                                    // Receiver name or username fallback
+                                                    $receiver = (!empty($row['receiver_name'])) ? htmlspecialchars($row['receiver_name']) : htmlspecialchars($username);
+                                                    echo "<td><div class='td-content product-invoice'>$receiver</div></td>";
 
-                                                                    // Description
-                                                                    echo "<td><div class='td-content product-brand'>" . htmlspecialchars($row['description']) . "</div></td>";
+                                                    // Description
+                                                    echo "<td><div class='td-content product-brand'>" . htmlspecialchars($row['description']) . "</div></td>";
 
-                                                                    // Date
-                                                                    echo "<td><div class='td-content product-invoice'>" . htmlspecialchars($row['date']) . "</div></td>";
+                                                    // Date
+                                                    echo "<td><div class='td-content product-invoice'>" . htmlspecialchars($row['date']) . "</div></td>";
 
-                                                                    // Time
-                                                                    echo "<td><div class='td-content pricing'><span>" . htmlspecialchars($row['time']) . "</span></div></td>";
+                                                    // Time
+                                                    echo "<td><div class='td-content pricing'><span>" . htmlspecialchars($row['time']) . "</span></div></td>";
 
-                                                                    // Status badge
-                                                                    $status = strtolower(trim($row['status']));
-                                                                    switch ($status) {
-                                                                        case 'pending':
-                                                                            $badge = '<span class="badge outline-badge-secondary shadow-none col-md-12">Pending</span>';
-                                                                            break;
-                                                                        case 'approved':
-                                                                            $badge = '<span class="badge outline-badge-primary shadow-none col-md-12">Confirmed</span>';
-                                                                            break;
-                                                                        case 'declined':
-                                                                            $badge = '<span class="badge outline-badge-danger shadow-none col-md-12">Declined</span>';
-                                                                            break;
-                                                                        default:
-                                                                            $badge = '<span class="badge outline-badge-dark shadow-none col-md-12">' . htmlspecialchars($row['status']) . '</span>';
-                                                                            break;
-                                                                    }
-                                                                    echo "<td><div class='td-content'><span>$badge</span></div></td>";
+                                                    // Status badge
+                                                    $status = strtolower(trim($row['status']));
+                                                    switch ($status) {
+                                                        case 'pending':
+                                                            $badge = '<span class="badge outline-badge-secondary shadow-none col-md-12">Pending</span>';
+                                                            break;
+                                                        case 'approved':
+                                                            $badge = '<span class="badge outline-badge-primary shadow-none col-md-12">Confirmed</span>';
+                                                            break;
+                                                        case 'declined':
+                                                            $badge = '<span class="badge outline-badge-danger shadow-none col-md-12">Declined</span>';
+                                                            break;
+                                                        default:
+                                                            $badge = '<span class="badge outline-badge-dark shadow-none col-md-12">' . htmlspecialchars($row['status']) . '</span>';
+                                                            break;
+                                                    }
+                                                    echo "<td><div class='td-content'><span>$badge</span></div></td>";
 
-                                                                    echo "</tr>";
-                                                                }
-
-                                                            } else {
-                                                                echo "<tr><td colspan='8' class='dataTables_empty'>No transactions found for this user.</td></tr>";
-                                                            }
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='8' class='dataTables_empty'>No transactions found for this user.</td></tr>";
+                                            }
 
                                             ?>
 
@@ -583,7 +581,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                             </div>
 
 
@@ -730,7 +728,9 @@
                     </div>
                     <div class="footer-wrapper">
                         <div class="footer-section f-section-1">
-                            <p class="">Copyright © <script>document.write(new Date().getFullYear())</script> <?php echo  $sitename ?>, All rights reserved.</p>
+                            <p class="">Copyright © <script>
+                                    document.write(new Date().getFullYear())
+                                </script> <?php echo  $sitename ?>, All rights reserved.</p>
                         </div>
                         <div class="footer-section f-section-2">
                             <p class=""><?php echo  $sitename ?> </p>
@@ -758,7 +758,7 @@
         <script src="../source/plugins/blockui/jquery.blockUI.min.js"></script>
 
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 App.init();
             });
         </script>
@@ -766,6 +766,7 @@
         <script>
             var data = null;
             console.log(data);
+
             function crypto_type(id) {
                 for (var i = 0; i < data.length; i++) {
                     if (id == data[i].id) {
@@ -807,7 +808,7 @@
         <script src="../source/assets/js/components/notification/custom-snackbar.js"></script>
 
 
-        
+
 
 
 

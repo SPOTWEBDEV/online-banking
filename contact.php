@@ -7,7 +7,6 @@ $phoneNumber = $_POST['phone'];
 $subject = $_POST['msg_subject'];
 $message = $_POST['message'];
 
-
 if (!empty($name) && !empty($email) && !empty($phoneNumber) && !empty($subject) && !empty($message) ){
     
 
