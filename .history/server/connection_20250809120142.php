@@ -45,7 +45,7 @@ if ($isLocalhost) {
 
     define("USER", "vgsbo_vangardshieldfins");
     define("PASSWORD", "vgsbo_vangardshieldfins");
-    define("DATABASE", "vgsbo_vgsbo");
+    define("DATABASE", "vgsbo_vangardshieldfins");
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);

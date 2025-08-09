@@ -41,11 +41,11 @@ if ($isLocalhost) {
   
 } else {
     // Online (Live Server)
-    $domain = "https://vgsbo.com/";
+    $domain = "https://quanstofy.com/";
 
-    define("USER", "vgsbo_vangardshieldfins");
-    define("PASSWORD", "vgsbo_vangardshieldfins");
-    define("DATABASE", "vgsbo_vgsbo");
+    define("USER", "vanguar6_vanguardshieldsfin");
+    define("PASSWORD", "vanguar6_vanguardshieldsfin");
+    define("DATABASE", "vanguar6_vanguardshieldsfin");
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
@@ -53,7 +53,7 @@ if ($isLocalhost) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-   
+   vgsbo_vgsbo
 }
 
 // Site configurations

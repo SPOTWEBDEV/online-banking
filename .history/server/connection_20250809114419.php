@@ -41,11 +41,11 @@ if ($isLocalhost) {
   
 } else {
     // Online (Live Server)
-    $domain = "https://vgsbo.com/";
+    $domain = "https://quanstofy.com/";
 
-    define("USER", "vgsbo_vangardshieldfins");
-    define("PASSWORD", "vgsbo_vangardshieldfins");
-    define("DATABASE", "vgsbo_vgsbo");
+    define("USER", "vanguar6_vanguardshieldsfin");
+    define("PASSWORD", "vanguar6_vanguardshieldsfin");
+    define("DATABASE", "vanguar6_vanguardshieldsfin");
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
@@ -62,7 +62,7 @@ $sitename = "Vanguard Shield Bank";
 // Email Config 
 $siteemail = "support@vanguardshield.com";
 $emailpassword  = "support@vgsbo.com";
-$host = 'mail.vgsbo.com';
+$host = 'mail.vg.com';
 $sitephone  = "+44 776 0957 798";
 $siteaddress  = " 221 W 34th St, New York, NY 10001";
 
