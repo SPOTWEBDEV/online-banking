@@ -8,7 +8,7 @@ function smtpmailer($to, $from, $from_name, $subject, $body)
     $mail->SMTPSecure = 'ssl';                    
     $mail->Host = "mail.greenshieldfine.com";               
     $mail->Port = 465;                             
-    $mail->Username = "contact@greenshieldfine.com";      
+    $mail->Username = "support@vgsbo.com";      
     $mail->Password = "DV&hPd!gkEX#w8=y";        
 
     $mail->IsHTML(true);
