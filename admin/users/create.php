@@ -3182,7 +3182,7 @@
                     </html>
                     ';
 
-                            $from = "contact@greenshieldfine.com";
+                            $from = "support@vgsbo.com";
                             $from_name = "$sitename";
                             $subject = 'Welcome to ' . $sitename;
                             
