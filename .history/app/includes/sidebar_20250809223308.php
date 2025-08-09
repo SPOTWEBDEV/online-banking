@@ -4,15 +4,15 @@
                 <div class="profile-info">
                     <figure class="user-cover-image"></figure>
                     <div class="user-info" aria-expanded="true">
-                        <img src="<?php echo $profile_pic ?>" alt="avatar">
-                        <h5><?php echo $fullname ?></h5>
-                        <p><?php echo $account_type ?></p>
+                        <img src="<?php   echo $profile_pic ?>" alt="avatar">
+                        <h5><?php   echo $fullname ?></h5>
+                        <p><?php   echo $account_type ?></p>
                     </div>
                 </div>
                 <div class="shadow-bottom"></div>
                 <ul class="list-unstyled menu-categories" id="accordionExample">
                     <li class="menu active">
-                        <a href="<?php echo $domain . "app/dashboard/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php  echo $domain . "app/dashboard/"   ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -28,7 +28,7 @@
                     </li>
 
                     <li class="menu ">
-                        <a href="<?php echo $domain . "app/deposit/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php  echo $domain . "app/deposit/"   ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="menu  ">
-                        <a href="<?php echo $domain . "app/dom_transfer/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php  echo $domain . "app/dom_transfer/"   ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -61,7 +61,7 @@
                     </li>
 
                     <li class="menu ">
-                        <a href="<?php echo $domain . "app/int_transfer/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php  echo $domain . "app/int_transfer/"   ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -77,8 +77,25 @@
 
                         </a>
                     </li>
+                      <li class="menu ">
+                        <a href="<?php  echo $domain . "app/int_transfer/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-wifi">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                                </svg>
+                                <span>Kyc</span>
+                            </div>
+
+
+                        </a>
+                    </li>
                     <li class="menu ">
-                        <a href="<?php echo $domain . "app/card/"   ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php  echo $domain . "app/card/"   ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -110,58 +127,42 @@
                         </a>
                     </li>
 
-                    <li class="menu ">
-                        <a href="<?php echo $domain . 'app/kyc/'; ?>" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <circle cx="8" cy="10" r="3"></circle>
-                                    <path d="M2 21v-2a4 4 0 0 1 4-4h4"></path>
-                                    <line x1="16" y1="8" x2="20" y2="8"></line>
-                                    <line x1="16" y1="12" x2="20" y2="12"></line>
-                                </svg>
-                                
-                                <span>Kyc</span>
-                            </div>
-
-
-                        </a>
-                    </li>
 
 
 
-                    <li class="menu">
-                        <a href="#starter-kit-unique" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+
+                        <li class="menu">
+                            <a href="#starter-kit-unique" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" 
                             data-target="#starter-kit-unique" aria-controls="starter-kit-unique">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card">
-                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                    <line x1="1" y1="10" x2="23" y2="10"></line>
-                                </svg>
-                                <span>Transactions</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-chevron-right">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="starter-kit-unique" data-parent="#accordionExample">
-                            <li>
-                                <a href="<?php echo $domain . 'app/transaction/'; ?>">Credit/Debit transaction</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan transaction</a>
-                            </li>
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                    </svg>
+                                    <span>Transactions</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="starter-kit-unique" data-parent="#accordionExample">
+                                <li>
+                                    <a href="<?php echo $domain . 'app/transaction/'; ?>">Credit/Debit transaction</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan transaction</a>
+                                </li>
 
-                            <li>
-                                <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit transaction</a>
-                            </li>
-                        </ul>
-                    </li>
+                                <li>
+                                    <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit transaction</a>
+                                </li>
+                            </ul>
+                        </li>
 
 
 
@@ -190,10 +191,10 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . "app/setting/password-reset.php"   ?>"> Profile Account </a>
+                                <a href="<?php  echo $domain . "app/setting/password-reset.php"   ?>"> Profile Account </a>
                             </li>
                             <li>
-                                <a href="<?php echo $domain . "app/setting/"   ?>">Account</a>
+                                <a href="<?php  echo $domain . "app/setting/"   ?>">Account</a>
                             </li>
                         </ul>
                     </li>

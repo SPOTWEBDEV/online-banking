@@ -111,16 +111,16 @@
                     </li>
 
                     <li class="menu ">
-                        <a href="<?php echo $domain . 'app/kyc/'; ?>" aria-expanded="false" class="dropdown-toggle">
+                        <a href="<?php echo $domain . 'app/loan/'; ?>" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <circle cx="8" cy="10" r="3"></circle>
-                                    <path d="M2 21v-2a4 4 0 0 1 4-4h4"></path>
-                                    <line x1="16" y1="8" x2="20" y2="8"></line>
-                                    <line x1="16" y1="12" x2="20" y2="12"></line>
-                                </svg>
-                                
+  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+  <circle cx="8" cy="10" r="3"></circle>
+  <path d="M2 21v-2a4 4 0 0 1 4-4h4"></path>
+  <line x1="16" y1="8" x2="20" y2="8"></line>
+  <line x1="16" y1="12" x2="20" y2="12"></line>
+</svg>
+>
                                 <span>Kyc</span>
                             </div>
 
