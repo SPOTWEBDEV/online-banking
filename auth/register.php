@@ -70,6 +70,11 @@
             border-width: 1px;
             border-color: black;
         }
+
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -394,27 +399,40 @@
 
                                 </div>
 
-                                
+
 
 
                             </div>
 
-                              <div class="row">
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control wizard-required" id="pwd"
-                                            name="acct_password">
+                                    <div class="form-group" style="position: relative;">
+                                        <input type="password" class="form-control wizard-required" id="pwd" name="acct_password">
                                         <label for="pwd" class="wizard-form-text-label">Password*</label>
                                         <div class="wizard-form-error"></div>
-                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="feather feather-lock">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg></span>
 
+                                        <!-- Toggle Eye Icon -->
+                                        <span class="toggle-password" data-target="pwd" style="position: absolute; top: 50%; right: 10px; cursor: pointer;  transform: translateY(-50%);">
+                                            <!-- Eye icon (visible initially) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eye" width="24" height="24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+
+                                            <!-- Eye-off icon (hidden by default) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eye-off hidden" width="24" height="24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24">
+                                                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.14 21.14 0 0 1 5.06-6.06" />
+                                                <path d="M1 1l22 22" />
+                                            </svg>
+
+                                        </span>
                                     </div>
+
+
                                 </div>
 
                                 <div class="col-md-6">
@@ -424,17 +442,29 @@
                                         <label for="confirmPassword" class="wizard-form-text-label">Confirm
                                             Password*</label>
                                         <div class="wizard-form-error"></div>
-                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="feather feather-lock">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg></span>
+                                        <!-- Toggle Eye Icon -->
+                                        <span class="toggle-password" data-target="confirmPassword" style="position: absolute; top: 50%; right: 10px; cursor: pointer;  transform: translateY(-50%);">
+                                            <!-- Eye icon (visible initially) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eye" width="24" height="24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+
+                                            <!-- Eye-off icon (hidden by default) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eye-off hidden" width="24" height="24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24">
+                                                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.14 21.14 0 0 1 5.06-6.06" />
+                                                <path d="M1 1l22 22" />
+                                            </svg>
+
+                                        </span>
                                     </div>
                                 </div>
-                            </div> 
-                            
+                            </div>
+
 
                             <div class="form-group clearfix" style="">
                                 <a href="index.php" style="margin-left:10px;background:red;"
@@ -444,58 +474,7 @@
                         </fieldset>
                         <fieldset class="wizard-fieldset">
                             <h5>Create your login</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="occupation"
-                                            name="acct_email">
-                                        <label for="occupation" class="wizard-form-text-label">occupation*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="username"
-                                            name="username">
-                                        <label for="city" class="wizard-form-text-label">Username*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" class="form-control wizard-required" id="phoneNumber"
-                                            name="phoneNumber">
-                                        <label for="phoneNumber" class="wizard-form-text-label">Phone Number*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="username"
-                                            name="acct_pin">
-                                        <label for="city" class="wizard-form-text-label">Account Pin*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-                                 <h5>Residential Address</h5>
-                            <div class="form-group">
-                                <input type="text" class="form-control wizard-required" id="address" name="address">
-                                <label for="address" class="wizard-form-text-label">Street Address*</label>
-                                <div class="wizard-form-error"></div>
-                            </div>
-
-
+                            <h5>Account Details</h5>
                             <div class="form-group">
                                 <select class="form-control" name="currency" id="currency-select" required>
                                     <option selected disabled>Select Currency</option>
@@ -551,7 +530,14 @@
                                 </select>
                             </div>
 
-                           
+                            <div class="form-group">
+                                <input type="text" class="form-control wizard-required" id="username"
+                                    name="acct_pin">
+                                <label for="city" class="wizard-form-text-label">Account Pin*</label>
+                                <div class="wizard-form-error"></div>
+                            </div>
+
+
 
                             <div class="form-group clearfix">
                                 <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
@@ -819,9 +805,30 @@
         }
     </script>
 
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                const eye = this.querySelector('.icon-eye');
+                const eyeOff = this.querySelector('.icon-eye-off');
+
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    eye.classList.add('hidden');
+                    eyeOff.classList.remove('hidden');
+                } else {
+                    input.type = 'password';
+                    eye.classList.remove('hidden');
+                    eyeOff.classList.add('hidden');
+                }
+
+            });
+        });
+    </script>
+
 
 </body>
 
-<!-- Mirrored from santaaccessfinance.net/signup/verify-registration.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jul 2025 22:34:17 GMT -->
 
 </html>

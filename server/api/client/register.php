@@ -1,144 +1,142 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    header('Content-Type: application/json');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header('Content-Type: application/json');
 
-    include("../../connection.php");
-    include("../../mailer.php");
-   require($_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/PHPMailer/PHPMailerAutoload.php');
-
-    
-
-    function uploadFile($fieldName, $path, $name) {
-        if (!isset($_FILES[$fieldName]) || $_FILES[$fieldName]['error'] !== UPLOAD_ERR_OK) {
-            return null; // file is optional
-        }
-
-        $file = $_FILES[$fieldName];
-        $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $name);
-        $filename = $safeName . '_' . time() . '.' . $ext;
-        $destination = rtrim($path, '/') . '/' . $filename;
-
-        if (!is_dir($path)) {
-            mkdir($path, 0755, true);
-        }
-
-        if (move_uploaded_file($file['tmp_name'], $destination)) {
-            return $filename; // return filename only, store in DB
-        }
-
-        return null;
-    }
-
- 
-    function generateRandom10DigitNumber() {
-            return mt_rand(1000000000, 9999999999);
-    }
-
-    // Example usage
-    $accountnumber = generateRandom10DigitNumber();
-        
-
-    if (isset($_POST['url'])) {
-
-        $url = $_POST['url'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $occupation = $_POST['occupation'];
-        $country = $_POST['country'];
-        $gender = $_POST['radio-name'];
-        $address = $_POST['address'];
-        $email = $_POST['acct_email'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $username = $_POST['username'];
-        $pin = $_POST['acct_pin'];
-        $password = $_POST['acct_password'];
-        $confirmPassword = $_POST['confirmPassword'];
-        $ssn = $_POST['ssn'];
-        $confirmSsn = $_POST['confirm-ssn'];
-        $dob = $_POST['dob'];
-        $currency = $_POST['currency'];
-        $account_type = $_POST['account-type'];
-        $date = date('Y-m-d H:i:s');
-        $status = 'active'; // Default status
+include("../../connection.php");
+include("../../mailer.php");
+require($_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/PHPMailer/PHPMailerAutoload.php');
 
 
-        if ($url == $domain . 'auth/register.php') {
 
-            if ($password === $confirmPassword && $ssn === $confirmSsn) {
+function uploadFile($fieldName, $path, $name)
+{
+  if (!isset($_FILES[$fieldName]) || $_FILES[$fieldName]['error'] !== UPLOAD_ERR_OK) {
+    return null; // file is optional
+  }
 
-                // Hash sensitive data
-                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                $ssnHash = password_hash($ssn, PASSWORD_DEFAULT);
+  $file = $_FILES[$fieldName];
+  $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+  $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $name);
+  $filename = $safeName . '_' . time() . '.' . $ext;
+  $destination = rtrim($path, '/') . '/' . $filename;
 
-                // Set optional values or null
-                $balance = '0';  // Default balance
+  if (!is_dir($path)) {
+    mkdir($path, 0755, true);
+  }
 
-                // Step 1: Check if email already exists
-                $stmt = $connection->prepare("SELECT id FROM users WHERE email = ?");
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-                $stmt->store_result();
+  if (move_uploaded_file($file['tmp_name'], $destination)) {
+    return $filename; // return filename only, store in DB
+  }
 
-                if ($stmt->num_rows > 0) {
-                    echo json_encode([
-                        'message' => 'This email is already registered. Please use another email!',
-                        'status' => 'error'
-                    ]);
-                    $stmt->close();
-                    exit();
-                }
-                $stmt->close();
+  return null;
+}
 
-                // Step 2: Upload file BEFORE inserting user
-                $profilePic = uploadFile('profile', '../../../upload/profiles/', $email);
 
-                // Step 3: Insert new user record
-                $insert_stmt = $connection->prepare("
+function generateRandom10DigitNumber()
+{
+  return mt_rand(1000000000, 9999999999);
+}
+
+// Example usage
+$accountnumber = generateRandom10DigitNumber();
+
+
+if (isset($_POST['url'])) {
+
+  $url = $_POST['url'];
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $country = $_POST['country'];
+  $email = $_POST['acct_email'];
+  $phoneNumber = $_POST['phoneNumber'];
+  $pin = $_POST['acct_pin'];
+  $password = $_POST['acct_password'];
+  $confirmPassword = $_POST['confirmPassword'];
+  $ssn = $_POST['ssn'];
+  $confirmSsn = $_POST['confirm-ssn'];
+  $dob = $_POST['dob'];
+  $currency = $_POST['currency'];
+  $account_type = $_POST['account-type'];
+  $date = date('Y-m-d H:i:s');
+  $status = 'active'; // Default status
+
+
+  if ($url == $domain . 'auth/register.php') {
+
+    if ($password === $confirmPassword && $ssn === $confirmSsn) {
+
+      // Hash sensitive data
+      $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+      $ssnHash = password_hash($ssn, PASSWORD_DEFAULT);
+
+      // Set optional values or null
+      $balance = '0';  // Default balance
+
+      // Step 1: Check if email already exists
+      $stmt = $connection->prepare("SELECT id FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $stmt->store_result();
+
+      if ($stmt->num_rows > 0) {
+        echo json_encode([
+          'message' => 'This email is already registered. Please use another email!',
+          'status' => 'error'
+        ]);
+        $stmt->close();
+        exit();
+      }
+      $stmt->close();
+
+      // Step 2: Upload file BEFORE inserting user
+      $profilePic = uploadFile('profile', '../../../upload/profiles/', $email);
+
+      // Step 3: Insert new user record
+      $insert_stmt = $connection->prepare("
                     INSERT INTO users 
                     (username, email, `password`, pin, firstname, lastname,occupation, country, address, gender, balance, phone, ssn, profile,currency,status,account_number,birth,account_type,date_created) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)
                 ");
 
-                if (!$insert_stmt) {
-                    echo json_encode([
-                        'message' => 'Failed to prepare insert statement.',
-                        'status' => 'error'
-                    ]);
-                    exit();
-                }
+      if (!$insert_stmt) {
+        echo json_encode([
+          'message' => 'Failed to prepare insert statement.',
+          'status' => 'error'
+        ]);
+        exit();
+      }
 
-                $insert_stmt->bind_param(
-                    "ssssssssssssssssssss",
-                    $username,
-                    $email,
-                    $passwordHash,
-                    $pin,
-                    $firstname,
-                    $lastname,
-                    $occupation,
-                    $country,
-                    $address,
-                    $gender,
-                    $balance,
-                    $phoneNumber,
-                    $ssn,
-                    $profilePic,
-                    $currency,
-                    $status,
-                    $accountnumber,
-                    $dob,
-                    $account_type,
-                    $date
-                );
+      $insert_stmt->bind_param(
+        "ssssssssssssssssssss",
+        $username,
+        $email,
+        $passwordHash,
+        $pin,
+        $firstname,
+        $lastname,
+        $occupation,
+        $country,
+        $address,
+        $gender,
+        $balance,
+        $phoneNumber,
+        $ssn,
+        $profilePic,
+        $currency,
+        $status,
+        $accountnumber,
+        $dob,
+        $account_type,
+        $date
+      );
 
-                if ($insert_stmt->execute()) {
-                    
-                    
-                    
-                    
-                    $message = '
+      if ($insert_stmt->execute()) {
+
+
+
+
+        $message = '
                     <!DOCTYPE html>
                     <html lang="en">
                     <head>
@@ -232,67 +230,47 @@
 
 
 
-                            $from = "contact@greenshieldfine.com";
-                            $from_name = "$sitename";
-                            $subject = 'Welcome to ' . $sitename;
-                            
-                            $result = smtpmailer($email, $from, $from_name, $subject, $message);
-                            
-                            if ($result) {
-                                
-                                echo json_encode(['message' => 'User registered successfully.','status' => 'success']);
-                                
-                            }else{
-                                
-                                echo json_encode(['message' => 'User registered successfully email not sent.','status' => 'success']);
-                                
-                            }
+        $from = "contact@greenshieldfine.com";
+        $from_name = "$sitename";
+        $subject = 'Welcome to ' . $sitename;
 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                } else {
-                    echo json_encode([
-                        'message' => 'Unable to register, please try again later.',
-                        'status' => 'error'
-                    ]);
-                }
+        $result = smtpmailer($email, $from, $from_name, $subject, $message);
 
-                $insert_stmt->close();
-                $connection->close();
-                exit();
+        if ($result) {
 
-            } else {
-                echo json_encode([
-                    'message' => 'Password or SSN does not match',
-                    'status' => 'error'
-                ]);
-                exit();
-            }
-
+          echo json_encode(['message' => 'User registered successfully.', 'status' => 'success']);
         } else {
-            echo json_encode([
-                'message' => 'Access Denied! You are not allowed to access this page directly.',
-                'status' => 'error'
-            ]);
-            exit();
+
+          echo json_encode(['message' => 'User registered successfully email not sent.', 'status' => 'success']);
         }
-    } else {
+      } else {
         echo json_encode([
-            'message' => 'No data posted.',
-            'status' => 'error'
+          'message' => 'Unable to register, please try again later.',
+          'status' => 'error'
         ]);
-        exit();
+      }
+
+      $insert_stmt->close();
+      $connection->close();
+      exit();
+    } else {
+      echo json_encode([
+        'message' => 'Password or SSN does not match',
+        'status' => 'error'
+      ]);
+      exit();
     }
-?>
+  } else {
+    echo json_encode([
+      'message' => 'Access Denied! You are not allowed to access this page directly.',
+      'status' => 'error'
+    ]);
+    exit();
+  }
+} else {
+  echo json_encode([
+    'message' => 'No data posted.',
+    'status' => 'error'
+  ]);
+  exit();
+}
