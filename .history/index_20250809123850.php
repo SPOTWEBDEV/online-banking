@@ -179,7 +179,11 @@
                             <div class="form-group form-btn"><button type="submit"
                                     class="btn style1 w-100 d-block">Get Estimation</button></div>
                         </div>
-                     
+                        <div class="col-lg-12">
+                            <p><span>82.50</span> Exchange Rate <span>$5.50</span> Transition Fees</p>
+                            <p>By clicking continue, I am agree with <a href="./terms-of-service"
+                                    class="link style1">Terms &amp; Policy</a></p>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -243,7 +247,7 @@
                             <div class="content-title style1">
                                 <span>Why Choose Us</span>
                                 <h2>Experience World-Class & Fastest Online Payment Services</h2>
-                                <p>At <?php echo $domain ?> Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
+                                <p>At UnityPeaks Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
                             </div>
                             <div class="feature-item-wrap">
                                 <div class="feature-item">
@@ -281,7 +285,7 @@
                 <div class="counter-card-wrap">
                     <div class="counter-card">
                         <div class="counter-text">
-                            <div class="counter-num"><span>54300</span></div>
+                            <div class="counter-num"><span>5430</span></div>
                             <p>Happy Customers</p>
                         </div>
                     </div>
@@ -543,7 +547,8 @@
                                     <li><i class="flaticon-calendar"></i>02 Jan, 2022</li>
                                 </ul>
                                 <h3><a href="" class="">5 Things To Know About Your
-                                        Online Banking</a>
+                                        Online Banking</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -557,7 +562,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">Tips For Saving Money &amp;
-                                        Better Investment Policy</a>
+                                        Better Investment Policy</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -571,7 +577,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">The Fedaral Bank Appoints
-                                        New Director To The Board</a>
+                                        New Director To The Board</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>

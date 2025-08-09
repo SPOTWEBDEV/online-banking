@@ -179,7 +179,11 @@
                             <div class="form-group form-btn"><button type="submit"
                                     class="btn style1 w-100 d-block">Get Estimation</button></div>
                         </div>
-                     
+                        <div class="col-lg-12">
+                            <p><span>82.50</span> Exchange Rate <span>$5.50</span> Transition Fees</p>
+                            <p>By clicking continue, I am agree with <a href="./terms-of-service"
+                                    class="link style1">Terms &amp; Policy</a></p>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -193,7 +197,7 @@
                                 <div class="feature-title"><span><img
                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQ9SURBVHgB7ZhdaBxVFMf/d2Z2bVKsKxFTpdrdBxvEQra0tJAgmSS0WlpxrVWUgtk3g2jdPgX0Iakvog+lL0qebAMa8aMYqJq+LNk8VBdtbBQqhoqzKEZJmnRFkm5sdq7nzrKbuMlmZu4dpCX5weXuzv06Z849Z869wAYbrG8YAsQ0zYiu612cc5P+xqlEl7fbtt2eIRAgBgKis7PzVRK8j0qkVh9SrpeqDAIkEAt0dHQIwfo8ds9RyZA1TpIxclBEhyI+hRcIC8UZY8lYLLZgWVYWCihZgPZ8XNO0y1CAFHkqnU4PQRINCpDwn0ER8pkzwvkhibQCtKiJqihTi+YHNHS1hjD4Yp1TVxGhF5GAJNJRiEy/5qJC6PiDOh7baaBxy9J7eqEl7NQDF28u795G5SwkUAmjzSse1BC6mlWUMCGJigLiQ+VZ6GqqlJD2AZUt5Cx66rk6yCKUUFVAKQrdCqxPBfjgjq7W7TcQFM33LYB/tKMLEshZgKHvjQMzK2L62+/94JRarNb+9G4Dpw5PU6qK05BAdgs5TleOJEswrJ2drGx/qeOO8s88JJDKhfiHDyVpaC8iTVEEQX6ChOcn2PNXz8InSskcH37Cgsd0orYEfJw9/vkuSKIWhTgfhSqcjUMBNQWYXP5SNYd0Kl0arggfPjxC05iQI8cOno9BAfUPmW6cgFwEoTF6OxRRVoAdGBqn03o7/CmRF2PYwaEcFAnsWoUPJ6JY/NuCUb92x8I1YHPjLkfxAAj0Xoj3g6N+K1BHJbyFyl2lhsV5EnwGmPvNqVl3cOsGdi9UYf7PUvmfuO2zUWULHE31mNxmCQ3sySt79+ORu/8Crn0PTGaAWdrmYUqbGujwdr8J3Lkdlt2EZ46/b9kcGaYXBz49/VYGCkjvRSE4ilovHc3M8rNDbS1IHjlU6TPV3+/U93Z3V56988E5ZL75bmkizjPQ7ZOyivi+mUukUpGd+zrfpBSgn4SPLm+bnJrG/tZ9CIcMR3hR5i5dcto279mDqdnreHfw3H8nFHNwLfnw3kejTS27R3/KZgvwgS8fSKR6oiG7/jK9tdRq7XM3Cvgic7Hm+B+vWjXbGENSzJ3o7onCB54VKAmvj3CX7PPL0a+cuuHYscqz8u+PL6TXGgoxdyisjwgrwyOendgoamc4c0+dhRWu/Gwhmp+pPLs5OYmxBRvTs+4fa6GEUawTV5ae0gxPFjjyymvJ5c7qxifDafxDQpcpTEyQ447BM7TWs8df93RG9mQBnaGXwzvCArPX/6j8//XrLL6d9xfwOHgfVQNu/Vwt4MR5iVPXhbGlw/v5X36HX8SaR1+mUO2CqwLc1qVujrPbYigYJQPnIg2QgWvMdW3XLcQ4bxYxzi8FI4Txxm3YVFxEfpPc9SNdX7a59XH3AcbikGTinq2OItJwFnXr4sWJpS9eZbdOEGtvsMF64V8l0Uot9AJg9gAAAABJRU5ErkJggg=="
                                             alt="Image"></span>
-                                    <h3>Create Your Account</h3>
+                                    <h3>Create Your UnAccount</h3>
                                 </div>
                                 <p>Sign up quickly and securely to access our full range of financial services tailored just for you.</p>
                             </div>
@@ -243,7 +247,7 @@
                             <div class="content-title style1">
                                 <span>Why Choose Us</span>
                                 <h2>Experience World-Class & Fastest Online Payment Services</h2>
-                                <p>At <?php echo $domain ?> Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
+                                <p>At UnityPeaks Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
                             </div>
                             <div class="feature-item-wrap">
                                 <div class="feature-item">
@@ -281,7 +285,7 @@
                 <div class="counter-card-wrap">
                     <div class="counter-card">
                         <div class="counter-text">
-                            <div class="counter-num"><span>54300</span></div>
+                            <div class="counter-num"><span>5430</span></div>
                             <p>Happy Customers</p>
                         </div>
                     </div>
@@ -543,7 +547,8 @@
                                     <li><i class="flaticon-calendar"></i>02 Jan, 2022</li>
                                 </ul>
                                 <h3><a href="" class="">5 Things To Know About Your
-                                        Online Banking</a>
+                                        Online Banking</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -557,7 +562,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">Tips For Saving Money &amp;
-                                        Better Investment Policy</a>
+                                        Better Investment Policy</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -571,7 +577,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">The Fedaral Bank Appoints
-                                        New Director To The Board</a>
+                                        New Director To The Board</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
