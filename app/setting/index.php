@@ -2448,16 +2448,8 @@ include('../../server/authorization/user/index.php');
                                                                         </div>
                                                                     </div>
                                                                 </center>
-                                                                <p class="mt-2">
-                                                                    <i class="flaticon-cloud-upload mr-1"></i>
-                                                                    Upload Picture
-                                                                </p>
-                                                                <div class="form-group text-center">
-                                                                    <button class="btn btn-primary"
-                                                                        name="upload_picture">
-                                                                        Save
-                                                                    </button>
-                                                                </div>
+                                                            
+                                                               
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
@@ -2591,7 +2583,7 @@ include('../../server/authorization/user/index.php');
             <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
                     <p class="">
-                        Copyright © 2021 <?php echo  $sitename ?>, All rights reserved.
+                        Copyright © </i><script>document.write( new Date().getFullYear())</script> <?php echo  $sitename ?>, All rights reserved.
                     </p>
                 </div>
                 <div class="footer-section f-section-2">

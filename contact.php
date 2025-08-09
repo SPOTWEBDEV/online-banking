@@ -1,4 +1,32 @@
-<?php  include('./server/connection.php')   ?>
+<?php  include('./server/connection.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$name = $_POST['name'];
+$email = $_POST['email'];
+$phoneNumber = $_POST['phone'];
+$subject = $_POST['msg_subject'];
+$message = $_POST['message'];
+
+
+if (!empty($name) && !empty($email) && !empty($phoneNumber) && !empty($subject) && !empty($message) ){
+    
+
+
+
+
+
+}else{
+    echo "<script>alert('input is required')</script>";
+}
+
+
+
+
+   
+}
+
+
+?>
 
 <html lang="">
 
@@ -101,38 +129,45 @@
                                         <h2>Do You have Any Questions?</h2>
                                     </div>
                                     <div class="contact-form">
-                                        <form class="form-wrap">
+                                        <form id="myform" method="post" class="form-wrap">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group"><input type="text" name="name"
-                                                            placeholder="Your Name*" id="name" required=""
+                                                            placeholder="Your Name*" id="name" 
                                                             data-error="Please enter your name"></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group"><input type="email" name="email" id="email"
-                                                            required="" placeholder="Your Email*"
+                                                            placeholder="Your Email*"
                                                             data-error="Please enter your email*"></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group"><input type="number" name="phone" id="phone"
-                                                            required="" placeholder="Phone Number"
+                                                            placeholder="Phone Number"
                                                             data-error="Please enter your phone number"></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group"><input type="text" name="msg_subject"
-                                                            placeholder="Subject" id="msg_subject" required=""
+                                                            placeholder="Subject" id="msg_subject" 
                                                             data-error="Please enter your subject"></div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group v1"><textarea name="message" id="message"
                                                             placeholder="Your Messages.." cols="30" rows="10"
-                                                            required=""
+                                                            
                                                             data-error="Please enter your message"></textarea></div>
                                                 </div>
                                                 <div class="col-md-12 text-center"><button type="submit"
                                                         class="btn style1 w-100 d-block">Send Message </button></div>
                                             </div>
+                                            
                                         </form>
+                                        <script>
+                                            document.getElementById("myForm").addEventListener("submit", function(e) {
+                                                e.preventDefault(); 
+                                                
+                                            });
+</script>
                                     </div>
                                 </div>
                             </div>
