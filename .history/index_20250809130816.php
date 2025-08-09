@@ -179,7 +179,11 @@
                             <div class="form-group form-btn"><button type="submit"
                                     class="btn style1 w-100 d-block">Get Estimation</button></div>
                         </div>
-                     
+                        <div class="col-lg-12">
+                            <p><span>82.50</span> Exchange Rate <span>$5.50</span> Transition Fees</p>
+                            <p>By clicking continue, I am agree with <a href="./terms-of-service"
+                                    class="link style1">Terms &amp; Policy</a></p>
+                        </div>
                     </div>
                 </form>
             </div>
