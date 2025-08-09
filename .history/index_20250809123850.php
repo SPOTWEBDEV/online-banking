@@ -247,7 +247,7 @@
                             <div class="content-title style1">
                                 <span>Why Choose Us</span>
                                 <h2>Experience World-Class & Fastest Online Payment Services</h2>
-                                <p>At <?php echo $domain ?> Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
+                                <p>At UnityPeaks Finance, we provide secure, reliable, and instant banking solutions tailored to meet your financial needs. Join thousands of satisfied customers who trust us for seamless money transfers and smart financial management.</p>
                             </div>
                             <div class="feature-item-wrap">
                                 <div class="feature-item">
@@ -547,7 +547,8 @@
                                     <li><i class="flaticon-calendar"></i>02 Jan, 2022</li>
                                 </ul>
                                 <h3><a href="" class="">5 Things To Know About Your
-                                        Online Banking</a>
+                                        Online Banking</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -561,7 +562,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">Tips For Saving Money &amp;
-                                        Better Investment Policy</a>
+                                        Better Investment Policy</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>
@@ -575,7 +577,8 @@
                                     <li><i class="flaticon-calendar"></i>12 Dec, 2021</li>
                                 </ul>
                                 <h3><a href="" class="">The Fedaral Bank Appoints
-                                        New Director To The Board</a>
+                                        New Director To The Board</a></h3><a href=""
+                                    class="link style1">Read More <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </div>

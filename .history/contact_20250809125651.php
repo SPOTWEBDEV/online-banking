@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="comp-map pb-100"><iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193571.43834027767!2d-74.11808602740372!3d40.70582544158339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xefe4a94f4d8b0bdf!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1691095693210!5m2!1sen!2sus" ></iframe>
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.7845766606694!2d-77.70140448459447!3d43.13283467913757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6c4dbe785d2c1%3A0x66a0edb6d7a84231!2s2130%20Chili%20Ave%2C%20Rochester%2C%20NY%2014624%2C%20USA!5e0!3m2!1sen!2sus!4v1691095693210!5m2!1sen!2sus"></iframe>
                         </div>
                     </div>
                     <div class="contact-form-area ptb-100 bg-albastor"><img
