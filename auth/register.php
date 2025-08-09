@@ -128,12 +128,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="occupation"
-                                            name="occupation">
-                                        <label for="occupation" class="wizard-form-text-label">Occupation</label>
+                                        <input type="email" class="form-control wizard-required" id="Email"
+                                            name="Email">
+                                        <label for="Email" class="wizard-form-text-label">Email</label>
                                         <div class="wizard-form-error"></div>
                                     </div>
                                 </div>
+
+
+
 
                                 <div class="col-md-6">
 
@@ -390,20 +393,102 @@
                                     </div>
 
                                 </div>
+
+                                
+
+
                             </div>
-                            <div class="form-group">
-                                Gender
-                                <div class="wizard-form-radio">
-                                    <input name="radio-name" id="radio1" type="radio" value="male">
-                                    <label for="radio1">Male</label>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control wizard-required" id="pwd"
+                                            name="acct_password">
+                                        <label for="pwd" class="wizard-form-text-label">Password*</label>
+                                        <div class="wizard-form-error"></div>
+                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-lock">
+                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                            </svg></span>
+
+                                    </div>
                                 </div>
-                                <div class="wizard-form-radio">
-                                    <input name="radio-name" id="radio2" type="radio" value="female">
-                                    <label for="radio2">Female</label>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control wizard-required" id="confirmPassword"
+                                            name="confirmPassword">
+                                        <label for="confirmPassword" class="wizard-form-text-label">Confirm
+                                            Password*</label>
+                                        <div class="wizard-form-error"></div>
+                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-lock">
+                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                            </svg></span>
+                                    </div>
+                                </div>
+                            </div> 
+                            
+
+                            <div class="form-group clearfix" style="">
+                                <a href="index.php" style="margin-left:10px;background:red;"
+                                    class="form-wizard-next-btn">Back To Login</a>
+                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                            </div>
+                        </fieldset>
+                        <fieldset class="wizard-fieldset">
+                            <h5>Create your login</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control wizard-required" id="occupation"
+                                            name="acct_email">
+                                        <label for="occupation" class="wizard-form-text-label">occupation*</label>
+                                        <div class="wizard-form-error"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control wizard-required" id="username"
+                                            name="username">
+                                        <label for="city" class="wizard-form-text-label">Username*</label>
+                                        <div class="wizard-form-error"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <h5>Residential Address</h5>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control wizard-required" id="phoneNumber"
+                                            name="phoneNumber">
+                                        <label for="phoneNumber" class="wizard-form-text-label">Phone Number*</label>
+                                        <div class="wizard-form-error"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control wizard-required" id="username"
+                                            name="acct_pin">
+                                        <label for="city" class="wizard-form-text-label">Account Pin*</label>
+                                        <div class="wizard-form-error"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                                 <h5>Residential Address</h5>
                             <div class="form-group">
                                 <input type="text" class="form-control wizard-required" id="address" name="address">
                                 <label for="address" class="wizard-form-text-label">Street Address*</label>
@@ -466,91 +551,7 @@
                                 </select>
                             </div>
 
-
-                            <div class="form-group clearfix" style="">
-                                <a href="index.php" style="margin-left:10px;background:red;"
-                                    class="form-wizard-next-btn">Back To Login</a>
-                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
-                            </div>
-                        </fieldset>
-                        <fieldset class="wizard-fieldset">
-                            <h5>Create your login</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="phoneNumber"
-                                            name="acct_email">
-                                        <label for="phoneNumber" class="wizard-form-text-label">Email*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="username"
-                                            name="username">
-                                        <label for="city" class="wizard-form-text-label">Username*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" class="form-control wizard-required" id="phoneNumber"
-                                            name="phoneNumber">
-                                        <label for="phoneNumber" class="wizard-form-text-label">Phone Number*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control wizard-required" id="username"
-                                            name="acct_pin">
-                                        <label for="city" class="wizard-form-text-label">Account Pin*</label>
-                                        <div class="wizard-form-error"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control wizard-required" id="pwd"
-                                            name="acct_password">
-                                        <label for="pwd" class="wizard-form-text-label">Password*</label>
-                                        <div class="wizard-form-error"></div>
-                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="feather feather-lock">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg></span>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control wizard-required" id="confirmPassword"
-                                            name="confirmPassword">
-                                        <label for="confirmPassword" class="wizard-form-text-label">Confirm
-                                            Password*</label>
-                                        <div class="wizard-form-error"></div>
-                                        <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="feather feather-lock">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg></span>
-                                    </div>
-                                </div>
-                            </div>
+                           
 
                             <div class="form-group clearfix">
                                 <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
