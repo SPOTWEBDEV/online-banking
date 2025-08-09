@@ -60,7 +60,7 @@ if ($isLocalhost) {
 $sitename = "Vanguard Shield Bank";
 
 // Email Config 
-$siteemail = "support@vgsbo.com";
+$siteemail = "support@vgsbo.com"
 $emailpassword  = "support@vgsbo.com";
 $host = 'mail.vgsbo.com';
 $sitephone  = "+44 776 0957 798";
