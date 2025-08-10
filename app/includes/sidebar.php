@@ -6,7 +6,7 @@
                     <div class="user-info" aria-expanded="true">
                         <img src="<?php echo $profile_pic ?>" alt="avatar">
                         <h5><?php echo $fullname ?></h5>
-                        <p><?php echo $account_type ?></p>
+                        <p><?php echo $account_type ?> Account</p>
                     </div>
                 </div>
                 <div class="shadow-bottom"></div>
