@@ -9,10 +9,20 @@ $message = $_POST['message'];
 
 if (!empty($name) && !empty($email) && !empty($phoneNumber) && !empty($subject) && !empty($message) ){
     
+    $statement = "INSERT INTO `contact_us`(name, email, phone_number, subject, message) VALUES(?, ?, ?, ?, ?)";
 
+    if ($statement) {
+        $query = mysqli_prepare($connection, $statement);
+        mysqli_stmt_bind_param($query, "sssss", $name, $email, $phoneNumber, $subject, $message );
 
-
-
+      if (mysqli_stmt_execute($query)) {
+          echo "<script>alert('submited successfully')</script>";
+          mysqli_stmt_close($query);
+      }
+    }else{
+       die('couldnt fetch any data');
+    }
+  
 
 }else{
     echo "<script>alert('input is required')</script>";
