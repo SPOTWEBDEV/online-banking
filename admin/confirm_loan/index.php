@@ -2439,7 +2439,7 @@
 
                                                                         <tr role="row">
                                                                             <td class="sorting_1">1</td>
-                                                                            <td><?php  echo $data['username']?></td>
+                                                                            <td><?php  echo $data['firstname']?></td>
                                                                             <td><?php  echo $data['email']?></td>
                                                                             <td><?php  echo $data['currency'],$data['amount']?></td>
                                                                             <td><?php  echo $data['description']?></td>
