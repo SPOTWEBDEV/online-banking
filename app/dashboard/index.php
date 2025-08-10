@@ -482,7 +482,7 @@ include('../../server/authorization/user/index.php');
                                                 </th>
 
                                                 <th>
-                                                    <div class="th-content th-heading">SENDER/RECEIVER</div>
+                                                    <div class="th-content th-heading">RECEIVER NAME</div>
                                                 </th>
 
                                                 <th>

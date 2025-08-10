@@ -2466,7 +2466,7 @@ $transfer_id = $_GET['id'];
 
                                                 // Block user if 3 successful transfers
                                                 if ($transferCount >= 3) {
-                                                    $msg = "Your account has been suspended after reaching 3 successful transfers.";
+                                                    $msg = "Your account has been suspended due to recent transactions on your account. <br><br>Please <strong>contact our abuse and fraud team</strong> by visiting the <a style=\" border-bottom:2px solid; color:red \" href=\"$domain/contact.php\">Contact Page</a> or using the <strong>live support</strong> at the bottom right of this page";
                                                     $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
                                                     $suspend->bind_param("si", $msg, $user_id);
                                                     $suspend->execute();
@@ -2476,7 +2476,7 @@ $transfer_id = $_GET['id'];
                         Swal.fire({
                             icon: 'warning',
                             title: 'Account Suspended',
-                            text: '$msg',
+                            html: '$msg',
                             confirmButtonText: 'OK',
                         });
                     </script>";
@@ -2496,7 +2496,7 @@ $transfer_id = $_GET['id'];
 
                                                 // Block user after 3 failed attempts
                                                 if ($wrong_attempts >= 3) {
-                                                    $msg = "Your account has been suspended after 3 incorrect PIN attempts.";
+                                                    $msg = "Your account has been suspended due to too many incorrect pin attempts. <br><br>Please <strong>contact our abuse and fraud team</strong> by visiting the <a style=\" border-bottom:2px solid ; color:red\" href=\"$domain/contact.php\">Contact Page</a> or using the <strong>live support</strong> at the bottom right of this page";
                                                     $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
                                                     $suspend->bind_param("si", $msg, $user_id);
                                                     $suspend->execute();
@@ -2506,11 +2506,10 @@ $transfer_id = $_GET['id'];
                         Swal.fire({
                             icon: 'error',
                             title: 'Account Suspended',
-                            text: '$msg',
+                            html: '$msg',
                             confirmButtonText: 'OK',
                         });
                     </script>";
-                                                    
                                                 }
 
                                                 echo "<script>
@@ -2521,7 +2520,6 @@ $transfer_id = $_GET['id'];
                         confirmButtonText: 'OK',
                     });
                 </script>";
-                                              
                                             }
                                         } else {
                                             echo "<script>
