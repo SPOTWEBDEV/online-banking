@@ -151,14 +151,14 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit-unique" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . 'app/transaction/'; ?>">Credit/Debit transaction</a>
+                                <a href="<?php echo $domain . 'app/Transaction/'; ?>">Credit/Debit Transaction</a>
                             </li>
                             <li>
-                                <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan transaction</a>
+                                <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan Transaction</a>
                             </li>
 
                             <li>
-                                <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit transaction</a>
+                                <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit Transaction</a>
                             </li>
                         </ul>
                     </li>

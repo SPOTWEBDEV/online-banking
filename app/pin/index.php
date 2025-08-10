@@ -2450,13 +2450,13 @@ $transfer_id = $_GET['id'];
                                                 $resetAttempts->close();
 
                                                 // Update transfer count
-                                                $updateTransfer = $connection->prepare("UPDATE transfer SET transfer_count = transfer_count + 1 WHERE user_id = ?");
+                                                $updateTransfer = $connection->prepare("UPDATE users SET transfer_count = transfer_count + 1 WHERE id = ?");
                                                 $updateTransfer->bind_param("i", $user_id);
                                                 $updateTransfer->execute();
                                                 $updateTransfer->close();
 
                                                 // Fetch new transfer count
-                                                $countQuery = $connection->prepare("SELECT transfer_count FROM transfer WHERE user_id = ?");
+                                                $countQuery = $connection->prepare("SELECT transfer_count FROM users WHERE id = ?");
                                                 $countQuery->bind_param("i", $user_id);
                                                 $countQuery->execute();
                                                 $countResult = $countQuery->get_result();

@@ -2399,8 +2399,91 @@ include('../../server/authorization/user/index.php');
                             <div class="row">
 
 
+
+
                                 <div class="col-xl-12 col-lg-6 col-md-6 layout-spacing">
+                                    <div class="section m-2 p-2  <?php echo ($kyc == 'verified') ? 'bg-success' : 'bg-danger'  ?> text-white border-0">
+
+                                        <?php
+
+                                        if ($kyc == 'submited') {
+                                            echo "You have already submitted your KYC details, please wait for verification";
+                                            
+                                        } elseif ($kyc == 'verified') {
+                                            echo 'You have been verified';
+                                            
+                                        } elseif ($kyc == 'unverified') {
+                                            echo 'Your KYC status is not verified, please update your details';
+                                        } elseif ($kyc == 'pending') {
+                                            echo 'Your KYC details are pending verification';
+                                            
+                                        } elseif ($kyc == 'rejected') {
+                                            echo 'Your KYC details have been rejected, please update your details';
+                                        } else {
+                                            echo 'You have not submitted your KYC details yet';
+                                        }
+
+
+
+                                        ?>
+
+                                    </div>
                                     <?php
+
+                                    if ($kyc == 'unverified' || $kyc == 'pending' || $kyc == 'rejected') { ?>
+
+                                        <form class="section about" method="post">
+
+                                            <div class="info">
+                                                <h5 class="">Kyc Verification</h5>
+                                                <div class="row">
+                                                    <div class="col-md-11 mx-auto">
+                                                        <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <input type="text" class="form-control mb-4"
+                                                                name="FirstName" placeholder="First Name" value="<?php echo $first_name ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input type="text" class="form-control mb-4"
+                                                                name="LastName" placeholder="Last  Name" value="<?php echo $last_name ?>" />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Phone Number e.g (+134...)</label>
+                                                            <input type="number" class="form-control mb-4"
+                                                                name="PhoneNumber" placeholder="Phone Number" value="<?php echo $phone ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>City</label>
+                                                            <input type="text" class="form-control mb-4"
+                                                                name="City" placeholder="City" value="<?php echo $city ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Address</label>
+                                                            <input type="text" class="form-control mb-4"
+                                                                name="text" placeholder="Address" value="<?php echo $address ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>occupation</label>
+                                                            <input type="text" class="form-control mb-4"
+                                                                name="occupation" placeholder="occupation " value="<?php echo $occupation ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary" name="update_kyc" type="submit">
+                                                                Submit
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                    <?php }
+
+
+
                                     if (isset($_POST['update_kyc'])) {
                                         $first_name = $_POST['FirstName'];
                                         $last_name = $_POST['LastName'];
@@ -2410,7 +2493,7 @@ include('../../server/authorization/user/index.php');
                                         $occupation = $_POST['occupation'];
 
                                         if (empty($first_name) || empty($last_name) || empty($phone) || empty($city) || empty($address) || empty($occupation)) {
-                                            
+
                                             echo "<script>
                                                         Swal.fire({
                                                             icon: 'warning',
@@ -2422,8 +2505,8 @@ include('../../server/authorization/user/index.php');
                                         } else {
                                             $statment = "UPDATE users SET firstname = ?, lastname = ?, phone = ?, city = ?, address = ?, occupation = ? , kyc = ? WHERE id = ?";
                                             $stmt = $connection->prepare($statment);
-                                            $stmt->execute([$first_name, $last_name, $phone, $city, $address, $occupation, $id , 'submited']);
-                                             echo "<script>
+                                            $stmt->execute([$first_name, $last_name, $phone, $city, $address, $occupation, $id, 'submited']);
+                                            echo "<script>
                                                         Swal.fire({
                                                             icon: 'success',
                                                             title: 'Request Successful',
@@ -2433,53 +2516,12 @@ include('../../server/authorization/user/index.php');
                                         }
                                     }
                                     ?>
-                                    <form class="section about" method="post">
-                                        <div class="info">
-                                            <h5 class="">Kyc Verification</h5>
-                                            <div class="row">
-                                                <div class="col-md-11 mx-auto">
-                                                    <div class="form-group">
-                                                        <label>First Name</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="FirstName" placeholder="First Name" value="<?php echo $first_name ?>" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Last Name</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="LastName" placeholder="Last  Name" value="<?php echo $last_name ?>" />
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <label>Phone Number</label>
-                                                        <input type="number" class="form-control mb-4"
-                                                            name="PhoneNumber" placeholder="Phone Number" value="<?php echo $phone ?>" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>City</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="City" placeholder="City" value="<?php echo $city ?>" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="text" placeholder="Address" value="<?php echo $address ?>" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>occupation</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="occupation" placeholder="occupation " value="<?php echo $occupation ?>" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button class="btn btn-primary" name="update_kyc" type="submit">
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
 
                                 </div>
+
+
+
 
 
                             </div>
