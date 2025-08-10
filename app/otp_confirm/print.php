@@ -1,7 +1,8 @@
 <?php
 
-    include('../../server/connection.php');
-    include('../../server/authorization/user/index.php');
+include('../../server/connection.php');
+include('../../server/authorization/user/index.php');
+
 
 ?>
 
@@ -2370,7 +2371,7 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-        <?php  include('../includes/nav.php')  ?>
+    <?php include('../includes/nav.php')  ?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
@@ -2381,7 +2382,7 @@
 
         <!--  BEGIN SIDEBAR  -->
 
-        <?php  include('../includes/sidebar.php')  ?>
+        <?php include('../includes/sidebar.php')  ?>
 
         <!--  END SIDEBAR  -->
 
@@ -2391,136 +2392,150 @@
                     <div class="col-md-8 offset-md-2 mt-5">
                         <div class="card component-card">
                             <div class="card-body">
-                                <?php 
+                                <?php
 
-                                        function generateReference($value) {
-                                            // Convert to int safely
-                                            $id = (int) $value;
+                                function generateReference($value)
+                                {
+                                    // Convert to int safely
+                                    $id = (int) $value;
 
-                                            // Create a hash from the ID + salt (optional)
-                                            $salt = 'mySecretKey'; // You can customize this
-                                            $hash = substr(sha1($salt . $id), 0, 8); // Take first 8 chars of the hash
+                                    // Create a hash from the ID + salt (optional)
+                                    $salt = 'mySecretKey'; // You can customize this
+                                    $hash = substr(sha1($salt . $id), 0, 8); // Take first 8 chars of the hash
 
-                                            return 'i' . $hash;
-                                        }
+                                    return 'i' . $hash;
+                                }
 
-                                        $transaction_id = $_GET['id'];
-                                        $table = $_GET['table'];
+                                $transaction_id = $_GET['id'];
+                                $table = $_GET['table'];
 
-                                        $statment = mysqli_query($connection,"SELECT * FROM `$table` WHERE  `id` = '$transaction_id'");
+                                $statment = mysqli_query($connection, "SELECT * FROM `$table` WHERE  `id` = '$transaction_id'");
 
-                                        if (mysqli_num_rows($statment) > 0 ){
+                                if (mysqli_num_rows($statment) > 0) {
 
-                                            $data = mysqli_fetch_assoc($statment); ?>
+                                    $data = mysqli_fetch_assoc($statment); ?>
 
-                                                    <div class="user-profile">
-                                                                <div class="row">
+                                    <div class="user-profile">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center text-success">Transfer Successful</h3>
+        </div>
+    </div>
 
-                                                                    <div class="col-md-12">
-                                                                        <h3 class="text-center text-success">Transfer Successfully</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-center text-info text-uppercase">
+                DEAR, <?php echo htmlspecialchars($fullname); ?> —
+                YOUR TRANSFER TO <span class="text-uppercase"><?php echo htmlspecialchars($data['receiver_name']); ?></span> HAS BEEN PROCESSED
+            </p>
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                100%
+            </div><br>
+        </div>
+    </div>
 
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <p class="text-center text-info text-uppercase">DEAR, <?php echo $fullname ?> YOUR
-                                                                            TRANSFER TO <span class="text-uppercase"><?php  $data['receiver_name'] ?></span> has BEEN
-                                                                            PROCESSED
-                                                                        </p>
-                                                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                                                            aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                                                                            100%
-                                                                        </div><br>
-                                                                    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>REFERENCE ID</td>
+                        <td><?php echo generateReference($data['id']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>AMOUNT</td>
+                        <td><?php echo $currency_type . number_format($data['amount'], 2); ?></td>
+                    </tr>
+                    <tr>
+                        <td>DATE</td>
+                        <td><?php echo htmlspecialchars($data['date']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>TIME</td>
+                        <td><?php echo htmlspecialchars($data['time']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>TRANSFER TYPE</td>
+                        <td><?php echo htmlspecialchars($data['type']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>SENDER NAME</td>
+                        <td><?php echo htmlspecialchars($data['sender_name']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>RECEIVER NAME</td>
+                        <td><?php echo htmlspecialchars($data['receiver_name']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>ACCOUNT NUMBER</td>
+                        <td><?php echo htmlspecialchars($data['receiver_account_number']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>ACCOUNT TYPE</td>
+                        <td><?php echo htmlspecialchars($data['receiver_account_type']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>BANK NAME</td>
+                        <td><?php echo htmlspecialchars($data['receiver_bank']); ?></td>
+                    </tr>
+                    <?php if (!empty($data['swift_code'])): ?>
+                        <tr>
+                            <td>SWIFT CODE</td>
+                            <td><?php echo htmlspecialchars($data['swift_code']); ?></td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php if (!empty($data['routine_number'])): ?>
+                        <tr>
+                            <td>ROUTING NUMBER</td>
+                            <td><?php echo htmlspecialchars($data['routine_number']); ?></td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td>COUNTRY</td>
+                        <td><?php echo htmlspecialchars($data['country']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>DESCRIPTION</td>
+                        <td><?php echo htmlspecialchars($data['description']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>STATUS</td>
+                        <td>
+                            <?php
+                                $status = strtolower($data['status']);
+                                if ($status === "approved") {
+                                    echo '<span class="badge outline-badge-primary shadow-none col-md-12">Confirmed</span>';
+                                } elseif ($status === "pending") {
+                                    echo '<span class="badge outline-badge-danger shadow-none col-md-12">Pending</span>';
+                                } elseif ($status === "declined") {
+                                    echo '<span class="badge outline-badge-warning shadow-none col-md-12">Declined</span>';
+                                } else {
+                                    echo '<span class="badge outline-badge-danger shadow-none col-md-12">' . htmlspecialchars($data['status']) . '</span>';
+                                }
+                            ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-8 offset-md-2">
-                                                                        <table class="table table-bordered">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>AMOUNT</td>
-                                                                                    <td><?php  echo   $currency_type  .  $data['amount'] ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>REFERENCE ID</td>
-                                                                                    <td><?php  echo generateReference($data['id']);  ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>BANK NAME</td>
-                                                                                    <td><?php  echo $data['receiver_bank'];   ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>ACCOUNT NAME</td>
-                                                                                    <td><?php  echo $data['receiver_name'];   ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>ACCOUNT NO</td>
-                                                                                    <td><?php  echo $data['receiver_account_number'];   ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>STATUS</td>
-                                                                                    <td>                                                                                  
-                                                                                        <!-- <span class="badge outline-badge-secondary shadow-none col-12">
-                                                                                            <?php  echo $data['status'];   ?>
-                                                                                        </span> -->
-
-                                                                                        <?php 
-
-                                                                                                if ( $data['status'] == "approved"){?>
-
-                                                                                                    <span class="badge outline-badge-primary shadow-none col-md-12">Confirmed</span>
-
-
-
-                                                                                              <?php  }
-
-                                                                                              
-                                                                                                if ( $data['status'] == "pending"){?>
-
-                                                                                                    <span class="badge outline-badge-secondary shadow-none col-md-12">Pending</span>
-
-
-
-                                                                                              <?php  }
-
-                                                                                                 if ( $data['status'] == "declined"){?>
-
-                                                                                                    <span class="badge outline-badge-danger shadow-none col-md-12">Declined</span>
-
-
-
-                                                                                              <?php  }else if ($data['status'] != "approved" && $data['status'] != "pending" && $data['status'] != "declined"){ ?>
-                                                                                                  
-                                                                                                    <span class="badge outline-badge-danger shadow-none col-md-12"><?php echo $data['status'] ?></span>
-                                                                                                  
-                                                                                            <?php  }
-
-                                                                                        ?>
-                                                                                    </td>
-                                                                                </tr>
-
-                                                                            </tbody>
-                                                                        </table>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 text-center">
-                                                                                <a href="../dashboard/" class="btn btn-primary">GO HOME</a>
-
-                                                                                <a href="javascript:window.print()"
-                                                                                    class="btn btn-success waves-effect waves-light me-1"><i
-                                                                                        class="fa fa-print"></i> Print Statement</a>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                    </div>
-
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="../dashboard/" class="btn btn-primary">GO HOME</a>
+                    <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1">
+                        <i class="fa fa-print"></i> Print Statement
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
-                                    <?php    }
+
+
+                                <?php    }
 
                                 ?>
 
@@ -2561,7 +2576,7 @@
     <script src="../source/plugins/blockui/jquery.blockUI.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             App.init();
         });
     </script>
@@ -2569,6 +2584,7 @@
     <script>
         var data = null;
         console.log(data);
+
         function crypto_type(id) {
             for (var i = 0; i < data.length; i++) {
                 if (id == data[i].id) {
@@ -2589,7 +2605,10 @@
                 "<'table-responsive'tr>" +
                 "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
             "oLanguage": {
-                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
                 "sInfo": "Showing page _PAGE_ of _PAGES_",
                 "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
                 "sSearchPlaceholder": "Search...",
@@ -2599,7 +2618,9 @@
             "stripeClasses": [],
             "lengthMenu": [7, 10, 20, 50],
             "pageLength": 7,
-            drawCallback: function () { $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered'); }
+            drawCallback: function() {
+                $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered');
+            }
         });
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
@@ -2611,26 +2632,12 @@
         // Get the Toast element
         var toastElement = document.getElementsByClassName("toast")[0];
 
-        toastButton.onclick = function () {
+        toastButton.onclick = function() {
             $('.toast').toast('show');
         }
-
-
     </script>
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'livechat';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
+   
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 

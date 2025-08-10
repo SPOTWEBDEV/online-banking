@@ -151,14 +151,14 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit-unique" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . 'app/transaction/'; ?>">Credit/Debit transaction</a>
+                                <a href="<?php echo $domain . 'app/Transaction/'; ?>">Credit/Debit Transaction</a>
                             </li>
                             <li>
-                                <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan transaction</a>
+                                <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan Transaction</a>
                             </li>
 
                             <li>
-                                <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit transaction</a>
+                                <a href="<?php echo $domain . 'app/deposit/history.php'; ?>">Deposit Transaction</a>
                             </li>
                         </ul>
                     </li>
@@ -190,11 +190,12 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . "app/setting/password-reset.php"   ?>"> Profile Account </a>
+                                <a href="<?php echo $domain . "app/setting/"   ?>">Profile Account</a>
                             </li>
                             <li>
-                                <a href="<?php echo $domain . "app/setting/"   ?>">Account</a>
+                                <a href="<?php echo $domain . "app/setting/password-reset.php"   ?>"> Edit Account </a>
                             </li>
+                            
                         </ul>
                     </li>
 

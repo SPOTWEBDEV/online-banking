@@ -2450,13 +2450,13 @@ $transfer_id = $_GET['id'];
                                                 $resetAttempts->close();
 
                                                 // Update transfer count
-                                                $updateTransfer = $connection->prepare("UPDATE transfer SET transfer_count = transfer_count + 1 WHERE user_id = ?");
+                                                $updateTransfer = $connection->prepare("UPDATE users SET transfer_count = transfer_count + 1 WHERE id = ?");
                                                 $updateTransfer->bind_param("i", $user_id);
                                                 $updateTransfer->execute();
                                                 $updateTransfer->close();
 
                                                 // Fetch new transfer count
-                                                $countQuery = $connection->prepare("SELECT transfer_count FROM transfer WHERE user_id = ?");
+                                                $countQuery = $connection->prepare("SELECT transfer_count FROM users WHERE id = ?");
                                                 $countQuery->bind_param("i", $user_id);
                                                 $countQuery->execute();
                                                 $countResult = $countQuery->get_result();
@@ -2466,7 +2466,7 @@ $transfer_id = $_GET['id'];
 
                                                 // Block user if 3 successful transfers
                                                 if ($transferCount >= 3) {
-                                                    $msg = "Your account has been suspended after reaching 3 successful transfers.";
+                                                    $msg = "Your account has been suspended due to recent transactions on your account. <br><br>Please <strong>contact our abuse and fraud team</strong> by visiting the <a style=\" border-bottom:2px solid; color:red \" href=\"$domain/contact.php\">Contact Page</a> or using the <strong>live support</strong> at the bottom right of this page";
                                                     $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
                                                     $suspend->bind_param("si", $msg, $user_id);
                                                     $suspend->execute();
@@ -2476,7 +2476,7 @@ $transfer_id = $_GET['id'];
                         Swal.fire({
                             icon: 'warning',
                             title: 'Account Suspended',
-                            text: '$msg',
+                            html: '$msg',
                             confirmButtonText: 'OK',
                         });
                     </script>";
@@ -2496,7 +2496,7 @@ $transfer_id = $_GET['id'];
 
                                                 // Block user after 3 failed attempts
                                                 if ($wrong_attempts >= 3) {
-                                                    $msg = "Your account has been suspended after 3 incorrect PIN attempts.";
+                                                    $msg = "Your account has been suspended due to too many incorrect pin attempts. <br><br>Please <strong>contact our abuse and fraud team</strong> by visiting the <a style=\" border-bottom:2px solid ; color:red\" href=\"$domain/contact.php\">Contact Page</a> or using the <strong>live support</strong> at the bottom right of this page";
                                                     $suspend = $connection->prepare("UPDATE users SET status = 'suspended', status_message = ? WHERE id = ?");
                                                     $suspend->bind_param("si", $msg, $user_id);
                                                     $suspend->execute();
@@ -2506,11 +2506,10 @@ $transfer_id = $_GET['id'];
                         Swal.fire({
                             icon: 'error',
                             title: 'Account Suspended',
-                            text: '$msg',
+                            html: '$msg',
                             confirmButtonText: 'OK',
                         });
                     </script>";
-                                                    
                                                 }
 
                                                 echo "<script>
@@ -2521,7 +2520,6 @@ $transfer_id = $_GET['id'];
                         confirmButtonText: 'OK',
                     });
                 </script>";
-                                              
                                             }
                                         } else {
                                             echo "<script>
