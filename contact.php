@@ -28,9 +28,6 @@ if (!empty($name) && !empty($email) && !empty($phoneNumber) && !empty($subject) 
     echo "<script>alert('input is required')</script>";
 }
 
-
-
-
    
 }
 
