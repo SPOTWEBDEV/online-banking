@@ -151,7 +151,7 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit-unique" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . 'app/Transaction/'; ?>">Credit/Debit Transaction</a>
+                                <a href="<?php echo $domain . 'app/transaction/'; ?>">Credit/Debit Transaction</a>
                             </li>
                             <li>
                                 <a href="<?php echo $domain . 'app/loan/history.php'; ?>">Loan Transaction</a>
