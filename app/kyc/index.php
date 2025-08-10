@@ -1,7 +1,7 @@
 <?php
 
-    include('../../server/connection.php');
-    include('../../server/authorization/user/index.php');
+include('../../server/connection.php');
+include('../../server/authorization/user/index.php');
 
 ?>
 <html lang="en">
@@ -51,7 +51,7 @@
     <script src="../source/plugins/sweetalerts/promise-polyfill.js"></script>
     <script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>
 
-        <!-- Toastr CSS -->
+    <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 
     <!-- jQuery (required by Toastr) -->
@@ -60,14 +60,14 @@
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script >
-            toastr.options = {
+    <script>
+        toastr.options = {
 
-                    "closeButton": true,
-                    "progressBar": true,
-                    "positionClass": "toast-bottom-right", // other options: toast-bottom-left, toast-bottom-right, toast-top-left, toast-top-full-width, toast-bottom-full-width, toast-top-center, toast-bottom-center
-                    "timeOut": "2000" // milliseconds before toast disappears
-            }
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right", // other options: toast-bottom-left, toast-bottom-right, toast-top-left, toast-top-full-width, toast-bottom-full-width, toast-top-center, toast-bottom-center
+            "timeOut": "2000" // milliseconds before toast disappears
+        }
     </script>
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -2378,7 +2378,7 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-    <?php  include('../includes/nav.php')  ?>
+    <?php include('../includes/nav.php')  ?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
@@ -2387,7 +2387,7 @@
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
-        <?php  include('../includes/sidebar.php')  ?>
+        <?php include('../includes/sidebar.php')  ?>
         <!--  END SIDEBAR  -->
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
@@ -2397,47 +2397,80 @@
                         <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll"
                             data-offset="-100">
                             <div class="row">
-                         
+
 
                                 <div class="col-xl-12 col-lg-6 col-md-6 layout-spacing">
+                                    <?php
+                                    if (isset($_POST['update_kyc'])) {
+                                        $first_name = $_POST['FirstName'];
+                                        $last_name = $_POST['LastName'];
+                                        $phone = $_POST['PhoneNumber'];
+                                        $city = $_POST['City'];
+                                        $address = $_POST['text'];
+                                        $occupation = $_POST['occupation'];
+
+                                        if (empty($first_name) || empty($last_name) || empty($phone) || empty($city) || empty($address) || empty($occupation)) {
+                                            
+                                            echo "<script>
+                                                        Swal.fire({
+                                                            icon: 'warning',
+                                                            title: 'Input is empty',
+                                                            text: 'All fields are required'
+                                                        });
+                                                    </script>";
+                                            exit;
+                                        } else {
+                                            $statment = "UPDATE users SET firstname = ?, lastname = ?, phone = ?, city = ?, address = ?, occupation = ? , kyc = ? WHERE id = ?";
+                                            $stmt = $connection->prepare($statment);
+                                            $stmt->execute([$first_name, $last_name, $phone, $city, $address, $occupation, $id , 'submited']);
+                                             echo "<script>
+                                                        Swal.fire({
+                                                            icon: 'success',
+                                                            title: 'Request Successful',
+                                                            text: 'KYC details updated successfully'
+                                                        });
+                                                    </script>";
+                                        }
+                                    }
+                                    ?>
                                     <form class="section about" method="post">
                                         <div class="info">
                                             <h5 class="">Kyc Verification</h5>
                                             <div class="row">
                                                 <div class="col-md-11 mx-auto">
                                                     <div class="form-group">
-                                                        <label>First  Name</label>
+                                                        <label>First Name</label>
                                                         <input type="text" class="form-control mb-4"
-                                                            name="FirstName" placeholder="First  Name" value="" />
+                                                            name="FirstName" placeholder="First Name" value="<?php echo $first_name ?>" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Last  Name</label>
+                                                        <label>Last Name</label>
                                                         <input type="text" class="form-control mb-4"
-                                                            name="LastName" placeholder="Last  Name" value="" />
+                                                            name="LastName" placeholder="Last  Name" value="<?php echo $last_name ?>" />
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label>Phone Number</label>
                                                         <input type="number" class="form-control mb-4"
-                                                            name="PhoneNumber" placeholder="Phone Number" />
-                                                    </div>
-                                                         <div class="form-group">
-                                                        <label>City</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="City" placeholder="City" />
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="text" placeholder="Address" />
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label>occupation</label>
-                                                        <input type="text" class="form-control mb-4"
-                                                            name="occupation" placeholder="occupation " />
+                                                            name="PhoneNumber" placeholder="Phone Number" value="<?php echo $phone ?>" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btn btn-primary" name="change_password">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control mb-4"
+                                                            name="City" placeholder="City" value="<?php echo $city ?>" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="text" class="form-control mb-4"
+                                                            name="text" placeholder="Address" value="<?php echo $address ?>" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>occupation</label>
+                                                        <input type="text" class="form-control mb-4"
+                                                            name="occupation" placeholder="occupation " value="<?php echo $occupation ?>" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary" name="update_kyc" type="submit">
                                                             Submit
                                                         </button>
                                                     </div>
@@ -2447,24 +2480,27 @@
                                     </form>
 
                                 </div>
-                             
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-wrapper">
-                <div class="footer-section f-section-2">
-                    </div>
-                    <p class="" style="margin:0 auto;">
-                        Copyright © </i><script>document.write( new Date().getFullYear())</script> <?php echo  $sitename ?> All rights reserved.
-                    </p>
-          
-            </div>
         </div>
-        <!--  END CONTENT AREA  -->
+        <div class="footer-wrapper">
+            <div class="footer-section f-section-2">
+            </div>
+            <p class="" style="margin:0 auto;">
+                Copyright © </i>
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> <?php echo  $sitename ?> All rights reserved.
+            </p>
+
+        </div>
+    </div>
+    <!--  END CONTENT AREA  -->
     </div>
 
     <!-- END MAIN CONTAINER -->
@@ -2482,7 +2518,7 @@
     <script src="../source/plugins/blockui/jquery.blockUI.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             App.init();
         });
     </script>
@@ -2490,6 +2526,7 @@
     <script>
         var data = null;
         console.log(data);
+
         function crypto_type(id) {
             for (var i = 0; i < data.length; i++) {
                 if (id == data[i].id) {
@@ -2505,20 +2542,16 @@
     <script src="../source/plugins/table/datatable/datatables.js"></script>
     <script>
         $("#default-ordering").DataTable({
-            dom:
-                "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+            dom: "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
                 "<'table-responsive'tr>" +
                 "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
             oLanguage: {
                 oPaginate: {
-                    sPrevious:
-                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
-                    sNext:
-                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>',
+                    sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    sNext: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>',
                 },
                 sInfo: "Showing page _PAGE_ of _PAGES_",
-                sSearch:
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                sSearch: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
                 sSearchPlaceholder: "Search...",
                 sLengthMenu: "Results :  _MENU_",
             },
@@ -2526,7 +2559,7 @@
             stripeClasses: [],
             lengthMenu: [7, 10, 20, 50],
             pageLength: 7,
-            drawCallback: function () {
+            drawCallback: function() {
                 $(".dataTables_paginate > .pagination").addClass(
                     " pagination-style-13 pagination-bordered"
                 );
@@ -2541,7 +2574,7 @@
         // Get the Toast element
         var toastElement = document.getElementsByClassName("toast")[0];
 
-        toastButton.onclick = function () {
+        toastButton.onclick = function() {
             $(".toast").toast("show");
         };
     </script>

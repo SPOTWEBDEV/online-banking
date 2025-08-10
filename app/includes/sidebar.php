@@ -190,11 +190,12 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
                             <li>
-                                <a href="<?php echo $domain . "app/setting/password-reset.php"   ?>"> Profile Account </a>
+                                <a href="<?php echo $domain . "app/setting/"   ?>">Profile Account</a>
                             </li>
                             <li>
-                                <a href="<?php echo $domain . "app/setting/"   ?>">Account</a>
+                                <a href="<?php echo $domain . "app/setting/password-reset.php"   ?>"> Edit Account </a>
                             </li>
+                            
                         </ul>
                     </li>
 
