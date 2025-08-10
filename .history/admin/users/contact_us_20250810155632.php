@@ -1,43 +1,39 @@
 <?php
 
-    include('../../server/connection.php');
-    include('../../server/authorization/admin/index.php');
+include('../../server/connection.php');
+include('../../server/authorization/admin/index.php');
 
-     function getPaymentTypeName($connection, $paymentTypeId) {
-      // Prepare the query
-      $stmt = $connection->prepare("SELECT name FROM payment_details_crypto WHERE id = ?");
-      if (!$stmt) {
-          return null; // or return "Unknown"
-      }
 
-      // Bind the ID and execute
-      $stmt->bind_param("i", $paymentTypeId);
-      $stmt->execute();
-      $stmt->bind_result($name);
+if (isset($_GET['id']) && isset($_GET['action'])) {
+    $id = intval($_GET['id']);
+    $action = $_GET['action'];
 
-      // Fetch result
-      if ($stmt->fetch()) {
-          return $name;
-      } else {
-          return null; // or return "Not found"
-      }
-
-      $stmt->close();
+    if ($action === 'verify') {
+        $updateQuery = "UPDATE users SET kyc = 'verified' WHERE id = $id";
+    } elseif ($action === 'decline') {
+        $updateQuery = "UPDATE users SET kyc = 'rejected' WHERE id = $id";
+    } else {
+        die("Invalid action.");
     }
 
+    if (mysqli_query($connection, $updateQuery)) {
+        echo "<script>alert('KYC status updated successfully.'); window.location.href='kyc.php';</script>";
+    } else {
+        echo "<script>alert('Error updating KYC status.');  window.location.href='kyc.php';</script>";
+    }
+
+}
 
 
 
 ?>
-
-
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title><?php echo $sitename ?>- Admin Dashboard</title>
+    <title><?php echo  $sitename ?>- Admin Dashboard</title>
     <link rel="icon" type="image/x-icon" href="../source/assets/img/favicon.ico">
     <link href="../source/assets/css/loader.css" rel="stylesheet" type="text/css">
     <script src="../source/assets/js/loader.js"></script>
@@ -61,17 +57,13 @@
     <link rel="stylesheet" type="text/css" href="../source/plugins/table/datatable/dt-global_style.css">
     <link rel="stylesheet" href="../assets/css/card/displayCard.css">
 
-          <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-
-      <!-- SweetAlert2 JS -->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
-
+    <link href="../source/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" type="text/css">
+    <link href="../source/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../source/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css">
+    <script src="../source/plugins/sweetalerts/promise-polyfill.js"></script>
     <script src="../source/assets/js/libs/jquery-3.1.1.min.js"></script>
 
-    <style type="text/css" id="operaUserStyle"></style>
     <style type="text/css">
         .apexcharts-canvas {
             position: relative;
@@ -2372,7 +2364,7 @@
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
 
-        <div class="overlay"></div>
+        <div class="overlay show"></div>
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
@@ -2388,7 +2380,7 @@
 
                 <div class="page-header">
                     <div class="page-title">
-                        <h3>Deposit Transaction</h3>
+                        <h3>All Users</h3>
                     </div>
                 </div>
 
@@ -2398,11 +2390,10 @@
                         <div class="widget-content widget-content-area br-6">
                             <div class="table-responsive mb-4 mt-4">
                                 <div id="default-ordering_wrapper"
-                                    class="dataTables_wrapper container-fluid dt-bootstrap4">
-
+                                    class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <table id="default-ordering" class="table table-hover dataTable"
+                                            <table id="default-ordering" class="table table-hover dataTable no-footer"
                                                 style="width:100%" role="grid" aria-describedby="default-ordering_info">
                                                 <thead>
                                                     <tr role="row">
@@ -2410,109 +2401,81 @@
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-sort="ascending"
                                                             aria-label="S/N: activate to sort column descending"
-                                                            style="width: 27.7031px;">S/N</th>
+                                                            style="width: 36.3594px;">S/N</th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Sender Name: activate to sort column ascending"
-                                                            style="width: 56.4219px;">Username</th>
+                                                            aria-label="NAME: activate to sort column ascending"
+                                                            style="width: 168.25px;">NAME</th>
+                                                            <th class="sorting" tabindex="0"
+                                                            aria-controls="default-ordering" rowspan="1" colspan="1"
+                                                            aria-label="ACCOUNT EMAIL: activate to sort column ascending"
+                                                            style="width: 247.672px;">EMAIL</th>
+                                                        
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Email</th>
-
+                                                            aria-label="ACCOUNT CURRENCY: activate to sort column ascending"
+                                                            style="width: 173.875px;">Country</th>
+                                                        <th class="sorting" tabindex="0"
+                                                            aria-controls="default-ordering" rowspan="1" colspan="1"
+                                                            aria-label="ACCOUNT TYPE: activate to sort column ascending"
+                                                            style="width: 127.641px;">OCCUPATION</th>
                                                             <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Amount</th>
-
-                                                            <th class="sorting" tabindex="0"
+                                                            aria-label="ACCOUNT STATUS: activate to sort column ascending"
+                                                            style="width: 148.672px;">ACCOUNT STATUS</th>
+                                                             <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Payment_Type</th>
-
-                                                                                                                        <th class="sorting" tabindex="0"
+                                                            aria-label="ADDRESS: activate to sort column ascending"
+                                                            style="width: 127.641px;">ADDRESS</th>
+                                                        
+                                                        
+                                                        <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Date</th>
-
-                                                                                                                        <th class="sorting" tabindex="0"
-                                                            aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Payment_Proof</th>
-
-                                                                                                                        <th class="sorting" tabindex="0"
-                                                            aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Amount: activate to sort column ascending"
-                                                            style="width: 61.6875px;">Status</th>
-
+                                                            aria-label="Action: activate to sort column ascending"
+                                                            style="width: 71.6094px;">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
 
-
-
                                                     <?php
 
-                                                            $stament = mysqli_query($connection, "SELECT deposit.id AS transaction_id, users.id AS user_id, deposit.status AS transaction_status, deposit.*, users.* FROM deposit JOIN users ON users.id = deposit.user");
+                                                    $query = "SELECT * FROM users WHERE kyc='submited'";
+                                                    $result = mysqli_query($connection, $query);
+                                                    $count = 0;
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+
+                                                        $count++;
+                                                        $id = $row['id'];
+                                                        $name = $row['firstname'] . " " . $row['lastname'];
+                                                        $address = $row['address'];
+                                                        $country = $row['country'];
+                                                        $occupation = $row['occupation'];
+                                                        $account_status = $row['status'];
+                                                        $email = $row['email'];
+
+                                                        echo "<tr role='row'>
+                                                            <td class='sorting_1'>$count</td>
+                                                            <td>$name</td>
+                                                            <td>$email</td>
+                                                            <td>$country</td>
+                                                            <td>$occupation</td>
+                                                            <td>$account_status</td>
+                                
+                                                            <td>$address</td>
+                                                            <td class='text-center'>
+                                                                <a href='?id=$id&action=verify' class='btn btn-success' onclick='return confirm(\"Are you sure you want to verify this KYC?\")'>Verify KYC</a>
+                                                            </td>
+                                                            <td class='text-center'>
+                                                                <a href='?id=$id&action=decline' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to decline this KYC?\")'>Decline KYC</a>
+                                                            </td>
+                                                        </tr>";
+                                                    }
 
 
-                                                            if (mysqli_num_rows($stament) > 0){
-
-                                                                $count = 0;
-
-                                                                while ($data = mysqli_fetch_assoc($stament)){$count++; {?>
-
-                                                                        <tr role="row">
-                                                                            <td class="sorting_1"><?Php echo $count ?></td>
-                                                                            <td><?php  echo $data['username']?></td>
-                                                                            <td><?php  echo $data['email']?></td>
-                                                                            <td><?php  echo $data['currency'],$data['amount']?></td>
-                                                                            <td><?php  echo getPaymentTypeName($connection, $data['payment_type'])?></td>
-                                                                            <td><?php  echo $data['date']?></td>
-
-                                                                            <td class="text-center"><a
-                                                                                    href="<?php  echo  $domain . "upload/deposit/"   .  $data['img']?>  ?>"
-                                                                                    class="btn btn-info"> view</a> 
-                                                                            </td>
-
-                                                                            <?php if ($data['transaction_status'] == 'pending') { echo "<td style='color:blue;'>Pending</td>"; } elseif ($data['transaction_status'] == 'approved') { echo "<td style='color:green;'>Approved</td>"; } elseif ($data['transaction_status'] == 'declined') { echo "<td style='color:red;'>Declined</td>"; } ?>
-
-
-                                                                            <?php
-
-                                                                                    if ($data['transaction_status']  == "pending"){ ?>
-
-                                                                                    <td class="text-center">
-                                                                                        <a href="?approve=<?php  echo $data['transaction_id']?>&user=<?php  echo $data['user_id']?>&amount=<?php  echo $data['amount']?>" class="btn btn-success">Confirm</a> 
-                                                                                    </td>
-
-                                                                                        <td class="text-center"><a
-                                                                                                href="index.php?decline=<?php  echo $data['transaction_id']?>"
-                                                                                                class="btn btn-danger"> Decline</a>
-                                                                                        </td>
-
-
-
-                                                                                  <?php  }
-
-                                                                            ?>
-
-                                                                        </tr>
-
-
-                                                               <?php }
-
-                                                                }
-
-                                                                
-
-
-
-                                                            }
                                                     ?>
-
                                                 </tbody>
+
                                             </table>
                                         </div>
                                     </div>
@@ -2530,11 +2493,11 @@
 
                 <div class="footer-wrapper">
                     <div class="footer-section f-section-1">
-                        <p class="">Copyright © 2022 <a target="_blank" href="/"><?php echo $sitename ?></a>, All rights
+                        <p class="">Copyright © sri <a target="_blank" href="/"><?php echo  $sitename ?></a>, All rights
                             reserved.</p>
                     </div>
                     <div class="footer-section f-section-2">
-                        <p class=""><?php echo $sitename ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <p class=""><?php echo  $sitename ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
                                 <path
@@ -2556,7 +2519,7 @@
         <script src="../source/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="../source/assets/js/app.js"></script>
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 App.init();
             });
         </script>
@@ -2579,9 +2542,48 @@
         <script src="../source/plugins/select2/select2.min.js"></script>
         <script src="../source/plugins/select2/custom-select2.js"></script>
 
+        <script src="../source/plugins/sweetalerts/sweetalert2.min.js"></script>
+        <script src="../source/plugins/sweetalerts/custom-sweetalert.js"></script>
+        <script>
+            var ss = $(".basic").select2({
+                tags: true,
+            });
+        </script>
 
+        <script>
+            $('input').attr('autocomplete', 'off');
+        </script>
+        <script>
+            $('#default-ordering').DataTable({
+                "oLanguage": {
+                    "oPaginate": {
+                        "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                        "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                    },
+                    "sInfo": "Showing page _PAGE_ of _PAGES_",
+                    "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                    "sSearchPlaceholder": "Search...",
+                    "sLengthMenu": "Results :  _MENU_",
+                },
+                // "order": [[ 3, "desc" ]],
+                "stripeClasses": [],
+                "lengthMenu": [7, 10, 20, 50],
+                "pageLength": 7,
+                drawCallback: function() {
+                    $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered mb-5');
+                }
+            });
+        </script>
 
-
+        <script>
+            $(".edit-crypto").click(function(e) {
+                e.preventDefault();
+                $("#crypto_name").val($(this).data('name'));
+                $("#wallet_address").val($(this).data('wallet-address'));
+                $("#crypto_id").val($(this).data('id'));
+                $(".show-modal").click();
+            });
+        </script>
 
 
 
@@ -2598,100 +2600,3 @@
 </body>
 
 </html>
-
-<?php
-
-
-
-    if (isset($_GET['decline'])) {
-        $id = intval($_GET['decline']);  // sanitize input
-
-        $sql = mysqli_query($connection, "UPDATE `deposit` SET `status` = 'declined' WHERE `id` = $id");
-
-        if ($sql) {
-            echo "<script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Transfer Declined',
-                    text: 'The transaction has been successfully declined and funds returned.'
-                }).then(() => {
-                    location.href = 'index.php'; // redirect after alert
-                });
-            </script>";
-        } else {
-            echo "<script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Unable to update the deposit status.'
-                });
-            </script>";
-        }
-    }
-
-    if (isset($_GET['approve'], $_GET['user'], $_GET['amount'])) {
-    $deposit_id = intval($_GET['approve']);
-    $user_id = intval($_GET['user']);
-    $amount = floatval($_GET['amount']);
-
-    // 1. Get current user balance
-    $balance_query = mysqli_query($connection, "SELECT balance FROM users WHERE id = $user_id");
-    if ($balance_query && mysqli_num_rows($balance_query) > 0) {
-        $row = mysqli_fetch_assoc($balance_query);
-        $current_balance = floatval($row['balance']);
-
-        // 2. Add amount to balance
-        $new_balance = $current_balance + $amount;
-
-        // 3. Update user balance
-        $update_user = mysqli_query($connection, "UPDATE users SET balance = $new_balance WHERE id = $user_id");
-
-        if ($update_user) {
-            // 4. Update deposit status to approved
-            $update_deposit = mysqli_query($connection, "UPDATE deposit SET status = 'approved' WHERE id = $deposit_id");
-
-            if ($update_deposit) {
-                echo '<script>
-                    Swal.fire({
-                        icon: "success",
-                        title: "Deposit Approved",
-                        text: "The deposit has been approved and balance updated."
-                    }).then(() => {
-                        location.href = "index.php";
-                    });
-                </script>';
-            } else {
-                echo '<script>
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Failed to update deposit status."
-                    });
-                </script>';
-            }
-        } else {
-            echo '<script>
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "Failed to update user balance."
-                });
-            </script>';
-        }
-    } else {
-        echo '<script>
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "User not found."
-            });
-        </script>';
-    }
-}
-
-
-
-
-
-
-?>
