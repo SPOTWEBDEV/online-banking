@@ -2,30 +2,6 @@
 
 include('../../server/connection.php');
 include('../../server/authorization/admin/index.php');
-
-
-if (isset($_GET['id']) && isset($_GET['action'])) {
-    $id = intval($_GET['id']);
-    $action = $_GET['action'];
-
-    if ($action === 'verify') {
-        $updateQuery = "UPDATE users SET kyc = 'verified' WHERE id = $id";
-    } elseif ($action === 'decline') {
-        $updateQuery = "UPDATE users SET kyc = 'rejected' WHERE id = $id";
-    } else {
-        die("Invalid action.");
-    }
-
-    if (mysqli_query($connection, $updateQuery)) {
-        echo "<script>alert('KYC status updated successfully.'); window.location.href='kyc.php';</script>";
-    } else {
-        echo "<script>alert('Error updating KYC status.');  window.location.href='kyc.php';</script>";
-    }
-
-}
-
-
-
 ?>
 <html lang="en">
 
@@ -2414,25 +2390,20 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="ACCOUNT CURRENCY: activate to sort column ascending"
-                                                            style="width: 173.875px;">Country</th>
+                                                            style="width: 173.875px;">PHONE_NUMBER</th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="ACCOUNT TYPE: activate to sort column ascending"
-                                                            style="width: 127.641px;">OCCUPATION</th>
+                                                            style="width: 127.641px;">SUBJECT</th>
                                                             <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="ACCOUNT STATUS: activate to sort column ascending"
-                                                            style="width: 148.672px;">ACCOUNT STATUS</th>
+                                                            style="width: 148.672px;">MESSAGE</th>
                                                              <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="ADDRESS: activate to sort column ascending"
-                                                            style="width: 127.641px;">ADDRESS</th>
-                                                        
-                                                        
-                                                        <th class="sorting" tabindex="0"
-                                                            aria-controls="default-ordering" rowspan="1" colspan="1"
-                                                            aria-label="Action: activate to sort column ascending"
-                                                            style="width: 71.6094px;">Action</th>
+                                                            style="width: 127.641px;">UPDATED_AT</th>
+                                                    
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -2440,35 +2411,29 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
                                                     <?php
 
-                                                    $query = "SELECT * FROM users WHERE kyc='submited'";
+                                                    $query = "SELECT * FROM contact_us";
                                                     $result = mysqli_query($connection, $query);
                                                     $count = 0;
                                                     while ($row = mysqli_fetch_assoc($result)) {
 
                                                         $count++;
-                                                        $id = $row['id'];
-                                                        $name = $row['firstname'] . " " . $row['lastname'];
-                                                        $address = $row['address'];
-                                                        $country = $row['country'];
-                                                        $occupation = $row['occupation'];
-                                                        $account_status = $row['status'];
+                                                        // $id = $row['id'];
+                                                        $name = $row['name'];
                                                         $email = $row['email'];
+                                                        $phonenumber = $row['phone_number'];
+                                                        $subject = $row['subject'];
+                                                        $message = $row['message'];
+                                                        $time_created = $row['updated_at'];
 
                                                         echo "<tr role='row'>
                                                             <td class='sorting_1'>$count</td>
                                                             <td>$name</td>
                                                             <td>$email</td>
-                                                            <td>$country</td>
-                                                            <td>$occupation</td>
-                                                            <td>$account_status</td>
-                                
-                                                            <td>$address</td>
-                                                            <td class='text-center'>
-                                                                <a href='?id=$id&action=verify' class='btn btn-success' onclick='return confirm(\"Are you sure you want to verify this KYC?\")'>Verify KYC</a>
-                                                            </td>
-                                                            <td class='text-center'>
-                                                                <a href='?id=$id&action=decline' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to decline this KYC?\")'>Decline KYC</a>
-                                                            </td>
+                                                            <td>$phonenumber</td>
+                                                            <td>$subject</td>
+                                                            <td>$message</td>
+                                                            <td>$time_created </td>
+                                                        
                                                         </tr>";
                                                     }
 
