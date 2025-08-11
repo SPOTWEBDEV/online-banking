@@ -161,7 +161,7 @@
                 <form class="charge-form">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6">
-                            <div class="form-group"><label for="send_money">Your Send Money</label><input
+                            <div class="form-group"><label for="send_money">You Send Money</label><input
                                     type="number" id="send_money" name="send_money" placeholder="$1000"><select>
                                     <option value="1">USD</option>
                                     <option value="2">EURO</option>

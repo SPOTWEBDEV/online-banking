@@ -6,7 +6,7 @@ function smtpmailer($to, $from, $from_name, $subject, $body)
     $mail->SMTPAuth = true;
 
     $mail->SMTPSecure = 'ssl';                    
-    $mail->Host = "mail.vgsbo.com";               
+    $mail->Host = "mail.psnab.com";               
     $mail->Port = 465;                             
     $mail->Username = "support@psnab.com";      
     $mail->Password = "support@psnab.com";        

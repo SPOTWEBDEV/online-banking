@@ -41,7 +41,7 @@ if ($isLocalhost) {
   
 } else {
     // Online (Live Server)
-    $domain = "https://vgsbo.com/";
+    $domain = "http://psnab.com/";
 
     define("USER", "vgsbo_pillarstone");
     define("PASSWORD", "vgsbo_pillarstone");
