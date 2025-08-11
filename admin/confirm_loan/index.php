@@ -2392,7 +2392,7 @@
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="Sender Name: activate to sort column ascending"
-                                                            style="width: 56.4219px;">Username</th>
+                                                            style="width: 56.4219px;">Full Name</th>
                                                         <th class="sorting" tabindex="0"
                                                             aria-controls="default-ordering" rowspan="1" colspan="1"
                                                             aria-label="Amount: activate to sort column ascending"
@@ -2428,7 +2428,8 @@
 
                                                     <?php
 
-                                                            $stament = mysqli_query($connection, "SELECT loan.id AS transaction_id, users.id AS user_id, loan.status AS transaction_status, loan.*, users.* FROM loan JOIN users ON users.id = loan.user");
+                                                            // $stament = mysqli_query($connection, "SELECT loan.id AS transaction_id, users.id AS user_id, loan.status AS transaction_status, loan.*, users.* FROM loan JOIN users ON users.id = loan.user");
+                                                            $stament = mysqli_query($connection, "SELECT loan.* , users.email , users.firstname , users.id as user_id  FROM  loan , users WHERE  users.id = loan.user");
 
 
                                                             if (mysqli_num_rows($stament) > 0){
@@ -2454,11 +2455,11 @@
                                                                                     if ($data['transaction_status']  == "pending"){ ?>
 
                                                                                     <td class="text-center">
-                                                                                        <a href="?approve=<?php  echo $data['transaction_id']?>&user=<?php  echo $data['user_id']?>&amount=<?php  echo $data['amount']?>" class="btn btn-success">Confirm</a> 
+                                                                                        <a href="?approve=<?php  echo $data['id']?>&user=<?php  echo $data['user_id']?>&amount=<?php  echo $data['amount']?>" class="btn btn-success">Confirm</a> 
                                                                                     </td>
 
                                                                                         <td class="text-center"><a
-                                                                                                href="index.php?decline=<?php  echo $data['transaction_id']?>"
+                                                                                                href="index.php?decline=<?php  echo $data['id']?>"
                                                                                                 class="btn btn-danger"> Decline</a>
                                                                                         </td>
 
