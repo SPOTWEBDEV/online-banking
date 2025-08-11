@@ -105,7 +105,7 @@ if (!empty($name) && !empty($email) && !empty($phoneNumber) && !empty($subject) 
                                             class="flaticon-email-2"></i></span>
                                     <div class="contact-info">
                                         <h3>Email Us</h3><a href="mailto:<?php   echo    $siteemail  ?>"> <?php   echo   $siteemail  ?></a><a
-                                            href="mailto:support@ruxa.com"><?php   echo   $sitephone  ?></a>
+                                            href="mailto:support@psnab.com"><?php   echo   $sitephone  ?></a>
                                     </div>
                                 </div>
                             </div>

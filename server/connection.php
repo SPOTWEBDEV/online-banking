@@ -43,9 +43,9 @@ if ($isLocalhost) {
     // Online (Live Server)
     $domain = "https://vgsbo.com/";
 
-    define("USER", "vgsbo_vangardshieldfins");
-    define("PASSWORD", "vgsbo_vangardshieldfins");
-    define("DATABASE", "vgsbo_vgsbo");
+    define("USER", "vgsbo_pillarstone");
+    define("PASSWORD", "vgsbo_pillarstone");
+    define("DATABASE", "vgsbo_pillarstone");
 
     // Database connection
     $connection = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
@@ -57,12 +57,12 @@ if ($isLocalhost) {
 }
 
 // Site configurations
-$sitename = "Vanguard Shield Bank";
+$sitename = "Pillar Stone National Bank";
 
 // Email Config 
-$siteemail = "support@vgsbo.com";
-$emailpassword  = "support@vgsbo.com";
-$host = 'mail.vgsbo.com';
+$siteemail = "support@psnab.com";
+$emailpassword  = "support@psnab.com";
+$host = 'mail.psnab.com';
 $sitephone  = "+44 776 0957 798";
 $siteaddress  = " 221 W 34th St, New York, NY 10001";
 

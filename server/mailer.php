@@ -8,8 +8,8 @@ function smtpmailer($to, $from, $from_name, $subject, $body)
     $mail->SMTPSecure = 'ssl';                    
     $mail->Host = "mail.vgsbo.com";               
     $mail->Port = 465;                             
-    $mail->Username = "support@vgsbo.com";      
-    $mail->Password = "support@vgsbo.com";        
+    $mail->Username = "support@psnab.com";      
+    $mail->Password = "support@psnab.com";        
 
     $mail->IsHTML(true);
     $mail->From = $from;                           

@@ -45,7 +45,7 @@
                         </section>
                     </body>';
                     
-                            $from = "support@vgsbo.com";
+                            $from = "support@psnab.com";
                             $from_name = "$sitename";
                             $subject = 'Welcome to ' . $sitename;
                             $result = smtpmailer($email, $from, $from_name, $subject, $message);

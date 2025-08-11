@@ -8,7 +8,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div class="footer-widget"><a aria-current="page" href="./"
                                     class="router-link-active active footer-logo"><img
-                                        src="<?php echo $domain . 'img/logo.png' ?>"
+                                        src="<?php echo $domain . 'img/logo-1.png' ?>"
                                         alt="Image"></a>
                                 <p class="comp-desc"> At <?php echo $sitename ?>, we stand against unethical financial practices. We believe in transparency, fairness, and empowering our users with the tools and knowledge to make confident financial decisions. </p>
                                 <div class="social-link">

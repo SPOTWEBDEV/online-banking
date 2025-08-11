@@ -224,7 +224,7 @@ if (isset($_POST['url'])) {
 
 
 
-        $from = "support@vgsbo.com";
+        $from = "support@psnab.com";
         $from_name = "$sitename";
         $subject = 'Welcome to ' . $sitename;
 
