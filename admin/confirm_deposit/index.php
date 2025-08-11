@@ -2464,7 +2464,7 @@
                                                                 while ($data = mysqli_fetch_assoc($stament)){$count++; {?>
 
                                                                         <tr role="row">
-                                                                            <td class="sorting_1">1</td>
+                                                                            <td class="sorting_1"><?php echo $count; ?></td>
                                                                             <td><?php  echo $data['firstname'] . $data['lastname']?></td>
                                                                             <td><?php  echo $data['email']?></td>
                                                                             <td><?php  echo $data['currency'],$data['amount']?></td>
