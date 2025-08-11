@@ -202,10 +202,10 @@
 
 
 
-    <!-- Smartsupp Live Chat script -->
+<!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
 var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'b2ac0652e04a62a26f9b93dc4dc349281c33e5bf';
+_smartsupp.key = '95300e61fa5c783369f14a8e4020c996d0fff2b2';
 window.smartsupp||(function(d) {
   var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
   s=d.getElementsByTagName('script')[0];c=d.createElement('script');
