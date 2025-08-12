@@ -90,7 +90,7 @@
             </div>
             <div class="col-lg-6 col-md-6 container-div">
                 <div class="form-wizard">
-                    <form action="#" method="post" role="form" enctype="multipart/form-data" id="regForm">
+                    <form method="post" role="form" enctype="multipart/form-data" id="regForm">
 
                         <input type="text" name="url" id="url" hidden>
 
@@ -99,7 +99,7 @@
                             <ul class="list-unstyled form-wizard-steps clearfix">
                                 <li class="active"><span>1</span></li>
                                 <li><span>2</span></li>
-                                <li><span>3</span></li>
+                                
                                 <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
@@ -546,80 +546,7 @@
                             </div>
                         </fieldset>
                         <fieldset class="wizard-fieldset">
-                            <h5>Verify your identity</h5>
-                            <p>We'er required by law to collect your Social Security Number / TIN.</p>
-                            <div id="Div1">
-                                <div class="container">
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-2 mb-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-lock text-primary">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <h6>Security in mind</h6>
-                                            We use your SSN or TIN to help keep your account safe and secure.
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-2 mb-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-credit-card text-primary">
-                                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                                <line x1="1" y1="10" x2="23" y2="10"></line>
-                                            </svg>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <h6>Only for what you need</h6>
-                                            Occasionally we'll need to provide you with tax documents, which require
-                                            your SSN.
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-2 mb-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-edit text-primary">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
-                                                </path>
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <h6>No credit score impact</h6>
-                                            Applying for <?php echo $sitename  ?> Account will never impact your credit
-                                            score
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div id="Div2">
-                                <div class="form-group">
-                                    <input type="password" class="form-control wizard-required" id="ssn" name="ssn">
-                                    <label for="ssn" class="wizard-form-text-label">Social Security Number /
-                                        TIN*</label>
-                                    <div class="wizard-form-error"></div>
-                                    <span class="wizard-password-eye"><i class="far fa-eye"></i></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="password" class="form-control wizard-required" id="confirm-ssn"
-                                        name="confirm-ssn">
-                                    <label for="confirm-ssn" class="wizard-form-text-label">Confirm SSN / TIN*</label>
-                                    <div class="wizard-form-error"></div>
-                                    <span class="wizard-password-eye"><i class="far fa-eye"></i></span>
-                                </div>
+                                                          
 
                                 <div class="form-group">
 
@@ -637,14 +564,12 @@
                                 </div>
 
 
-                            </div>
+                            
 
                             <div class="form-group clearfix">
                                 <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-                                <a class="form-wizard-next-btn float-right" id="Button1" value="Click"
-                                    onclick="switchVisible();">Next post</a>
                                 <button class="form-wizard-submit float-right btn btn-primary" type="submit"
-                                    name="regSubmit" id="nextShow">Submit</button>
+                                    name="regSubmit">Submit</button>
                             </div>
                         </fieldset>
 
@@ -666,6 +591,8 @@
                             let form = document.getElementById('regForm');
                             form.addEventListener('submit', (event) => {
                                 event.preventDefault();
+
+                                console.log('Form submitted!');
 
                                 let formData = new FormData(form);
 
