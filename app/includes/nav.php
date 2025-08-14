@@ -158,14 +158,14 @@
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="user-profile-section">
                             <div class="media mx-auto">
-                                <img src="<?php   echo $profile_pic ?>"
+                                <img src="<?php echo $profile_pic ?>"
                                     class="img-fluid mr-2" alt="avatar">
                                 <div class="media-body">
                                     <h5>
-                                        <?php   echo $fullname ?>
+                                        <?php echo $fullname ?>
                                     </h5>
                                     <p>
-                                        <?php   echo $account_type ?>
+                                        <?php echo $account_type ?>
                                     </p>
                                 </div>
                             </div>
@@ -180,6 +180,8 @@
                                 </svg> <span>My Profile</span>
                             </a>
                         </div>
+                        <div  id="google_translate_element"></div>
+                        <?php include('../../translator/index.php') ?>
                         <div class="dropdown-item">
                             <a href="?logout=true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -198,19 +200,26 @@
     </div>
 
 
-    
 
 
 
-<!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = '95300e61fa5c783369f14a8e4020c996d0fff2b2';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '95300e61fa5c783369f14a8e4020c996d0fff2b2';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>

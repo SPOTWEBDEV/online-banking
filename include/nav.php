@@ -61,7 +61,11 @@
                         <div class="searchbox"></div>
                         <div class="header-btn hide-on-mobile"><a href="./auth/" class="btn style1">Register Now</a>
                         </div>
+                        
                     </div>
+                    <div style="margin-left: 10px;" id="google_translate_element"></div>
+                    <?php  include('translator/index.php') ?>
+                    
                 </div>
                 <div class="mobile-bar-wrap">
                     <div class="mobile-sidebar" aria-pressed="false"><i class="ri-menu-4-line"></i></div>
